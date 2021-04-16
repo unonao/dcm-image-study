@@ -31,6 +31,8 @@ react-todo-list
 - Creat React app : https://create-react-app.dev/docs/getting-started
     - このソースコードは元々は create react app で作成しています
     - 基本のフォルダ構成：https://create-react-app.dev/docs/folder-structure
+- [Facebook公式のcreate-react-appコマンドを使ってReact.jsアプリを爆速で作成する](https://qiita.com/chibicode/items/8533dd72f1ebaeb4b614)
+    - npm の使い方とか分かりやすいですかね
 - React router : https://reactrouter.com/web/guides/quick-start
     - npm install react-router-dom でインストール済み
     - Creat React app してできたファイルを React router が使うように書き換えています。
