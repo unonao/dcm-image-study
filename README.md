@@ -2,8 +2,7 @@
 医療画像の勉強サイト
 
 # 開発の仕方
-詳細は CONTRIBUTING.md を参照
-
+詳細は CONTRIBUTING.md を参照のこと
 
 # Structure
 React + React router
