@@ -3,6 +3,6 @@ import Viewer from './Viewer';
 
 test('renders learn react link', () => {
   render(<Viewer />);
-  const linkElement = screen.getByText(/This is a viewer page/i);
+  const linkElement = screen.getByText(/Cornerstone React Component Example/i);
   expect(linkElement).toBeInTheDocument();
 });
