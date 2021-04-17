@@ -47,11 +47,6 @@ function Index() {
 
   const examples = [
     {
-      title: 'Props Documentation',
-      url: '/props',
-      text: 'COMING SOON',
-    },
-    {
       title: 'Basic Usage',
       url: '/basic',
       text:
@@ -97,15 +92,6 @@ function Index() {
           {exampleComponents}
         </div>
 
-        <div className="col-xs-12 col-lg-12">
-          <h3>Configuring Cornerstone</h3>
-          <p>
-            All of these examples assume that the cornerstone family of
-            libraries have been imported and configured prior to use. Here is
-            brief example of what that may look like in ES6:
-          </p>
-
-        </div>
       </div>
     </div>
   );
@@ -133,7 +119,7 @@ function AppRouter() {
   const grid = () => Example({ children: <ExamplePageGrid /> });
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path="/" component={Index} />
         <Route exact path="/basic/" render={basic} />
