@@ -33,7 +33,11 @@ npm start
     - https://github.com/cornerstonejs/react-cornerstone-viewport
     - https://react.cornerstonejs.org/
 
-# 参考資料
+# github pages
+- https://medium.com/@arijit_chowdhury/deploy-react-app-with-react-router-to-github-pages-for-free-569377f483f
+    - React router を用いて github.io にデプロイする
+
+# その他参考資料
 - React Hello world: https://ja.reactjs.org/docs/hello-world.html
     - React の基本がわかるので一通り読んでおくと良い
 - [今から始めるReact入門 〜 React の基本](https://qiita.com/TsutomuNakamura/items/72d8cf9f07a5a30be048)
