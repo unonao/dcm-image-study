@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/dcm-image-study/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/dcm-image-study/static/js/main.b5acbe71.chunk.js",
+    "main.js.map": "/dcm-image-study/static/js/main.b5acbe71.chunk.js.map",
+    "runtime-main.js": "/dcm-image-study/static/js/runtime-main.01da1f70.js",
+    "runtime-main.js.map": "/dcm-image-study/static/js/runtime-main.01da1f70.js.map",
+    "static/js/2.31ee4f32.chunk.js": "/dcm-image-study/static/js/2.31ee4f32.chunk.js",
+    "static/js/2.31ee4f32.chunk.js.map": "/dcm-image-study/static/js/2.31ee4f32.chunk.js.map",
+    "static/js/3.5b352b18.chunk.js": "/dcm-image-study/static/js/3.5b352b18.chunk.js",
+    "static/js/3.5b352b18.chunk.js.map": "/dcm-image-study/static/js/3.5b352b18.chunk.js.map",
+    "index.html": "/dcm-image-study/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/dcm-image-study/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.31ee4f32.chunk.js.LICENSE.txt": "/dcm-image-study/static/js/2.31ee4f32.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.01da1f70.js",
+    "static/js/2.31ee4f32.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.b5acbe71.chunk.js"
+  ]
+}
