@@ -1,0 +1,232 @@
+/**
+ * Copyright 2021 hiroki
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+header {
+      background: #0c4da2;
+      height: 100px;
+      color: White;
+      text-align: center;
+    }
+.img_mnist{
+    position: relative;
+    top: 10px;
+    right: 580px;
+}
+
+.img_github{
+    position: relative;
+    top: 10px;
+    left: 580px;
+}
+.contents {
+    display: flex;
+}
+
+.content {
+    margin: auto;
+    height: 30px;
+    width: 120px;
+    margin-top: 16px;
+    padding-bottom: auto;
+}
+
+.content:hover {
+    background-color: #799ecf;
+}
+
+a {
+    color:white;
+    text-decoration: none;
+}
+
+/**
+   body
+**/
+
+.row {
+    text-align: center;
+    flex-direction: column;
+}
+
+.row_head {
+    font-family: "Franklin Gothic Medium";
+}
+
+.row_head_img {
+    height: 400px;
+    width: 100%;
+}
+
+.under {
+    background: linear-gradient(transparent 75%, #62e293 50%);
+}
+
+.row_body{
+    margin-top: 80px;
+    margin-bottom: 100px;
+}
+
+.thema{
+    margin-bottom: 30px;
+}
+
+.row_body_sentense {
+    text-align: left;
+    width: 47%;
+    height: auto;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding: auto;
+}
+
+.btn_txt {
+    font-family: 'Gill Sans';
+    font-weight: bold;
+}
+
+.body_btn {
+    padding: 10px 30px;
+    background-color: greenyellow;
+    font-size: large;
+    color: white;
+}
+
+.body_btn:hover {
+    opacity: 0.8;
+}
+
+/**
+     Basic
+**/
+
+.row_basic {
+    text-align: center;
+    width:100%;
+    padding:10px;
+}
+
+.basic_contents {
+    display: flex;
+    width: 100%;
+    background-color: rgb(239, 253, 249);
+}
+
+.basic_content {
+    position: static; /* 要素をスクロールに応じて固定 */
+    width: 47%;
+    padding: 5px;
+    text-align: center;
+    /**background-color: blueviolet;**/
+}
+
+.basic_sentenses{
+    text-align: center;
+    overflow: auto;
+    width: 47%;
+    padding: 5px;
+    padding-left: 5%;
+}
+
+.basic_sentense{
+    text-align: left;
+}
+
+/**
+     footer
+**/
+footer {
+    color: whitesmoke;
+    background-color: rgb(23, 30, 61);
+    height: 300px;
+}
+
+.foots {
+    margin: 1%;
+    padding: 1%;
+    height: 250px;
+}
+
+.foot {
+    font-size: large;
+    height: auto;
+    width: auto;
+    margin-top: 3px;
+    margin-left: 0px;
+}
+
+
+.btn {
+    padding: 10px 30px;
+    background-color: pink;
+    font-size: large;
+    color: white;
+    display: right;
+    opacity: 0.8;
+    border-radius: 4px;
+    position: relative;
+    top: 50px;
+    left: 1000px;
+}
+
+.btn:hover {
+    opacity: 1;
+  }
+.button {
+    margin-right: 5px;
+    position: relative;
+    top: 10px;
+    left: 30px;
+}
+
+.bottom{
+    font-size: small;
+    text-align: center;
+    margin-top: 50px;
+    padding-left: 150px;
+}
+
+.img:hover {
+    opacity: 0.8;
+}
+
+.img_mnes{
+    position: relative;
+    bottom: 0px;
+    left: 30px;
+}
+
+.img_laime{
+    position: relative;
+    bottom: 0px;
+    left: 80px;
+}
+
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }

@@ -20,7 +20,7 @@ const stack2 = [
 class ExamplePageGrid extends Component {
     state = {
         activeViewportIndex: 0,
-        viewports: [0, 1, 2, 3],
+        viewports: [0, 1],
         tools: [
             // Mouse
             {
@@ -55,7 +55,7 @@ class ExamplePageGrid extends Component {
         activeTool: 'Wwwc',
         imageIdIndex: 0,
         isPlaying: false,
-        frameRate: 22,
+        frameRate: 5,
     };
 
     componentDidMount() { }
@@ -63,12 +63,14 @@ class ExamplePageGrid extends Component {
     render() {
         return (
             <div>
-                <h2>Grid Demo</h2>
+                <h2>Viewer 2</h2>
+                <h3>T1W</h3>
+                <h3>T2W</h3>
                 <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                     {this.state.viewports.map(vp => (
                         <CornerstoneViewport
                             key={vp}
-                            style={{ minWidth: '50%', height: '256px', flex: '1' }}
+                            style={{ minWidth: '50%', height: '512px', flex: '1' }}
                             tools={this.state.tools}
                             imageIds={this.state.imageIds}
                             imageIdIndex={this.state.imageIdIndex}
