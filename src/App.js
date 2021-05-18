@@ -7,7 +7,11 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import ExamplePageBasic from './components/ExamplePageBasic.js';
 import ExamplePageGrid from './components/ExamplePageGrid.js';
 
+//images
 import image1 from './image1.jpg'
+import headimg1 from './components/images/img_mri.png'
+import lungimg1 from './components/images/lung_CT.jpg'
+import abdimg1 from './components/images/abdomine_CT.jpg'
 
 // cornerstone tools の初期化
 import initCornerstone from './initCornerstone.js';
@@ -116,6 +120,55 @@ function Index() {
   );
 }
 
+
+
+function explaination(){
+  return(
+    <div className='explanation'>
+      <div className="exp">
+        <h2>頭部</h2>
+        <div className="exp_row">
+          <img className="exp_row_img" src={headimg1}></img>
+          <h3>頭部の正常解剖と構造</h3>
+          <p>この章では頭部の正常画像を</p>
+          <p>もとに、頭部の解剖学的構造</p>
+          <p>を理解しながら頭部診断時の</p>
+          <p> ルーティンを確認します。</p>
+          {ExampleEntry({title:'GO',url:'/basic/head_ct',})}
+        </div>
+      </div>
+      <div className="exp">
+        <h2>胸部</h2>
+        <div className="exp_row">
+          <img className="exp_row_img" src={lungimg1}></img>
+          <h3>胸部の正常解剖と構造</h3>
+          <p>この章では胸部の正常画像を</p>
+          <p>もとに、胸部の解剖学的構造</p>
+          <p>を理解しながら胸部診断時の</p>
+          <p>ルーティンを確認します。</p>
+          {ExampleEntry({title:'GO',url:'/basic/thorax',})}
+        </div>
+      </div>
+      <div className="exp">
+        <h2>腹部</h2>
+        <div className="exp_row">
+          <img className="exp_row_img" src={abdimg1}></img>
+          <h3>腹部の正常解剖と構造</h3>
+          <p>この章では頭部の正常画像を</p>
+          <p>もとに、腹部の解剖学的構造</p>
+          <p>を理解しながら頭部診断時の</p>
+          <p>ルーティンを確認します。</p>
+          {ExampleEntry({title:'GO',url:'/basic/abdomen',})}
+        </div>
+      </div>
+
+    </div>
+  );
+}
+
+
+
+
 /**
  *
  *
@@ -130,17 +183,26 @@ function Example(props) {
   );
 }
 
+
+
+
+
 function AppRouter() {
-  const basic = () => Example({ children: <ExamplePageBasic /> });
+  const head = () => Example({ children: <ExamplePageBasic myprop='head_ct'/> });
+  const thorax = () => Example({ children: <ExamplePageBasic myprop='thorax'/> });
+  const abdomen = () => Example({ children: <ExamplePageBasic myprop='abdomen'/> });
   const grid = () => Example({ children: <ExamplePageGrid /> });
+
 
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route exact path="/" component={Index} />
-        <Route exact path="/basic/" render={basic} />
+        <Route exact path="/basic/" render={explaination} />
+        <Route exact path="/basic/head_ct/" render={head} />
+        <Route exact path="/basic/thorax/" render={thorax} />
+        <Route exact path="/basic/abdomen/" render={abdomen} />
         <Route exact path="/grid/" render={grid} />
-        <Route exact component={Index} />
       </Switch>
     </Router>
   );
