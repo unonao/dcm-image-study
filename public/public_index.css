@@ -38,7 +38,6 @@ a {
     text-decoration: none;
 }
 
-<<<<<<< HEAD
 .sub-menu > ul {
     text-align: center;
     list-style: none;
@@ -61,8 +60,6 @@ a {
 .content:hover .sub-menu {
     display: block;
   }
-=======
->>>>>>> b03daf3d3c873ce377416a1941b099d654bba29f
 /**
      footer
 **/
