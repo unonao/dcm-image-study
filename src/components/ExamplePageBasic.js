@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
+import { head_CT_dicom , head_CT_explain } from "./Head_CT";
+import { thorax_dicom , thorax_explain } from "./Thorax";
+import { abdomen_dicom , abdomen_explain } from "./Abdomen";
+
+var dicomdata= {
+    'head_ct':head_CT_dicom,
+    'thorax': thorax_dicom,
+    'abdomen':abdomen_dicom,
+}
+var explaindata= {
+    'head_ct':head_CT_explain(),
+    'thorax':thorax_explain(),
+    'abdomen':abdomen_explain(),
+};
 
 
-const stack2 = [
-    'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.8.dcm',
-    'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.7.dcm',
-    'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.9.dcm',
-    'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.10.dcm',
-    'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.11.dcm',
-]
 
 
 class ExamplePageBasic extends Component {
-    state = {
+    constructor(props){
+      super(props);
+    this.state = {
         activeViewportIndex: 0,
         viewports: [0],
         tools: [
@@ -39,11 +48,11 @@ class ExamplePageBasic extends Component {
             { name: 'ZoomTouchPinch', mode: 'active' },
             { name: 'StackScrollMultiTouch', mode: 'active' },
         ],
-        imageIds: stack2,
         activeTool: 'Wwwc',
         imageIdIndex: 0,
         isPlaying: false,
         frameRate: 5,
+        };
     };
 
     render() {
@@ -55,7 +64,7 @@ class ExamplePageBasic extends Component {
                         <CornerstoneViewport
                             tools={this.state.tools}
                             style={{minWidth: '50%', height: '512px', flex: '1'}}
-                            imageIds={this.state.imageIds}
+                            imageIds={dicomdata[this.props.myprop]}
                             imageIdIndex={this.state.imageIdIndex}
                             isPlaying={this.state.isPlaying}
                             frameRate={this.state.frameRate}
@@ -91,7 +100,7 @@ class ExamplePageBasic extends Component {
                                     <input
                                         type="range"
                                         min="0"
-                                        max={this.state.imageIds.length - 1}
+                                        max={dicomdata[this.props.myprop].length - 1}
                                         value={this.state.imageIdIndex}
                                         onChange={evt =>
                                             this.setState({ imageIdIndex: parseInt(evt.target.value) })
@@ -110,10 +119,10 @@ class ExamplePageBasic extends Component {
                                     <input
                                         type="number"
                                         min="0"
-                                        max={this.state.imageIds.length - 1}
+                                        max={dicomdata[this.props.myprop].length - 1}
                                         value={this.state.imageIdIndex}
                                         onChange={evt => {
-                                            const maxid = this.state.imageIds.length - 1
+                                            const maxid = dicomdata[this.state.parts].length - 1
                                             const imageIdInput = parseInt(evt.target.value);
                                             const imageIdIndex = Math.max(Math.min(imageIdInput, maxid), 0);
 
@@ -153,57 +162,7 @@ class ExamplePageBasic extends Component {
                         </form>
                     </div>
                 </div>
-                <div className = "basic_sentenses">
-                    <h2>解説</h2>
-                    <h2>STEP1. 中心溝を見つけよう</h2>
-                    <div className = "basic_sentense">
-                      <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                      <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                      <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                      <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                      <p>スキルアップをしてみませんか？</p>
-                    </div>
-                    <h2>STEP2. 皮質の構造を理解しよう</h2>
-                    <div className = "basic_sentense">
-                      <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                      <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                      <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                      <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                      <p>スキルアップをしてみませんか？</p>
-                    </div>
-                    <h2>STEP3. 大脳基底核の構造を理解しよう</h2>
-                    <div className = "basic_sentense">
-                      <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                      <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                      <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                      <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                      <p>スキルアップをしてみませんか？</p>
-                    </div>
-                    <h2>STEP4. 脳室の場所を把握しよう</h2>
-                    <div className = "basic_sentense">
-                      <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                      <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                      <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                      <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                      <p>スキルアップをしてみませんか？</p>
-                    </div>
-                    <h2>STEP5. 脳幹の構造を理解しよう</h2>
-                    <div className = "basic_sentense">
-                      <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                      <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                      <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                      <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                      <p>スキルアップをしてみませんか？</p>
-                    </div>
-                    <h2>STEP6. 鼻腔にも目をむけよう</h2>
-                    <div className = "basic_sentense">
-                      <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                      <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                      <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                      <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                      <p>スキルアップをしてみませんか？</p>
-                    </div>
-                </div>
+                {explaindata[this.props.myprop]}
             </div>
         );
     }

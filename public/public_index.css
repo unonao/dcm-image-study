@@ -1,18 +1,3 @@
-/**
- * Copyright 2021 hiroki
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *     http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 header {
       background: #0c4da2;
@@ -41,6 +26,7 @@ header {
     width: 120px;
     margin-top: 16px;
     padding-bottom: auto;
+    z-index: 10;
 }
 
 .content:hover {
@@ -52,99 +38,28 @@ a {
     text-decoration: none;
 }
 
-/**
-   body
-**/
-
-.row {
+.sub-menu > ul {
     text-align: center;
-    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
 }
 
-.row_head {
-    font-family: "Franklin Gothic Medium";
+.sub-menu > ul > li > a {
+    text-decoration: none;
+    color: #ffffff;
 }
 
-.row_head_img {
-    height: 400px;
-    width: 100%;
+.sub-menu {
+    background-color: #799ecf;
+    width: 200px;
+    display: none;
 }
 
-.under {
-    background: linear-gradient(transparent 75%, #62e293 50%);
-}
-
-.row_body{
-    margin-top: 80px;
-    margin-bottom: 100px;
-}
-
-.thema{
-    margin-bottom: 30px;
-}
-
-.row_body_sentense {
-    text-align: left;
-    width: 47%;
-    height: auto;
-    margin: auto;
-    margin-top: 50px;
-    margin-bottom: 30px;
-    padding: auto;
-}
-
-.btn_txt {
-    font-family: 'Gill Sans';
-    font-weight: bold;
-}
-
-.body_btn {
-    padding: 10px 30px;
-    background-color: greenyellow;
-    font-size: large;
-    color: white;
-}
-
-.body_btn:hover {
-    opacity: 0.8;
-}
-
-/**
-     Basic
-**/
-
-.row_basic {
-    text-align: center;
-    width:100%;
-    padding:10px;
-}
-
-.basic_contents {
-    display: flex;
-    width: 100%;
-    background-color: rgb(239, 253, 249);
-}
-
-.basic_content {
-    position: static; /* 要素をスクロールに応じて固定 */
-    width: 47%;
-    padding: 5px;
-    text-align: center;
-    /**background-color: blueviolet;**/
-}
-
-.basic_sentenses{
-    text-align: center;
-    overflow: auto;
-    width: 47%;
-    padding: 5px;
-    padding-left: 5%;
-}
-
-.basic_sentense{
-    text-align: left;
-}
-
+.content:hover .sub-menu {
+    display: block;
+  }
 /**
      footer
 **/
