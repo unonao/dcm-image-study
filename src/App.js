@@ -134,7 +134,7 @@ function explaination(){
           <p>もとに、頭部の解剖学的構造</p>
           <p>を理解しながら頭部診断時の</p>
           <p> ルーティンを確認します。</p>
-          {ExampleEntry({title:'GO',url:'/basic/head_ct',})}
+          {ExampleEntry({title:'GO',url:'/basic/head',})}
         </div>
       </div>
       <div className="exp">
@@ -188,7 +188,7 @@ function Example(props) {
 
 
 function AppRouter() {
-  const head = () => Example({ children: <ExamplePageBasic myprop='head_ct'/> });
+  const head = () => Example({ children: <ExamplePageBasic myprop='head'/> });
   const thorax = () => Example({ children: <ExamplePageBasic myprop='thorax'/> });
   const abdomen = () => Example({ children: <ExamplePageBasic myprop='abdomen'/> });
   const grid = () => Example({ children: <ExamplePageGrid /> });
@@ -199,7 +199,7 @@ function AppRouter() {
       <Switch>
         <Route exact path="/" component={Index} />
         <Route exact path="/basic/" render={explaination} />
-        <Route exact path="/basic/head_ct/" render={head} />
+        <Route exact path="/basic/head/" render={head} />
         <Route exact path="/basic/thorax/" render={thorax} />
         <Route exact path="/basic/abdomen/" render={abdomen} />
         <Route exact path="/grid/" render={grid} />
