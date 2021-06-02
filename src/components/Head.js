@@ -101,8 +101,6 @@ export const head_CT_dicom = [
 'dicomweb:' + dcmimage1734,
 ]
 
-
-
 export const anno_head = [
     'http:' + annoimg1,
     'http:' + annoimg2,

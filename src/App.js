@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 // Routes
 import ExamplePageBasic from './components/ExamplePageBasic.js';
-import ExamplePageGrid from './components/ExamplePageGrid.js';
+import ExamplePageQuiz from './components/ExamplePageQuiz.js';
+import Viewer from './components/ExamplePageViewer.js';
 
 //images
 import image1 from './image1.jpg'
@@ -24,13 +25,6 @@ initCornerstone();
  * @returns
  */
 
-function LinkOut({ href, text }) {
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      {text}
-    </a>
-  );
-}
 
 /**
  *
@@ -120,8 +114,6 @@ function Index() {
   );
 }
 
-
-
 function explaination(){
   return(
     <div className='explanation'>
@@ -161,12 +153,43 @@ function explaination(){
           {ExampleEntry({title:'GO',url:'/basic/abdomen',})}
         </div>
       </div>
-
     </div>
   );
 }
 
-
+function practice_menu(){
+  return(
+    <div className='explanation'>
+      <div className="exp">
+        <h2>頭部</h2>
+        <div className="exp_row">
+          <img className="exp_row_img" src={headimg1}></img>
+          <h3>頭部MRI1</h3>
+          <p>頭部MRI part1</p>
+          {ExampleEntry({title:'GO',url:'/grid/viewer',})}
+        </div>
+      </div>
+      <div className="exp">
+        <h2>胸部</h2>
+        <div className="exp_row">
+          <img className="exp_row_img" src={lungimg1}></img>
+          <h3>胸部CT1</h3>
+          <p>胸部CT part1</p>
+          {ExampleEntry({title:'GO',url:'/grid/viewer',})}
+        </div>
+      </div>
+      <div className="exp">
+        <h2>腹部</h2>
+        <div className="exp_row">
+          <img className="exp_row_img" src={abdimg1}></img>
+          <h3>腹部CT1</h3>
+          <p>腹部CT part1</p>
+          {ExampleEntry({title:'GO',url:'/grid/viewer',})}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 
 /**
@@ -191,7 +214,8 @@ function AppRouter() {
   const head = () => Example({ children: <ExamplePageBasic myprop='head'/> });
   const thorax = () => Example({ children: <ExamplePageBasic myprop='thorax'/> });
   const abdomen = () => Example({ children: <ExamplePageBasic myprop='abdomen'/> });
-  const grid = () => Example({ children: <ExamplePageGrid /> });
+  //const quiz = () => Example({ children: <ExamplePageQuiz url={['/grid/viewer','/grid/viewer']}/> });
+  const viewer = () => Example({ children: <Viewer myprop='stack'/> });
 
 
   return (
@@ -202,7 +226,8 @@ function AppRouter() {
         <Route exact path="/basic/head/" render={head} />
         <Route exact path="/basic/thorax/" render={thorax} />
         <Route exact path="/basic/abdomen/" render={abdomen} />
-        <Route exact path="/grid/" render={grid} />
+        <Route exact path="/grid/" render={practice_menu} />
+        <Route exact path="/grid/viewer" render={viewer} />
       </Switch>
     </Router>
   );

@@ -131,3 +131,140 @@
 .basic_sentense{
   text-align: left;
 }
+
+/*Quiz*/
+.quiz-group{
+  margin: 5%;
+  margin-top: 5%;
+  padding-top: 0%;
+  padding: 3%;
+  border: solid 3px;
+  border-radius: 10px;
+  background-color: azure;
+}
+
+.Quiz_contents{
+  display: flex;
+  text-align: left;
+  margin-left: 5%;
+}
+
+.answer_boxies{
+  position: relative;
+  left:45%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:10px;
+  padding: 5px;
+  width: 50%;
+  line-height: auto;
+}
+
+.answer_boxies>label{
+  position: relative;
+  top: 7px;
+  text-align: right;
+  font-size: large;
+  font-family: Verdana;
+  margin: 2px;
+}
+
+.answer_boxies>select{
+  font-size: medium;
+}
+
+.answer_box{
+  margin-left: 55%;
+}
+
+.explain_box{
+  margin-left: 55%;
+}
+
+.Quiz_contents a{
+  background-color: crimson;
+}
+
+.quiz_boolen{
+  font-size: large;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+
+.true{
+  color:rgba(0, 60, 255, 0.685);
+  font-size: x-large;
+}
+.false{
+  color: red;
+  font-size: x-large;
+}
+
+.quiz_explain{
+  text-align: left;
+  font-size: medium;
+  background-color: rgb(253, 165, 155);
+  padding: 3%;
+  margin: 3%;
+  border-radius: 10px;
+}
+
+/* viewer */
+.tool_contents{
+  display: grid;
+  gap: 5px;
+  width:40%;
+  grid-template-columns: 1fr 1fr;
+  grid-row: inherit;
+}
+
+.tool_box{
+  text-align: center;
+  background-color: blueviolet;
+}
+
+.viewers {
+  display: grid;
+  background-color: black;
+  grid-template-columns: 450px 450px 450px;
+  grid-template-rows: 256px 256px;
+  margin-bottom: 10px;
+}
+
+.viewers_click {
+  display: grid;
+  grid-template-columns: 675px 337.5px 337.5px;
+  grid-template-rows: 256px 256px;
+  margin-bottom: 10px;
+}
+
+.viewer_big_box{
+  grid-column: 1/2;
+  grid-row: 1/3;
+  background: black;
+  color: aliceblue;
+  border: solid 3px;
+  border-color: gray;
+  padding: 10px;
+}
+
+.viewer {
+  background: black;
+  color: aliceblue;
+  border: solid 3px;
+  border-color: gray;
+  padding: 10px;
+}
+
+.viewer:hover{
+  border-color: blue;
+}
+
+.viewer_propaties {
+  display: 'flex';
+  margin-Top: '35px'
+}
+
+.viewer_row{
+  display: 'flex';
+}
