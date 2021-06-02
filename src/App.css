@@ -209,18 +209,92 @@
   border-radius: 10px;
 }
 
+
+
 /* viewer */
+.viewer_propaties {
+  display: grid;
+  grid-template-columns: 2fr 0.7fr 1.5fr 3fr;
+  grid-row: inherit;
+  gap: 10px;
+  background:rgb(255, 197, 131);
+}
+
 .tool_contents{
   display: grid;
+  text-align: center;
   gap: 5px;
-  width:40%;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-row: inherit;
+  padding: 5px;
+  margin: 5px;
+  border: solid 3px;
+  border-radius: 10px;
+  background-color: ghostwhite;
 }
 
 .tool_box{
   text-align: center;
-  background-color: blueviolet;
+  background-color: rgb(240, 236, 236);
+}
+
+.tool_box_click{
+  text-align: center;
+  background-color: orange;
+}
+
+.tool_icon{
+  width: 40px;
+  height: 35px;
+}
+
+.propaty{
+  text-align: center;
+  background-color:rgb(254, 255, 199);
+  color: black;
+  padding: 5px;
+  margin: 5px;
+  border: solid 3px;
+  border-radius: 10px;
+}
+
+.window{
+  padding: 5px;
+  margin: 5px;
+  border: solid 3px;
+  border-radius: 10px;
+  background-color: ghostwhite;
+}
+
+.window:hover{
+  background-color: rgb(193, 255, 94);
+}
+
+.tool_img{
+  width: 70px;
+  height: 70px;
+}
+
+
+.tool_statuses{
+  padding: 5px;
+  margin: 5px;
+  border: solid 3px;
+  border-radius: 10px;
+  background-color: ghostwhite;
+}
+
+.form_tool{
+  width: 60px;
+}
+
+.complain{
+  text-align: left;
+  padding: 5px;
+  margin: 5px;
+  border: solid 3px;
+  border-radius: 10px;
+  background-color: ghostwhite;
 }
 
 .viewers {
@@ -260,11 +334,3 @@
   border-color: blue;
 }
 
-.viewer_propaties {
-  display: 'flex';
-  margin-Top: '35px'
-}
-
-.viewer_row{
-  display: 'flex';
-}
