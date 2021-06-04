@@ -40,6 +40,9 @@ var dicomdata = {
     'abdomen':[abdomen_dicom],
 }
 
+const quiz1 = '大動脈弓を丸く囲ってください。'
+const quiz2 = 'img=4層で左側の肺を囲んでください。'
+
 
 const img_list = {
     'head':[head_CT_dicom,anno_head],
@@ -59,6 +62,7 @@ function mklist(name,num) {
     }
     return new_list
 };
+
 
 var stylelist = mklist('viewer',5)
 var toolstylelist = mklist('tool_box',12)
@@ -84,7 +88,7 @@ const image= document.getElementsByClassName('viewport');
 // この例だと１個めが必要となるdicom-imageなので、配列の１番目をセットし、toolTypeは円（KRoi）を指定してgetする
 //var regionAnnotation=cornerstoneTools.getToolState(image[0],'FreehandScissors');
 
-//CircleRoi,RectangleRoiy用
+//CircleRoi,RectangleRoi用
 export class Viewer_Quiz extends React.Component {
     constructor(props) {
         super(props);
@@ -106,19 +110,20 @@ export class Viewer_Quiz extends React.Component {
                 const start_y=toolState[dcmdataset[num]][tooltype]["data"][0]["handles"]["start"]["y"];
                 const end_x=toolState[dcmdataset[num]][tooltype]["data"][0]["handles"]["end"]["x"];
                 const end_y=toolState[dcmdataset[num]][tooltype]["data"][0]["handles"]["end"]["y"];
-                if(Math.min(ans_st_x,ans_end_x)<start_x<Math.max(ans_st_x,ans_end_x)){
+                if(Math.min(ans_st_x,ans_end_x)<start_x &&
+                   start_x<Math.max(ans_st_x,ans_end_x) &&
+                   Math.min(ans_st_y,ans_end_y)<start_y &&
+                   start_y<Math.max(ans_st_y,ans_end_y)){
                     a += 1
-                }
-                if(Math.min(ans_st_y,ans_end_y)<start_y<Math.max(ans_st_y,ans_end_y)){
+                }else{ a+= 0 };
+
+                if(Math.min(ans_st_x,ans_end_x)<end_x &&
+                end_x<Math.max(ans_st_x,ans_end_x) &&
+                Math.min(ans_st_y,ans_end_y)<end_y &&
+                end_y<Math.max(ans_st_y,ans_end_y)){
                     a += 1
-                }
-                if(Math.min(ans_st_x,ans_end_x)<end_x<Math.max(ans_st_x,ans_end_x)){
-                    a += 1
-                }
-                if(Math.min(ans_st_y,ans_end_y)<end_y<Math.max(ans_st_y,ans_end_y)){
-                    a += 1
-                }
-            }
+                }else{ a+= 0 };
+            };
             if(a===-2){
                 return(
                     <div>
@@ -137,26 +142,26 @@ export class Viewer_Quiz extends React.Component {
                         <h3>異なる場所を指摘しています。もう一度確認しましょう。</h3>
                     </div>
                 )
-            }else if(1<=a<=3){
-                return(
-                    <div>
-                        <h3>惜しいです。もう一度トライ!!</h3>
-                    </div>
-                )
-            }else if(a===4){
+            }else if(a===2){
                 return(
                     <div>
                         <h3>正解です。大変よくできました。</h3>
+                    </div>
+                )
+            }else{
+                return(
+                    <div>
+                        <h3>惜しいです。もう一度トライ!!</h3>
                     </div>
                 )
             };
         }
         return(
             <div>
-                <div className="Quiz_contents">
-                    <div>
-                        <h3>大動脈弓を丸く囲ってください。</h3>
-                        </div>
+                <div  className="Quiz_contents">
+                    <div className="quiz_text">
+                        <p>{this.props.text}</p>
+                    </div>
                     <button
                         className="body_btn answer_box"
                         type="button"
@@ -167,40 +172,53 @@ export class Viewer_Quiz extends React.Component {
                             });
                                 }}
                     >
-                    {this.state.showResults ? '閉じる' : '判定'}
+                    判定
                     </button>
                 </div>
                 <div>
                 { this.state.showResults ===true ?
-                <div className='quiz_explain'>
-                    <div >
-                    {Answer_check(
-                    {num:this.props.num,
-                    dcmdataset:this.props.data,
-                    toolState:this.state.toolState,
-                    tooltype:this.props.tooltype,
-                    ans_st_x:this.props.ans_st_x,
-                    ans_st_y:this.props.ans_st_y,
-                    ans_end_x:this.props.ans_end_x,
-                    ans_end_y:this.props.ans_end_y,})}
-                    </div>
-                    <button
-                        className="body_btn explain_box"
-                        type="button"
-                        onClick={() => {
+                <div id='overlay'>
+                    <div id='quiz_content' className='quiz_explain'>
+                        <div>
+                            <button
+                            className = 'close_btn'
+                            type="button"
+                            onClick={() => {
+                            this.setState({
+                                showResults: !this.state.showResults,
+                            });
+                                }}
+                            >X</button>
+                        </div>
+                        <div >
+                        {Answer_check(
+                        {num:this.props.num,
+                        dcmdataset:this.props.data,
+                        toolState:this.state.toolState,
+                        tooltype:this.props.tooltype,
+                        ans_st_x:this.props.ans_st_x,
+                        ans_st_y:this.props.ans_st_y,
+                        ans_end_x:this.props.ans_end_x,
+                        ans_end_y:this.props.ans_end_y,})}
+                        </div>
+                        <button
+                            className="body_btn explain_box"
+                            type="button"
+                            onClick={() => {
                             this.setState({
                                 showExplain: !this.state.showExplain,
                             });
                                 }}
-                    >
-                    {this.state.showExplain ? '閉じる' : '解説をみる'}
-                    </button>
-                    <div>
-                       {this.state.showExplain ===true ?
-                       <div>
-                           <p>ここにあるよ💗</p>
+                        >
+                        {this.state.showExplain ? '閉じる' : '解説をみる'}
+                        </button>
+                        <div>
+                           {this.state.showExplain ===true ?
+                           <div>
+                               <p>ここにあるよ💗</p>
+                            </div>
+                            : null }
                         </div>
-                        : null }
                     </div>
                 </div>
                 : null }
@@ -261,7 +279,7 @@ class Viewer_Quiz_Freehand extends React.Component {
                         <h3>異なる場所を指摘しています。もう一度確認しましょう。</h3>
                     </div>
                 )
-            }else if(0<a<=0.5){
+            }else if(0<a && a<=0.5){
                 return(
                     <div>
                         <h3>惜しいです。もう一度トライ!!</h3>
@@ -329,13 +347,13 @@ class Viewer_Quiz_ArrowAnnotate extends React.Component {
                 const text=toolState[dcmdataset[num]]["ArrowAnnotate"]["data"][0]["text"];
                 if(Math.min(ans_st_x,ans_end_x)<start_x<Math.max(ans_st_x,ans_end_x)){
                     a += 1;
-                };
+                }else{ a+= 0 };
                 if(Math.min(ans_st_y,ans_end_y)<start_y<Math.max(ans_st_y,ans_end_y)){
                     a += 1;
-                };
+                }else{ a+= 0 };
                 if(ans_text===text){
                     a += 1;
-                }
+                }else{ a+= 0 };
             }
             if(a===-2){
                 return(
@@ -349,7 +367,7 @@ class Viewer_Quiz_ArrowAnnotate extends React.Component {
                         <h3>アノテーションツールが違います。</h3>
                     </div>
                 )
-            }else if(0<=a<=1){
+            }else if(0<=a && a<=1){
                 return(
                     <div>
                         <h3>異なる場所を指摘しています。もう一度確認しましょう。</h3>
@@ -404,7 +422,8 @@ class Viewer_Quiz_ArrowAnnotate extends React.Component {
 };
 
 var quiz_dict = {
-    'stack':<Viewer_Quiz num={0} data={stack1} tooltype="CircleRoi" ans_st_x={99} ans_st_y={181} ans_end_x={379} ans_end_y={440}></Viewer_Quiz>,
+    'stack':[<Viewer_Quiz num={0} text={quiz1} data={stack1} tooltype="CircleRoi" ans_st_x={99} ans_st_y={181} ans_end_x={379} ans_end_y={440}></Viewer_Quiz>,
+    <Viewer_Quiz num={3} text={quiz2} data={stack1} tooltype="RectangleRoi" ans_st_x={273} ans_st_y={272} ans_end_x={378} ans_end_y={362}></Viewer_Quiz>,]
 }
 
 class Viewer extends Component {
@@ -412,6 +431,7 @@ class Viewer extends Component {
         activeViewportIndex: 0,
         viewports: [0,1,2,3,4],
         toolports: [0,1,2,3,4,5,6,7,8,9,10,11],
+        quizports: [0,1,2,3,4,5,6,7,8,9,10],
         tools: [
             // Mouse
             {
@@ -452,12 +472,14 @@ class Viewer extends Component {
         activeTool: 'Wwwc',
         activeToolIndex: 10,
         imageIdIndex: 0,
+        quizIndex: 0,
         isPlaying: false,
         frameRate: 5,
         showProps: true,
         style: 'viewers',
         viewerstyle: stylelist,
         toolstyle: toolstylelist,
+        quizstylelist: mklist('question_num',quiz_dict[this.props.myprop].length)
     };
 
     componentDidMount() { }
@@ -468,7 +490,7 @@ class Viewer extends Component {
             <div >
                 <div className='viewer_propaties'>
                     <div className='propaty'>
-                    <label htmlFor="active-tool">Tool Contents</label>
+                        <label htmlFor="active-tool">Tool Contents</label>
                         <div className = 'tool_contents'>
                             {this.state.toolports.map((index) => (
                             <div className={this.state.toolstyle[index]}
@@ -483,6 +505,17 @@ class Viewer extends Component {
                                 <img className="tool_icon" src={toolimglist[index]} title={toollabel[index]}></img>
                             </div>
                             ))}
+                        </div>
+                        <div className="tool_status">
+                            <label htmlFor="active-tool">Active Tool:</label>
+                            <input
+                                    type = "text"
+                                    value={toollabel[this.state.activeToolIndex]}
+                                    readOnly={true}
+                                    className="form_tool"
+                                    id="active-tool"
+                                    >
+                            </input>
                         </div>
                     </div>
                     <div className='propaty'>
@@ -499,41 +532,39 @@ class Viewer extends Component {
                         </div>
                     </div>
                     <div className="propaty">
-                    <label htmlFor="active-tool">Tool Status</label>
-                        <div className="tool_statuses">
-                            <div className="tool_status">
-                                <label htmlFor="active-tool">Active Tool:</label>
-                                <input
-                                    type = "text"
-                                    value={toollabel[this.state.activeToolIndex]}
-                                    readOnly={true}
-                                    className="form_tool"
-                                    id="active-tool"
-                                    >
-                                </input>
-                            </div>
-                            <div className="tool_status">
-                                <label htmlFor="active-viewport-index">
-                                Active Viewport Index:
-                                </label>
-                                <input
-                                type="text"
-                                readOnly={true}
-                                value={this.state.activeViewportIndex}
-                                className="form_tool"
-                                id="active-viewport-index"
-                                ></input>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='propaty'>
-                        <label htmlFor="active-tool">Information</label>
+                    <label htmlFor="active-tool">Information</label>
                             <div className='complain'>
                                 <div>
                                     <h3>63歳　男性</h3>
                                     <p>精査希望</p>
                                 </div>
                             </div>
+                    </div>
+                    <div className='propaty'>
+                    <label htmlFor="active-tool">Question</label>
+                        <div className='quiz-group'>
+                            <div className='Numbers'>
+                                <label htmlFor="active-tool">No.</label>
+                                <div className = 'question_nums'>
+                                    {this.state.quizports.map((index) => (
+                                        index<=(this.state.quiz.length-1)?
+                                        <div className = {this.state.quizstylelist[index]}
+                                        onClick={() => {
+                                            var quizstylelist=mklist('question_num',this.state.quiz.length)
+                                            quizstylelist[index]='question_num_click';
+                                            this.setState({
+                                                quizIndex: index,
+                                                quizstylelist:quizstylelist,
+                                            });
+                                        }}>
+                                        {index+1}
+                                        </div>
+                                        : null
+                                    ))}
+                                </div>
+                            </div>
+                            {this.state.quiz[this.state.quizIndex]}
+                        </div>
                     </div>
                 </div>
                 <div className={this.state.style}>
@@ -567,9 +598,6 @@ class Viewer extends Component {
                         viewer{String(index+1)}
                         </div>
                         ))}
-                </div>
-                <div className='quiz-group'>
-                {this.state.quiz}
                 </div>
             </div>
         </div>
