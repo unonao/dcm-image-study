@@ -1,22 +1,43 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
-import { head_CT_dicom , head_CT_explain } from "./Head_CT";
+import { head_CT_dicom , head_CT_explain ,anno_head } from "./Head";
 import { thorax_dicom , thorax_explain } from "./Thorax";
 import { abdomen_dicom , abdomen_explain } from "./Abdomen";
 
 var dicomdata= {
-    'head_ct':head_CT_dicom,
+    'head':head_CT_dicom,
     'thorax': thorax_dicom,
     'abdomen':abdomen_dicom,
 }
 var explaindata= {
-    'head_ct':head_CT_explain(),
+    'head':head_CT_explain(),
     'thorax':thorax_explain(),
     'abdomen':abdomen_explain(),
 };
 
+var annodata={
+    'head':anno_head,
+}
 
+const img_list = {
+    'head':[head_CT_dicom,anno_head],
+    'thorax':[thorax_dicom],
+    'abdomen':[abdomen_dicom],
+}
 
+const img_list_name = {
+    'head':['頭部CT','頭部動脈アノテーション'],
+    'thorax':['胸部CT'],
+    'abdomen':['腹部CT'],
+}
+
+const get_img = function(myprop){
+    var option_list = [];
+    for(let i=0;i<=img_list[myprop].length-1;i++){
+        option_list.push(<option value={String(i)}>{img_list_name[myprop][i]}</option>);
+    }
+    return option_list
+}
 
 class ExamplePageBasic extends Component {
     constructor(props){
@@ -52,6 +73,7 @@ class ExamplePageBasic extends Component {
         imageIdIndex: 0,
         isPlaying: false,
         frameRate: 5,
+        imageIds: dicomdata[this.props.myprop]
         };
     };
 
@@ -64,7 +86,7 @@ class ExamplePageBasic extends Component {
                         <CornerstoneViewport
                             tools={this.state.tools}
                             style={{minWidth: '50%', height: '512px', flex: '1'}}
-                            imageIds={dicomdata[this.props.myprop]}
+                            imageIds={this.state.imageIds}
                             imageIdIndex={this.state.imageIdIndex}
                             isPlaying={this.state.isPlaying}
                             frameRate={this.state.frameRate}
@@ -96,11 +118,30 @@ class ExamplePageBasic extends Component {
                                     </select>
                                 </div>
                                 <div className="form-group">
+                                    <label htmlFor="image-id-stack">Image ID Stack:</label>
+                                    <select
+                                        defaultValue={0}
+                                        onChange={evt => {
+                                            const selectedStack =
+                                                img_list[this.props.myprop][parseInt(evt.target.value)];
+
+                                            this.setState({
+                                                imageIds: selectedStack,
+                                                imageIdIndex: 0,
+                                            });
+                                        }}
+                                        className="form-control"
+                                        id="image-id-stack"
+                                    >
+                                        {get_img(this.props.myprop)}
+                                    </select>
+                                </div>
+                                <div className="form-group">
                                     <label htmlFor="image-id-index">Image ID Index:</label>
                                     <input
                                         type="range"
                                         min="0"
-                                        max={dicomdata[this.props.myprop].length - 1}
+                                        max={this.state.imageIds.length - 1}
                                         value={this.state.imageIdIndex}
                                         onChange={evt =>
                                             this.setState({ imageIdIndex: parseInt(evt.target.value) })
@@ -119,10 +160,10 @@ class ExamplePageBasic extends Component {
                                     <input
                                         type="number"
                                         min="0"
-                                        max={dicomdata[this.props.myprop].length - 1}
+                                        max={this.state.imageIds.length - 1}
                                         value={this.state.imageIdIndex}
                                         onChange={evt => {
-                                            const maxid = dicomdata[this.state.parts].length - 1
+                                            const maxid = this.state.imageIds.length - 1
                                             const imageIdInput = parseInt(evt.target.value);
                                             const imageIdIndex = Math.max(Math.min(imageIdInput, maxid), 0);
 
