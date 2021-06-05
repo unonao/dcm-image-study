@@ -534,9 +534,15 @@ class Viewer extends Component {
                     <div className="propaty">
                     <label htmlFor="active-tool">Information</label>
                             <div className='complain'>
-                                <div>
-                                    <h3>63歳　男性</h3>
-                                    <p>精査希望</p>
+                                <div className='info_cont'>
+                                    <div className='age_sex'>
+                                        <h3>63歳　男性</h3>
+                                    </div>
+                                </div>
+                                <div className='info_cont'>
+                                    <div className='info'>
+                                        <p>精査希望</p>
+                                    </div>
                                 </div>
                             </div>
                     </div>

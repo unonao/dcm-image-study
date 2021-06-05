@@ -9,6 +9,10 @@ import ExamplePageQuiz from './components/ExamplePageQuiz.js';
 import Viewer from './components/ExamplePageViewer.js';
 
 //images
+import githubimg from './components/images/github.png'
+import mnesimg from './components/images/logo_mnes.jpg'
+import laimeimg from './components/images/logo_white.png'
+import mnistimg from './components/images/MNiST.png'
 import image1 from './image1.jpg'
 import headimg1 from './components/images/img_mri.png'
 import lungimg1 from './components/images/lung_CT.jpg'
@@ -32,16 +36,69 @@ initCornerstone();
  * @param {*} { title, url, text, screenshotUrl }
  * @returns
  */
-function ExampleEntry({ title, url, text, screenshotUrl }) {
+function ExampleEntry({ title, url, text, target=undefined }) {
   return (
     <div>
       <p><span className="btn_txt">{text}</span></p>
       <h5>
-        <Link to={url}><button className="row body_btn">{title}</button></Link>
+        <Link to={url} target={target}><button className="row body_btn">{title}</button></Link>
       </h5>
     </div>
   );
 }
+
+export function Header() {
+  return(
+    <header class="head">
+      <div>
+      <a href="https://github.com/unonao/dcm-image-study" target="_blank"><img class="img img_github"  src={githubimg} width="50" height="50" alt="github"></img></a>
+      </div>
+      <div class="contents">
+        <div class= "content">
+          <a href="/">home</a>
+        </div>
+        <div class= "content">
+          <a href="/basic/">lecture <span>▼</span></a>
+          <div class='sub-menu'>
+           <ul>
+             <li><a href="/basic/head/">頭部の正常構造と機能</a></li>
+             <li><a href="/basic/thorax/">胸部の正常構造と機能</a></li>
+             <li><a href="/basic/abdomen/">腹部の正常構造と機能</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class= "content">
+          <a href="/grid/" >practice</a>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+export function Footer() {
+    return(
+    <footer>
+      <div className = "foots">
+        <div className="foot">関連団体</div>
+        <div className="link_imgs">
+          <div className= 'link_img'>
+            <a href="https://mnes.life/" target="_blank"><img class="img" border="0" width="250" height="125" src={mnesimg} alt="MNES"></img></a>
+          </div>
+          <div className= 'link_img'>
+            <a href="https://laime-ml.github.io/?fbclid=IwAR2ETxkW4ZUq9oRqd7Mn04ffzviU7GYSrS3Ho3SzAsgkB5wmxdrhR8QzLi4" target="_blank"><img class="img" border="1" width="330" height="125" src={laimeimg} alt="LAIME"></img></a>
+          </div>
+          <div className= 'link_img'>
+            <a href="https://sites.google.com/mnes.org/mnist-official/home" target="_blank"><img class="img" width="240" height="125" src={mnistimg} alt="MNiST"></img></a>
+          </div>
+        </div>
+        <div class="button">
+         <button class = "btn">CONTACT</button>
+        </div>
+        <div class = "bottom">©MNiST</div>
+      </div>
+    </footer>
+    )
+};
 
 function Index() {
   const style = {
@@ -70,6 +127,9 @@ function Index() {
 
   return (
     <div className="container">
+      <div>
+        {Header()}
+      </div>
       <div className="row" >
         <h1 className="row_head">画像診断勉強ツール「dcm-image-study」へようこそ！</h1>
       </div>
@@ -110,12 +170,19 @@ function Index() {
           {ExampleEntry(examples2)}
         </div>
       </div>
+      <div>
+        {Footer()}
+      </div>
     </div>
   );
 }
 
 function explaination(){
   return(
+  <div>
+    <div>
+      {Header()}
+      </div>
     <div className='explanation'>
       <div className="exp">
         <h2>頭部</h2>
@@ -154,11 +221,19 @@ function explaination(){
         </div>
       </div>
     </div>
+    <div>
+      {Footer()}
+      </div>
+  </div>
   );
 }
 
 function practice_menu(){
   return(
+  <div>
+    <div>
+      {Header()}
+      </div>
     <div className='explanation'>
       <div className="exp">
         <h2>頭部</h2>
@@ -166,7 +241,7 @@ function practice_menu(){
           <img className="exp_row_img" src={headimg1}></img>
           <h3>頭部MRI1</h3>
           <p>頭部MRI part1</p>
-          {ExampleEntry({title:'GO',url:'/grid/viewer',})}
+          {ExampleEntry({title:'GO',url:'/grid/viewer',target:'_blank'})}
         </div>
       </div>
       <div className="exp">
@@ -175,7 +250,7 @@ function practice_menu(){
           <img className="exp_row_img" src={lungimg1}></img>
           <h3>胸部CT1</h3>
           <p>胸部CT part1</p>
-          {ExampleEntry({title:'GO',url:'/grid/viewer',})}
+          {ExampleEntry({title:'GO',url:'/grid/viewer',target:'_blank'})}
         </div>
       </div>
       <div className="exp">
@@ -184,10 +259,14 @@ function practice_menu(){
           <img className="exp_row_img" src={abdimg1}></img>
           <h3>腹部CT1</h3>
           <p>腹部CT part1</p>
-          {ExampleEntry({title:'GO',url:'/grid/viewer',})}
+          {ExampleEntry({title:'GO',url:'/grid/viewer',target:'_blank'})}
         </div>
       </div>
     </div>
+    <div>
+      {Footer()}
+      </div>
+  </div>
   );
 }
 
