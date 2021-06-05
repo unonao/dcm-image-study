@@ -1,0 +1,147 @@
+
+header {
+      background: #0c4da2;
+      height: 100px;
+      color: White;
+      text-align: center;
+    }
+.img_mnist{
+    position: relative;
+    top: 10px;
+    right: 580px;
+}
+
+.img_github{
+    position: relative;
+    top: 10px;
+    left: 580px;
+}
+.contents {
+    display: flex;
+}
+
+.content {
+    margin: auto;
+    height: 30px;
+    width: 120px;
+    margin-top: 16px;
+    padding-bottom: auto;
+    z-index: 10;
+}
+
+.content:hover {
+    background-color: #799ecf;
+}
+
+a {
+    color:white;
+    text-decoration: none;
+}
+
+.sub-menu > ul {
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+}
+
+.sub-menu > ul > li > a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.sub-menu {
+    background-color: #799ecf;
+    width: 200px;
+    display: none;
+}
+
+.content:hover .sub-menu {
+    display: block;
+  }
+/**
+     footer
+**/
+footer {
+    color: whitesmoke;
+    background-color: rgb(23, 30, 61);
+    height: 300px;
+}
+
+.foots {
+    margin: 1%;
+    padding: 1%;
+    height: 250px;
+}
+
+.foot {
+    font-size: large;
+    height: auto;
+    width: auto;
+    margin-top: 3px;
+    margin-left: 0px;
+}
+
+
+.btn {
+    padding: 10px 30px;
+    background-color: pink;
+    font-size: large;
+    color: white;
+    display: right;
+    opacity: 0.8;
+    border-radius: 4px;
+    position: relative;
+    top: 50px;
+    left: 1000px;
+}
+
+.btn:hover {
+    opacity: 1;
+  }
+.button {
+    margin-right: 5px;
+    position: relative;
+    top: 10px;
+    left: 30px;
+}
+
+.bottom{
+    font-size: small;
+    text-align: center;
+    margin-top: 50px;
+    padding-left: 150px;
+}
+
+.img:hover {
+    opacity: 0.8;
+}
+
+.img_mnes{
+    position: relative;
+    bottom: 0px;
+    left: 30px;
+}
+
+.img_laime{
+    position: relative;
+    bottom: 0px;
+    left: 80px;
+}
+
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
