@@ -1,6 +1,6 @@
-import React, { Component ,  useState } from 'react';
+import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
-import cornerstoneTools from 'cornerstone-tools';
+import {Quiz,Viewer_Quiz,Viewer_Quiz_ArrowAnnotate,Viewer_Quiz_Freehand} from './ExamplePageQuiz'
 import { head_CT_dicom ,anno_head } from "./Head";
 import { thorax_dicom  } from "./Thorax";
 import { abdomen_dicom } from "./Abdomen";
@@ -40,8 +40,11 @@ var dicomdata = {
     'abdomen':[abdomen_dicom],
 }
 
-const quiz1 = '大動脈弓を丸く囲ってください。'
-const quiz2 = 'img=4層で左側の肺を囲んでください。'
+const quiz1 = 'img=1層で大動脈弓を丸く囲ってください。'
+const quiz2 = 'img=4層で左側の肺を四角く囲んでください。'
+const quiz3 = '心原性脳塞栓症の原因として最も多いものはどれか'
+const quiz4 = 'img=2層で胸骨の輪郭をなぞってください。'
+const quiz5 = 'img=3層で病変部を指摘し、病変名を入れてください。'
 
 
 const img_list = {
@@ -83,353 +86,18 @@ const reset_list = function(oldlist,name){
     return new_list
 };
 
-// documentオブジェクト内のdicom-imageのエレメントを取得する
-const image= document.getElementsByClassName('viewport');
-// この例だと１個めが必要となるdicom-imageなので、配列の１番目をセットし、toolTypeは円（KRoi）を指定してgetする
-//var regionAnnotation=cornerstoneTools.getToolState(image[0],'FreehandScissors');
-
-//CircleRoi,RectangleRoi用
-export class Viewer_Quiz extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-                      showResults: false,
-                      showExplain: false,
-                      toolState: undefined,
-                    };
-      }
-    render(){
-        function Answer_check({num,dcmdataset,toolState,tooltype,ans_st_x,ans_st_y,ans_end_x,ans_end_y}){
-            var a = 0;
-            if (toolState[dcmdataset[num]]===undefined){
-                a = -2
-            }else if(toolState[dcmdataset[num]][tooltype]===undefined){
-                a = -1
-            }else {
-                const start_x=toolState[dcmdataset[num]][tooltype]["data"][0]["handles"]["start"]["x"];
-                const start_y=toolState[dcmdataset[num]][tooltype]["data"][0]["handles"]["start"]["y"];
-                const end_x=toolState[dcmdataset[num]][tooltype]["data"][0]["handles"]["end"]["x"];
-                const end_y=toolState[dcmdataset[num]][tooltype]["data"][0]["handles"]["end"]["y"];
-                if(Math.min(ans_st_x,ans_end_x)<start_x &&
-                   start_x<Math.max(ans_st_x,ans_end_x) &&
-                   Math.min(ans_st_y,ans_end_y)<start_y &&
-                   start_y<Math.max(ans_st_y,ans_end_y)){
-                    a += 1
-                }else{ a+= 0 };
-
-                if(Math.min(ans_st_x,ans_end_x)<end_x &&
-                end_x<Math.max(ans_st_x,ans_end_x) &&
-                Math.min(ans_st_y,ans_end_y)<end_y &&
-                end_y<Math.max(ans_st_y,ans_end_y)){
-                    a += 1
-                }else{ a+= 0 };
-            };
-            if(a===-2){
-                return(
-                    <div>
-                        <h3>アノテーションする層が違います。</h3>
-                    </div>
-                )
-            }else if(a===-1){
-                return(
-                    <div>
-                        <h3>アノテーションツールが違います。</h3>
-                    </div>
-                )
-            }else if(a===0){
-                return(
-                    <div>
-                        <h3>異なる場所を指摘しています。もう一度確認しましょう。</h3>
-                    </div>
-                )
-            }else if(a===2){
-                return(
-                    <div>
-                        <h3>正解です。大変よくできました。</h3>
-                    </div>
-                )
-            }else{
-                return(
-                    <div>
-                        <h3>惜しいです。もう一度トライ!!</h3>
-                    </div>
-                )
-            };
-        }
-        return(
-            <div>
-                <div  className="Quiz_contents">
-                    <div className="quiz_text">
-                        <p>{this.props.text}</p>
-                    </div>
-                    <button
-                        className="body_btn answer_box"
-                        type="button"
-                        onClick={() => {
-                            this.setState({
-                                showResults: !this.state.showResults,
-                                toolState: cornerstoneTools.globalImageIdSpecificToolStateManager.saveToolState(),
-                            });
-                                }}
-                    >
-                    判定
-                    </button>
-                </div>
-                <div>
-                { this.state.showResults ===true ?
-                <div id='overlay'>
-                    <div id='quiz_content' className='quiz_explain'>
-                        <div>
-                            <button
-                            className = 'close_btn'
-                            type="button"
-                            onClick={() => {
-                            this.setState({
-                                showResults: !this.state.showResults,
-                            });
-                                }}
-                            >X</button>
-                        </div>
-                        <div >
-                        {Answer_check(
-                        {num:this.props.num,
-                        dcmdataset:this.props.data,
-                        toolState:this.state.toolState,
-                        tooltype:this.props.tooltype,
-                        ans_st_x:this.props.ans_st_x,
-                        ans_st_y:this.props.ans_st_y,
-                        ans_end_x:this.props.ans_end_x,
-                        ans_end_y:this.props.ans_end_y,})}
-                        </div>
-                        <button
-                            className="body_btn explain_box"
-                            type="button"
-                            onClick={() => {
-                            this.setState({
-                                showExplain: !this.state.showExplain,
-                            });
-                                }}
-                        >
-                        {this.state.showExplain ? '閉じる' : '解説をみる'}
-                        </button>
-                        <div>
-                           {this.state.showExplain ===true ?
-                           <div>
-                               <p>ここにあるよ💗</p>
-                            </div>
-                            : null }
-                        </div>
-                    </div>
-                </div>
-                : null }
-                </div>
-            </div>
-        );
-    }
-};
-//FreehandROi用
-class Viewer_Quiz_Freehand extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {answer: 0,
-                      showResults: false,
-                      toolState: undefined,
-                    };
-      }
-    render(){
-        function Answer_check_freehand({num,dcmdataset,toolState,ans_st_x,ans_st_y,ans_end_x,ans_end_y}){
-            var a = 0;
-            if (toolState[dcmdataset[num]]===undefined){
-                a = -2
-            }else if(toolState[dcmdataset[num]]["FreehandRoi"]===undefined){
-                a = -1
-            }else {
-                const length=toolState[dcmdataset[num]]["FreehandRoi"]["data"][0]["handles"]["points"]["length"]-1;
-                for(var i=0;length;i++){
-                    const x=toolState[dcmdataset[num]]["FreehandRoi"]["data"][0]["handles"]["points"][0]["x"];
-                    const y=toolState[dcmdataset[num]]["FreehandRoi"]["data"][0]["handles"]["points"][0]["y"];
-                    if(Math.min(ans_st_x,ans_end_x)<x<Math.max(ans_st_x,ans_end_x)){
-                        a += 0;
-                    }else{
-                        a += 1;
-                    };
-                    if(Math.min(ans_st_y,ans_end_y)<y<Math.max(ans_st_y,ans_end_y)){
-                        a += 0;
-                    }else{
-                        a += 1;
-                    };
-                };
-                a /= length
-            }
-            if(a===-2){
-                return(
-                    <div>
-                        <h3>アノテーションする層が違います。</h3>
-                    </div>
-                )
-            }else if(a===-1){
-                return(
-                    <div>
-                        <h3>アノテーションツールが違います。</h3>
-                    </div>
-                )
-            }else if(a>0.5){
-                return(
-                    <div>
-                        <h3>異なる場所を指摘しています。もう一度確認しましょう。</h3>
-                    </div>
-                )
-            }else if(0<a && a<=0.5){
-                return(
-                    <div>
-                        <h3>惜しいです。もう一度トライ!!</h3>
-                    </div>
-                )
-            }else if(a===0){
-                return(
-                    <div>
-                        <h3>正解です。大変よくできました。</h3>
-                    </div>
-                )
-            };
-        }
-        return(
-            <div>
-                <button
-                    className="body_btn answer_box"
-                    type="button"
-                    onClick={() => {
-                        this.setState({
-                            showResults: !this.state.showResults,
-                            toolState: cornerstoneTools.globalImageIdSpecificToolStateManager.saveToolState(),
-                        });
-                            }}
-                >
-                {this.state.showResults ? 'Close' : 'Submit'}
-                </button>
-                <div>
-                { this.state.showResults ===true ?
-                <div>
-                {Answer_check_freehand(
-                {num:this.props.num,
-                dcmdataset:this.props.data,
-                toolState:this.state.toolState,
-                ans_st_x:this.props.ans_st_x,
-                ans_st_y:this.props.ans_st_y,
-                ans_end_x:this.props.ans_end_x,
-                ans_end_y:this.props.ans_end_y,})}
-                </div>
-                : null }
-                </div>
-            </div>
-        );
-    }
-};
-//ArrowAnnotate用
-class Viewer_Quiz_ArrowAnnotate extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {answer: 0,
-                      showResults: false,
-                      toolState: undefined,
-                    };
-      }
-    render(){
-        function Answer_check_ArrowAnnotate({num,dcmdataset,toolState,ans_st_x,ans_st_y,ans_end_x,ans_end_y,ans_text}){
-            var a = 0;
-            if (toolState[dcmdataset[num]]===undefined){
-                a = -2
-            }else if(toolState[dcmdataset[num]]["ArrowAnnotate"]===undefined){
-                a = -1
-            }else {
-                const start_x=toolState[dcmdataset[num]]["ArrowAnnotate"]["data"][0]["handles"]["start"]["x"];
-                const start_y=toolState[dcmdataset[num]]["ArrowAnnotate"]["data"][0]["handles"]["start"]["y"];
-                const text=toolState[dcmdataset[num]]["ArrowAnnotate"]["data"][0]["text"];
-                if(Math.min(ans_st_x,ans_end_x)<start_x<Math.max(ans_st_x,ans_end_x)){
-                    a += 1;
-                }else{ a+= 0 };
-                if(Math.min(ans_st_y,ans_end_y)<start_y<Math.max(ans_st_y,ans_end_y)){
-                    a += 1;
-                }else{ a+= 0 };
-                if(ans_text===text){
-                    a += 1;
-                }else{ a+= 0 };
-            }
-            if(a===-2){
-                return(
-                    <div>
-                        <h3>アノテーションする層が違います。</h3>
-                    </div>
-                )
-            }else if(a===-1){
-                return(
-                    <div>
-                        <h3>アノテーションツールが違います。</h3>
-                    </div>
-                )
-            }else if(0<=a && a<=1){
-                return(
-                    <div>
-                        <h3>異なる場所を指摘しています。もう一度確認しましょう。</h3>
-                    </div>
-                )
-            }else if(a===2){
-                return(
-                    <div>
-                        <h3>場所は正解ですが、アノテーション名が違います。</h3>
-                    </div>
-                )
-            }else if(a===3){
-                return(
-                    <div>
-                        <h3>正解です。大変よくできました。</h3>
-                    </div>
-                )
-            };
-        }
-        return(
-            <div>
-                <button
-                    className="body_btn answer_box"
-                    type="button"
-                    onClick={() => {
-                        this.setState({
-                            showResults: !this.state.showResults,
-                            toolState: cornerstoneTools.globalImageIdSpecificToolStateManager.saveToolState(),
-                        });
-                            }}
-                >
-                {this.state.showResults ? 'Close' : 'Submit'}
-                </button>
-                <div>
-                { this.state.showResults ===true ?
-                <div>
-                {Answer_check_ArrowAnnotate(
-                {num:this.props.num,
-                dcmdataset:this.props.data,
-                toolState:this.state.toolState,
-                ans_st_x:this.props.ans_st_x,
-                ans_st_y:this.props.ans_st_y,
-                ans_end_x:this.props.ans_end_x,
-                ans_end_y:this.props.ans_end_y,
-                ans_text:this.props.ans_text,})}
-                </div>
-                : null }
-                </div>
-            </div>
-        );
-    }
-};
-
 var quiz_dict = {
     'stack':[<Viewer_Quiz num={0} text={quiz1} data={stack1} tooltype="CircleRoi" ans_st_x={99} ans_st_y={181} ans_end_x={379} ans_end_y={440}></Viewer_Quiz>,
-    <Viewer_Quiz num={3} text={quiz2} data={stack1} tooltype="RectangleRoi" ans_st_x={273} ans_st_y={272} ans_end_x={378} ans_end_y={362}></Viewer_Quiz>,]
+    <Viewer_Quiz num={3} text={quiz2} data={stack1} tooltype="RectangleRoi" ans_st_x={273} ans_st_y={272} ans_end_x={378} ans_end_y={362}></Viewer_Quiz>,
+    <Quiz answer_num={3} text={quiz3} answer_list={['心筋梗塞','心筋症','非弁膜症性心房細動','人工弁','洞不全症候群']}></Quiz>,
+    <Viewer_Quiz_Freehand num={1} text={quiz4} data={stack1} ans_st_x={222} ans_st_y={258} ans_end_x={290} ans_end_y={288}></Viewer_Quiz_Freehand>,
+    <Viewer_Quiz_ArrowAnnotate num={2} text={quiz5} data={stack1} ans_st_x={264} ans_st_y={351} ans_end_x={370} ans_end_y={451} ans_text='胸水'></Viewer_Quiz_ArrowAnnotate>]
 }
 
 class Viewer extends Component {
     state = {
         activeViewportIndex: 0,
-        viewports: [0,1,2,3,4],
+        viewports: [0,1,2,3,4,5],
         toolports: [0,1,2,3,4,5,6,7,8,9,10,11],
         quizports: [0,1,2,3,4,5,6,7,8,9,10],
         tools: [
@@ -486,9 +154,34 @@ class Viewer extends Component {
 
     render() {
         return (
-        <div className='practice_contents'>
-            <div >
+            <div className='practice_contents'>
                 <div className='viewer_propaties'>
+                    <div className='viewer_header'>
+                        <div className='viewer_header_box'>
+                            <div className='label_menu'>
+                                <div className='label'><h3>ID:</h3></div>
+                                <div className='label_box id_num'>
+                                    <h3>9999999999</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='viewer_header_box'>
+                            <div className='label_menu'>
+                                <div className='label'><h3>年齢:</h3></div>
+                                <div className='label_box'>
+                                    <h3>63歳</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='viewer_header_box'>
+                            <div className='label_menu'>
+                                <div className='label'><h3>性別:</h3></div>
+                                <div className='label_box'>
+                                    <h3>男性</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div className='propaty'>
                         <label htmlFor="active-tool">Tool Contents</label>
                         <div className = 'tool_contents'>
@@ -506,21 +199,20 @@ class Viewer extends Component {
                             </div>
                             ))}
                         </div>
-                        <div className="tool_status">
-                            <label htmlFor="active-tool">Active Tool:</label>
-                            <input
+                        <div className='tool_info'>
+                            <div className="tool_status">
+                                <label htmlFor="active-tool">Active Tool:</label>
+                                <input
                                     type = "text"
                                     value={toollabel[this.state.activeToolIndex]}
                                     readOnly={true}
                                     className="form_tool"
                                     id="active-tool"
                                     >
-                            </input>
-                        </div>
-                    </div>
-                    <div className='propaty'>
-                    <label htmlFor="active-tool">Viwer Size</label>
-                        <div  className='window'
+                                </input>
+                            </div>
+                            <label htmlFor="active-tool">Viwer Size</label>
+                            <div  className='window'
                             onClick={() => {
                             stylelist=reset_list(stylelist,'viewer')
                             this.setState({
@@ -529,21 +221,13 @@ class Viewer extends Component {
                                });
                                }}>
                             <img className="tool_img" src={Resetimg} alt="画像配置をリセット" title="画像配置をリセット"></img>
+                            </div>
                         </div>
                     </div>
                     <div className="propaty">
                     <label htmlFor="active-tool">Information</label>
                             <div className='complain'>
-                                <div className='info_cont'>
-                                    <div className='age_sex'>
-                                        <h3>63歳　男性</h3>
-                                    </div>
-                                </div>
-                                <div className='info_cont'>
-                                    <div className='info'>
-                                        <p>精査希望</p>
-                                    </div>
-                                </div>
+                                <p>精査希望</p>
                             </div>
                     </div>
                     <div className='propaty'>
@@ -606,7 +290,6 @@ class Viewer extends Component {
                         ))}
                 </div>
             </div>
-        </div>
     )}
 };
 

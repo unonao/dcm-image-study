@@ -258,41 +258,27 @@ footer {
 
 .quiz_text{
   height:60px;
-  width: 420px;
+  width: 500px;
   padding-left: 5px;
   margin-top: 5px;
   overflow-y: scroll;
   border: solid 2px;
 }
 
-.answer_boxies{
-  position: relative;
-  left:45%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap:10px;
-  padding: 5px;
-  width: 50%;
-  line-height: auto;
-}
-
-.answer_boxies>label{
-  position: relative;
-  top: 7px;
-  text-align: right;
+.quiz_btn{
+  color: white;
+  background-color: greenyellow;
   font-size: large;
-  font-family: Verdana;
-  margin: 2px;
 }
 
-.answer_boxies>select{
-  font-size: medium;
+.choice_box{
+  margin-left: 5px;
 }
 
 .answer_box{
   margin-left: 5%;
   margin-top: 5px;
-  width: 70px;
+  width: 120px;
   height: 60px;
 }
 
@@ -330,10 +316,49 @@ footer {
 
 
 
+/* viewer header*/
+.practice_contents{
+  position: fixed;
+}
+
+.viewer_header{
+  display: flex;
+  gap: 80px;
+  grid-column: 1/5;
+  background-color: green;
+  height: 58px;
+  margin: 0%;
+  padding: 0%;
+  padding-left: 20px;
+}
+
+.label_menu{
+  display: flex;
+  gap:10px;
+  height: 40px;
+  margin-left: 10px;
+}
+
+.label{
+  color: antiquewhite;
+}
+
+.label_box h3{
+  background-color: white;
+  height: 30px;
+  width:50px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.id_num h3{
+  width: 150px;
+}
+
 /* viewer */
 .viewer_propaties {
   display: grid;
-  grid-template-columns: 2fr 0.7fr 1.5fr 3fr;
+  grid-template-columns: 344px 288px 720px;
   grid-row: inherit;
   gap: 10px;
   background:rgb(255, 197, 131);
@@ -379,6 +404,10 @@ footer {
   border-radius: 10px;
 }
 
+.tool_info{
+  display: flex;
+}
+
 .window{
   padding: 5px;
   margin: 5px;
@@ -398,8 +427,8 @@ footer {
 }
 
 .tool_img{
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
 }
 
 .form_tool{
@@ -413,20 +442,11 @@ footer {
   padding: 5px;
   margin: 5px;
   border: solid 3px;
-  border-radius: 10px;
+  border-radius: 0px;
   background-color: ghostwhite;
-}
-
-.age_sex{
-  text-align: center;
-  height: 50px;
-}
-
-.info{
   overflow-y: scroll;
-  border: solid 2px;
-  padding-left: 5px;
 }
+
 
 .Numbers{
   display: flex;

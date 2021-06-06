@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 // Routes
 import ExamplePageBasic from './components/ExamplePageBasic.js';
-import ExamplePageQuiz from './components/ExamplePageQuiz.js';
 import Viewer from './components/ExamplePageViewer.js';
 
 //images
@@ -293,7 +292,6 @@ function AppRouter() {
   const head = () => Example({ children: <ExamplePageBasic myprop='head'/> });
   const thorax = () => Example({ children: <ExamplePageBasic myprop='thorax'/> });
   const abdomen = () => Example({ children: <ExamplePageBasic myprop='abdomen'/> });
-  //const quiz = () => Example({ children: <ExamplePageQuiz url={['/grid/viewer','/grid/viewer']}/> });
   const viewer = () => Example({ children: <Viewer myprop='stack'/> });
 
 

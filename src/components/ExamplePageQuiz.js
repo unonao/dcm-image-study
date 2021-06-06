@@ -1,99 +1,80 @@
 //import { render } from '@testing-library/react';
-import React, { Component ,  useState } from 'react';
-import CornerstoneViewport from 'react-cornerstone-viewport';
+import React, { Component } from 'react';
+import cornerstoneTools from 'cornerstone-tools';
 //import { act } from 'react-dom/cjs/react-dom-test-utils.development';
 
 
-const title0 = function(){
-    return(
-    <p>心原性脳塞栓症の原因として最も多いものはどれか</p>
-)};
-const answer_list0 = ['心筋梗塞','心筋症','非弁膜症性心房細動','人工弁','洞不全症候群']
-const explain0 = function(){
-    return(
-    <p>心原性脳塞栓症の原因は非弁膜症性心房細動が最多で、次いで心筋梗塞が多くなっています。</p>
-)};
-
-const title1 = function(){
-    return(
-        <p>脳腫瘍で最も多いのはどれか</p>
-)};
-const answer_list1 = ['神経膠腫','悪性リンパ腫','髄膜腫','神経鞘腫','下垂体腺腫','頭蓋咽頭腫']
-const explain1 = function(){
-    return(<p>脳腫瘍で最も多いのは髄膜腫で、全体の1/3程度を占めています。</p>)
-};
-
-const title2 = function(){
-    return(
-        <p> 45歳　男性
-            現病歴：午前8時40分に自転車に乗って普段通り出勤。午前9時過ぎ頃に職場で気分不良を訴え発汗・嘔吐あり、救急車で緊急入院。
-            既往歴：高血圧症（10年前から検診で指摘されるも無治療）
-            家族歴：両親と弟に高血圧
-            生活歴：喫煙20本/day、機会飲酒、運動はほとんどしない
-            現症：JCSⅡ-10、175cm、86kg、BMI 28.1　体温34.8℃ 血圧235/110 mmHg、脈拍80/min瞳孔左右差なし、対光反射+/+、
-            視野障害なしEOM：full and saccadic、右注視性水平性眼振+、明らかな顔面筋麻痺なし、構音障害軽度、舌偏倚なし
-            上肢Barre：下垂なし、下肢Mingazzini：下垂なし指鼻指試験：正常、膝踵試験：正常
-
-            疑われるのはどれか
-            (画像をクリニックすると画像所見が表示されます。)
-        </p>
-)};
-const answer_list2 = ["異常なし","急性期脳梗塞","くも膜下出血","視床出血","小脳出血","大脳皮質下出血","被殻出血"]
-const explain2 = function(){
-    return(<p>CT像で右小脳に高信号域が認められ、小脳出血が疑われます。これにより眼振が出現したものと思われます。</p>)
-};
-
-
-
-
-const answer = function(answer_list){
-    var option_list = [<option value="0">       </option>];
-    for(let i=0;i<=answer_list.length-1;i++){
-        option_list.push(<option value={String(i+1)}>{answer_list[i]}</option>);
-    }
-    return option_list
-}
-
-
-
-
-
+//MCQ用
 export class Quiz extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {answer: 0,
-                      showResults: false,
+        this.state = {
+                choice_num:0,
+                showResults: false,
+                showExplain: false,
                     };
       }
     render() {
-        function LinkOut({ href, text }) {
-            return (
-              <a href={href} target="_blank" rel="noopener noreferrer" className='quiz_link'>
-                {text}
-                </a>
-            );
+        const mk_answer = function(answer_list){
+            var option_list = [<option value="0">       </option>];
+            for(let i=0;i<=answer_list.length-1;i++){
+                option_list.push(<option value={String(i+1)}>{answer_list[i]}</option>);
+            }
+            return option_list
+        };
+
+        function Answer_check_mcq({answer_num,choice_num}) {
+            var a = 0
+            if (answer_num===choice_num){
+                a+=1
+            }else if(choice_num===0){
+                a+=2
+            }else{
+                a+=0
+            };
+
+            if(a===1){
+                return(
+                    <div>
+                        <h3><span className='true'>〇</span>正解です。</h3>
+                    </div>
+                )
+            }else if(a===0){
+                return(
+                    <div>
+                        <h3><span className='false'>✖</span>不正解です。</h3>
+                    </div>
+                )
+            }else{
+                return(
+                    <div>
+                        <h3>選択肢が選ばれていません。</h3>
+                    </div>
+                )
+            };
           }
       return (
-        <div className='Quiz_contents'>
-            <div>
-                {this.props.title}
-                {LinkOut({href:this.props.url,
-                    text:this.props.text})}
-            </div>
-            <div className = 'answer_boxies'>
+        <div>
+            <div className='Quiz_contents'>
+                <div className="quiz_text">
+                    <p>{this.props.text}</p>
+                </div>
+
+                <div className = 'choice_box'>
                 <label className ="answer_box">解答:</label>
                 <select
                     className ="answer_box"
                     onChange={evt =>
-                    this.setState({ answer: parseInt(evt.target.value) })
+                    this.setState({ choice_num: parseInt(evt.target.value) })
                     }
                     className="form-control"
                     id="active-tool"
                 >
-                    {answer(this.props.answer_list)}
+                    {mk_answer(this.props.answer_list)}
                 </select>
+                </div>
                 <button
-                    className="body_btn answer_box"
+                    className="quiz_btn answer_box"
                     type="button"
                     onClick={() => {
                         this.setState({
@@ -101,79 +82,464 @@ export class Quiz extends React.Component {
                         });
                             }}
                 >
-                {this.state.showResults ? 'Close' : 'Submit'}
+                判定
                 </button>
             </div>
-            <div className='quiz_boolen'>
-                { this.state.showResults ===true ?
-                (this.state.answer === this.props.answer_num ?
-                    <p><span className='true'>〇</span>正解です。</p>
-                    :<p><span className='false'>✖</span>不正解です。</p> )
-                : null
-                }
-            </div>
             <div>
-                {this.state.showResults ===true ?
-                    <div className='quiz_explain'>
-                        {this.props.explain}
+                { this.state.showResults ===true ?
+                <div id='overlay'>
+                    <div id='quiz_content' className='quiz_explain'>
+                        <div>
+                            <button
+                            className = 'close_btn'
+                            type="button"
+                            onClick={() => {
+                            this.setState({
+                                showResults: !this.state.showResults,
+                            });
+                                }}
+                            >X</button>
+                        </div>
+                        <div >
+                        {Answer_check_mcq(
+                        {answer_num:this.props.answer_num,
+                        choice_num:this.state.choice_num,
+                        })}
+                        </div>
+                        <button
+                            className="body_btn explain_box"
+                            type="button"
+                            onClick={() => {
+                            this.setState({
+                                showExplain: !this.state.showExplain,
+                            });
+                                }}
+                        >
+                        {this.state.showExplain ? '閉じる' : '解説をみる'}
+                        </button>
+                        <div>
+                           {this.state.showExplain ===true ?
+                           <div>
+                               <p>これが正解だよ。</p>
+                            </div>
+                            : null }
+                        </div>
                     </div>
-                : null
-                }
+                </div>
+                : null }
             </div>
         </div>
       );
     }
 }
 
-
-class ExamplePageQuiz extends Component {
+//CircleRoi,RectangleRoi用
+export class Viewer_Quiz extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {answer: 0,
+        this.state = {
                       showResults: false,
+                      showExplain: false,
+                      toolState: undefined,
                     };
-    };
-    render() {
-        return (
-        <div className='practice_contents'>
+      }
+    render(){
+        function Answer_check({num,dcmdataset,toolState,tooltype,ans_st_x,ans_st_y,ans_end_x,ans_end_y}){
+            var a = 0;
+            if (toolState[dcmdataset[num]]===undefined){
+                a = -2
+            }else if(toolState[dcmdataset[num]][tooltype]===undefined){
+                a = -1
+            }else {
+                const start_x=toolState[dcmdataset[num]][tooltype]["data"][0]["handles"]["start"]["x"];
+                const start_y=toolState[dcmdataset[num]][tooltype]["data"][0]["handles"]["start"]["y"];
+                const end_x=toolState[dcmdataset[num]][tooltype]["data"][0]["handles"]["end"]["x"];
+                const end_y=toolState[dcmdataset[num]][tooltype]["data"][0]["handles"]["end"]["y"];
+                if(Math.min(ans_st_x,ans_end_x)<start_x &&
+                   start_x<Math.max(ans_st_x,ans_end_x) &&
+                   Math.min(ans_st_y,ans_end_y)<start_y &&
+                   start_y<Math.max(ans_st_y,ans_end_y)){
+                    a += 1
+                }else{ a+= 0 };
+
+                if(Math.min(ans_st_x,ans_end_x)<end_x &&
+                end_x<Math.max(ans_st_x,ans_end_x) &&
+                Math.min(ans_st_y,ans_end_y)<end_y &&
+                end_y<Math.max(ans_st_y,ans_end_y)){
+                    a += 1
+                }else{ a+= 0 };
+            };
+            if(a===-2){
+                return(
+                    <div>
+                        <h3>アノテーションする層が違います。</h3>
+                    </div>
+                )
+            }else if(a===-1){
+                return(
+                    <div>
+                        <h3>アノテーションツールが違います。</h3>
+                    </div>
+                )
+            }else if(a===0){
+                return(
+                    <div>
+                        <h3>異なる場所を指摘しています。もう一度確認しましょう。</h3>
+                    </div>
+                )
+            }else if(a===2){
+                return(
+                    <div>
+                        <h3>正解です。大変よくできました。</h3>
+                    </div>
+                )
+            }else{
+                return(
+                    <div>
+                        <h3>惜しいです。もう一度トライ!!</h3>
+                    </div>
+                )
+            };
+        }
+        return(
             <div>
-                {/* CODE SNIPPET */}
-                <h2>Source / Usage</h2>
-                <div className="quiz-group">
-                    <h3>問題１</h3>
-                    <Quiz
-                    title = {title0()}
-                    answer_list = {answer_list0}
-                    answer_num = {3}
-                    explain = {explain0()}
-                     />
+                <div  className="Quiz_contents">
+                    <div className="quiz_text">
+                        <p>{this.props.text}</p>
+                    </div>
+                    <button
+                        className="body_btn answer_box"
+                        type="button"
+                        onClick={() => {
+                            this.setState({
+                                showResults: !this.state.showResults,
+                                toolState: cornerstoneTools.globalImageIdSpecificToolStateManager.saveToolState(),
+                            });
+                                }}
+                    >
+                    判定
+                    </button>
                 </div>
-                <div className="quiz-group">
-                    <h3>問題2</h3>
-                    <Quiz
-                    title = {title1()}
-                    answer_list = {answer_list1}
-                    answer_num = {3}
-                    explain = {explain1()}
-                    />
+                <div>
+                { this.state.showResults ===true ?
+                <div id='overlay'>
+                    <div id='quiz_content' className='quiz_explain'>
+                        <div>
+                            <button
+                            className = 'close_btn'
+                            type="button"
+                            onClick={() => {
+                            this.setState({
+                                showResults: !this.state.showResults,
+                            });
+                                }}
+                            >X</button>
+                        </div>
+                        <div >
+                        {Answer_check(
+                        {num:this.props.num,
+                        dcmdataset:this.props.data,
+                        toolState:this.state.toolState,
+                        tooltype:this.props.tooltype,
+                        ans_st_x:this.props.ans_st_x,
+                        ans_st_y:this.props.ans_st_y,
+                        ans_end_x:this.props.ans_end_x,
+                        ans_end_y:this.props.ans_end_y,})}
+                        </div>
+                        <button
+                            className="body_btn explain_box"
+                            type="button"
+                            onClick={() => {
+                            this.setState({
+                                showExplain: !this.state.showExplain,
+                            });
+                                }}
+                        >
+                        {this.state.showExplain ? '閉じる' : '解説をみる'}
+                        </button>
+                        <div>
+                           {this.state.showExplain ===true ?
+                           <div>
+                               <p>ここにあるよ💗</p>
+                            </div>
+                            : null }
+                        </div>
+                    </div>
                 </div>
-                <div className="quiz-group">
-                    <h3>問題3</h3>
-                    <Quiz
-                    title = {title2()}
-                    answer_list = {answer_list2}
-                    answer_num = {5}
-                    explain = {explain2()}
-                    text = '画像'
-                    url = {this.props.url[0]}
-                    />
+                : null }
                 </div>
             </div>
-        </div>
-
-    )};
+        );
+    }
 };
 
+//FreehandROi用
+export class Viewer_Quiz_Freehand extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+                      showResults: false,
+                      showExplain: false,
+                      toolState: undefined,
+                    };
+      }
+    render(){
+        function Answer_check_freehand({num,dcmdataset,toolState,ans_st_x,ans_st_y,ans_end_x,ans_end_y}){
+            var a = 0;
+            if (toolState[dcmdataset[num]]===undefined){
+                a = -2
+            }else if(toolState[dcmdataset[num]]["FreehandRoi"]===undefined){
+                a = -1
+            }else {
+                const length=toolState[dcmdataset[num]]["FreehandRoi"]["data"][0]["handles"]["points"]["length"]-1;
+                for(var i=0;length;i++){
+                    const x=toolState[dcmdataset[num]]["FreehandRoi"]["data"][0]["handles"]["points"][0]["x"];
+                    const y=toolState[dcmdataset[num]]["FreehandRoi"]["data"][0]["handles"]["points"][0]["y"];
+                    if(Math.min(ans_st_x,ans_end_x)<x &&
+                        x<Math.max(ans_st_x,ans_end_x) &&
+                        Math.min(ans_st_y,ans_end_y)<y &&
+                        y<Math.max(ans_st_y,ans_end_y)){
+                        a += 0;
+                    }else{
+                        a += 1;
+                    };
+                };
+                a /= length
+            }
+            if(a===-2){
+                return(
+                    <div>
+                        <h3>アノテーションする層が違います。</h3>
+                    </div>
+                )
+            }else if(a===-1){
+                return(
+                    <div>
+                        <h3>アノテーションツールが違います。</h3>
+                    </div>
+                )
+            }else if(a>0.5){
+                return(
+                    <div>
+                        <h3>異なる場所を指摘しています。もう一度確認しましょう。</h3>
+                    </div>
+                )
+            }else if(0<a && a<=0.5){
+                return(
+                    <div>
+                        <h3>惜しいです。もう一度トライ!!</h3>
+                    </div>
+                )
+            }else if(a===0){
+                return(
+                    <div>
+                        <h3>正解です。大変よくできました。</h3>
+                    </div>
+                )
+            };
+        }
+        return(
+            <div>
+                <div  className="Quiz_contents">
+                    <div className="quiz_text">
+                        <p>{this.props.text}</p>
+                    </div>
+                    <button
+                        className="body_btn answer_box"
+                        type="button"
+                        onClick={() => {
+                            this.setState({
+                            showResults: !this.state.showResults,
+                            toolState: cornerstoneTools.globalImageIdSpecificToolStateManager.saveToolState(),
+                        });
+                            }}
+                    >
+                    判定
+                    </button>
+                </div>
+                <div>
+                    { this.state.showResults ===true ?
+                    <div id='overlay'>
+                        <div id='quiz_content' className='quiz_explain'>
+                            <div>
+                                <button
+                                className = 'close_btn'
+                                type="button"
+                                onClick={() => {
+                                this.setState({
+                                showResults: !this.state.showResults,
+                                });
+                                    }}
+                                >X</button>
+                            </div>
+                            <div >
+                            {Answer_check_freehand(
+                            {num:this.props.num,
+                            dcmdataset:this.props.data,
+                            toolState:this.state.toolState,
+                            ans_st_x:this.props.ans_st_x,
+                            ans_st_y:this.props.ans_st_y,
+                            ans_end_x:this.props.ans_end_x,
+                            ans_end_y:this.props.ans_end_y,})}
+                           </div>
+                           <button
+                            className="body_btn explain_box"
+                            type="button"
+                            onClick={() => {
+                            this.setState({
+                                showExplain: !this.state.showExplain,
+                            });
+                                }}
+                            >
+                            {this.state.showExplain ? '閉じる' : '解説をみる'}
+                            </button>
+                            <div>
+                               {this.state.showExplain ===true ?
+                               <div>
+                               <p>ここにあるよ💗</p>
+                               </div>
+                                : null }
+                            </div>
+                        </div>
+                    </div>
+                    : null }
+                </div>
+            </div>
+        );
+    }
+};
 
-
-export default ExamplePageQuiz;
+//ArrowAnnotate用
+export class Viewer_Quiz_ArrowAnnotate extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+                      showResults: false,
+                      showExplain: false,
+                      toolState: undefined,
+                    };
+      }
+    render(){
+        function Answer_check_ArrowAnnotate({num,dcmdataset,toolState,ans_st_x,ans_st_y,ans_end_x,ans_end_y,ans_text}){
+            var a = 0;
+            if (toolState[dcmdataset[num]]===undefined){
+                a = -2
+            }else if(toolState[dcmdataset[num]]["ArrowAnnotate"]===undefined){
+                a = -1
+            }else {
+                const start_x=toolState[dcmdataset[num]]["ArrowAnnotate"]["data"][0]["handles"]["start"]["x"];
+                const start_y=toolState[dcmdataset[num]]["ArrowAnnotate"]["data"][0]["handles"]["start"]["y"];
+                const text=toolState[dcmdataset[num]]["ArrowAnnotate"]["data"][0]["text"];
+                if(Math.min(ans_st_x,ans_end_x)<start_x<Math.max(ans_st_x,ans_end_x)){
+                    a += 1;
+                }else{ a+= 0 };
+                if(Math.min(ans_st_y,ans_end_y)<start_y<Math.max(ans_st_y,ans_end_y)){
+                    a += 1;
+                }else{ a+= 0 };
+                if(ans_text===text){
+                    a += 1;
+                }else{ a+= 0 };
+            }
+            if(a===-2){
+                return(
+                    <div>
+                        <h3>アノテーションする層が違います。</h3>
+                    </div>
+                )
+            }else if(a===-1){
+                return(
+                    <div>
+                        <h3>アノテーションツールが違います。</h3>
+                    </div>
+                )
+            }else if(0<=a && a<=1){
+                return(
+                    <div>
+                        <h3>異なる場所を指摘しています。もう一度確認しましょう。</h3>
+                    </div>
+                )
+            }else if(a===2){
+                return(
+                    <div>
+                        <h3>場所は正解ですが、アノテーション名が違います。</h3>
+                    </div>
+                )
+            }else if(a===3){
+                return(
+                    <div>
+                        <h3>正解です。大変よくできました。</h3>
+                    </div>
+                )
+            };
+        }
+        return(
+            <div>
+                <div  className="Quiz_contents">
+                    <div className="quiz_text">
+                        <p>{this.props.text}</p>
+                    </div>
+                    <button
+                    className="body_btn answer_box"
+                    type="button"
+                    onClick={() => {
+                        this.setState({
+                            showResults: !this.state.showResults,
+                            toolState: cornerstoneTools.globalImageIdSpecificToolStateManager.saveToolState(),
+                        });
+                            }}
+                    >
+                    判定
+                    </button>
+                </div>
+                <div>
+                { this.state.showResults ===true ?
+                <div id='overlay'>
+                    <div id='quiz_content' className='quiz_explain'>
+                        <div>
+                            <button
+                            className = 'close_btn'
+                            type="button"
+                            onClick={() => {
+                            this.setState({
+                                showResults: !this.state.showResults,
+                            });
+                                }}
+                            >X</button>
+                        </div>
+                        <div >
+                        {Answer_check_ArrowAnnotate(
+                        {num:this.props.num,
+                        dcmdataset:this.props.data,
+                        toolState:this.state.toolState,
+                        ans_st_x:this.props.ans_st_x,
+                        ans_st_y:this.props.ans_st_y,
+                        ans_end_x:this.props.ans_end_x,
+                        ans_end_y:this.props.ans_end_y,
+                        ans_text:this.props.ans_text,})}
+                        </div>
+                        <button
+                            className="body_btn explain_box"
+                            type="button"
+                            onClick={() => {
+                            this.setState({
+                                showExplain: !this.state.showExplain,
+                            });
+                                }}
+                        >
+                        {this.state.showExplain ? '閉じる' : '解説をみる'}
+                        </button>
+                        <div>
+                           {this.state.showExplain ===true ?
+                           <div>
+                               <p>ここにあるよ💗</p>
+                            </div>
+                            : null }
+                        </div>
+                    </div>
+                </div>
+                : null }
+                </div>
+            </div>
+        );
+    }
+};
