@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
+import {Header,Footer} from '../App';
 import { head_CT_dicom , head_CT_explain ,anno_head } from "./Head";
 import { thorax_dicom , thorax_explain } from "./Thorax";
 import { abdomen_dicom , abdomen_explain } from "./Abdomen";
@@ -79,6 +80,10 @@ class ExamplePageBasic extends Component {
 
     render() {
         return (
+        <div>
+            <div>
+                {Header()}
+            </div>
             <div className = "basic_contents">
                 <div className = "basic_content">
                     <h2>Viewer</h2>
@@ -205,6 +210,10 @@ class ExamplePageBasic extends Component {
                 </div>
                 {explaindata[this.props.myprop]}
             </div>
+            <div>
+                {Footer()}
+            </div>
+        </div>
         );
     }
 }
