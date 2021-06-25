@@ -1,7 +1,7 @@
 import "./App.css"
 
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
 
 // Routes
 import ExamplePageBasic from './components/ExamplePageBasic.js';
@@ -17,8 +17,15 @@ import headimg1 from './components/images/img_mri.png'
 import lungimg1 from './components/images/lung_CT.jpg'
 import abdimg1 from './components/images/abdomine_CT.jpg'
 
-// cornerstone tools の初期化
+// cornerstone tools
 import initCornerstone from './initCornerstone.js';
+import {auth} from './firebase';
+import {Auth} from './components/userAuth';
+import { useAuthContext,AuthProvider } from './AuthContext';
+
+
+
+// cornerstone tools の初期化
 initCornerstone();
 
 /**
@@ -27,7 +34,37 @@ initCornerstone();
  * @param {*} { href, text }
  * @returns
  */
+const PrivateRoute = ({render, ...rest }) => {
+  const { user } = useAuthContext();
+  return (
+    <Route
+      {...rest}
+      render={
+        user
+        ? render
+        : props => (
+            <Redirect
+              to={{
+                pathname: "/auth",
+                state: { from: props.location }
+              }}
+            />
+          )
+      }
+    />
+  );
+};
 
+
+const Log= ()=> {
+ const user = auth.currentUser;
+
+if (user) {
+  return(<div><p>{user.displayName}</p></div>)
+} else {
+  return(<p>ログイン</p>)
+ }
+}
 
 /**
  *
@@ -46,19 +83,25 @@ function ExampleEntry({ title, url, text, target=undefined }) {
   );
 }
 
+
 export function Header() {
   return(
-    <header class="head">
-      <div>
-      <a href="https://github.com/unonao/dcm-image-study" target="_blank"><img class="img img_github"  src={githubimg} width="50" height="50" alt="github"></img></a>
+    <header className="head">
+      <div className='head_box'>
+        <div>
+          <a rel='noreferrer' href="https://github.com/unonao/dcm-image-study" target="_blank"><img class="img img_github"  src={githubimg} width="50" height="50" alt="github"></img></a>
+        </div>
+        <div className='login'>
+          <a href="/auth">{Log()}</a>
+        </div>
       </div>
-      <div class="contents">
-        <div class= "content">
+      <div className="contents">
+        <div className= "content">
           <a href="/">home</a>
         </div>
-        <div class= "content">
+        <div className= "content">
           <a href="/basic/">lecture <span>▼</span></a>
-          <div class='sub-menu'>
+          <div className='sub-menu'>
            <ul>
              <li><a href="/basic/head/">頭部の正常構造と機能</a></li>
              <li><a href="/basic/thorax/">胸部の正常構造と機能</a></li>
@@ -66,7 +109,7 @@ export function Header() {
             </ul>
           </div>
         </div>
-        <div class= "content">
+        <div className= "content">
           <a href="/grid/" >practice</a>
         </div>
       </div>
@@ -81,13 +124,13 @@ export function Footer() {
         <div className="foot">関連団体</div>
         <div className="link_imgs">
           <div className= 'link_img'>
-            <a href="https://mnes.life/" target="_blank"><img class="img" border="0" width="250" height="125" src={mnesimg} alt="MNES"></img></a>
+            <a rel="noreferrer" href="https://mnes.life/" target="_blank"><img class="img" border="0" width="250" height="125" src={mnesimg} alt="MNES"></img></a>
           </div>
           <div className= 'link_img'>
-            <a href="https://laime-ml.github.io/?fbclid=IwAR2ETxkW4ZUq9oRqd7Mn04ffzviU7GYSrS3Ho3SzAsgkB5wmxdrhR8QzLi4" target="_blank"><img class="img" border="1" width="330" height="125" src={laimeimg} alt="LAIME"></img></a>
+            <a rel="noreferrer" href="https://laime-ml.github.io/?fbclid=IwAR2ETxkW4ZUq9oRqd7Mn04ffzviU7GYSrS3Ho3SzAsgkB5wmxdrhR8QzLi4" target="_blank"><img class="img" border="1" width="330" height="125" src={laimeimg} alt="LAIME"></img></a>
           </div>
           <div className= 'link_img'>
-            <a href="https://sites.google.com/mnes.org/mnist-official/home" target="_blank"><img class="img" width="240" height="125" src={mnistimg} alt="MNiST"></img></a>
+            <a rel="noreferrer" href="https://sites.google.com/mnes.org/mnist-official/home" target="_blank"><img class="img" width="240" height="125" src={mnistimg} alt="MNiST"></img></a>
           </div>
         </div>
         <div class="button">
@@ -122,8 +165,6 @@ function Index() {
   // - isStackPrefetchEnabled
   // - react-resize-observer
 
-
-
   return (
     <div className="container">
       <div>
@@ -133,7 +174,7 @@ function Index() {
         <h1 className="row_head">画像診断勉強ツール「dcm-image-study」へようこそ！</h1>
       </div>
       <div>
-        <img className="row_head_img" src={image1}></img>
+        <img className="row_head_img" src={image1} alt='background'></img>
       </div>
       <div className="row">
         <h1 className="row_body">見る人から、診る人へ</h1>
@@ -186,7 +227,7 @@ function explaination(){
       <div className="exp">
         <h2>頭部</h2>
         <div className="exp_row">
-          <img className="exp_row_img" src={headimg1}></img>
+          <img className="exp_row_img" src={headimg1} alt='headimg'></img>
           <h3>頭部の正常解剖と構造</h3>
           <p>この章では頭部の正常画像を</p>
           <p>もとに、頭部の解剖学的構造</p>
@@ -198,7 +239,7 @@ function explaination(){
       <div className="exp">
         <h2>胸部</h2>
         <div className="exp_row">
-          <img className="exp_row_img" src={lungimg1}></img>
+          <img className="exp_row_img" src={lungimg1} alt='thoraximg'></img>
           <h3>胸部の正常解剖と構造</h3>
           <p>この章では胸部の正常画像を</p>
           <p>もとに、胸部の解剖学的構造</p>
@@ -210,7 +251,7 @@ function explaination(){
       <div className="exp">
         <h2>腹部</h2>
         <div className="exp_row">
-          <img className="exp_row_img" src={abdimg1}></img>
+          <img className="exp_row_img" src={abdimg1} alt='abdoimg'></img>
           <h3>腹部の正常解剖と構造</h3>
           <p>この章では頭部の正常画像を</p>
           <p>もとに、腹部の解剖学的構造</p>
@@ -290,6 +331,11 @@ function Example(props) {
 
 function AppRouter() {
   const head = () => Example({ children: <ExamplePageBasic myprop='head'/> });
+  const auth = () => Example({ children:  <AuthProvider>
+                              <div style={{ margin: '2em' }}>
+                                      <Auth />
+                               </div>
+                                          </AuthProvider> });
   const thorax = () => Example({ children: <ExamplePageBasic myprop='thorax'/> });
   const abdomen = () => Example({ children: <ExamplePageBasic myprop='abdomen'/> });
   const viewer = () => Example({ children: <Viewer myprop='stack'/> });
@@ -298,13 +344,16 @@ function AppRouter() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
-        <Route exact path="/" component={Index} />
-        <Route exact path="/basic/" render={explaination} />
-        <Route exact path="/basic/head/" render={head} />
-        <Route exact path="/basic/thorax/" render={thorax} />
-        <Route exact path="/basic/abdomen/" render={abdomen} />
-        <Route exact path="/grid/" render={practice_menu} />
-        <Route exact path="/grid/viewer" render={viewer} />
+        <AuthProvider>
+          <Route exact path="/" component={Index} />
+          <Route exact path="/auth/" render={auth} />
+          <PrivateRoute exact path="/basic/" render={explaination} />
+          <PrivateRoute exact path="/basic/head/" render={head} />
+          <PrivateRoute exact path="/basic/thorax/" render={thorax} />
+          <PrivateRoute exact path="/basic/abdomen/" render={abdomen} />
+          <PrivateRoute exact path="/grid/" render={practice_menu} />
+          <PrivateRoute exact path="/grid/viewer" render={viewer} />
+        </AuthProvider>
       </Switch>
     </Router>
   );
