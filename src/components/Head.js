@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { storageRef } from '../firebase';
+
 
 import dcmimage1700 from './Head_CT/vhf.1700.dcm';
 import dcmimage1701 from './Head_CT/vhf.1701.dcm';
@@ -35,32 +37,6 @@ import dcmimage1731 from './Head_CT/vhf.1731.dcm';
 import dcmimage1732 from './Head_CT/vhf.1732.dcm';
 import dcmimage1733 from './Head_CT/vhf.1733.dcm';
 import dcmimage1734 from './Head_CT/vhf.1734.dcm';
-
-import annoimg1 from './1サンプルv2/1_teacher_1.jpg';
-import annoimg2 from './1サンプルv2/1_teacher_2.jpg';
-import annoimg3 from './1サンプルv2/1_teacher_3.jpg';
-import annoimg4 from './1サンプルv2/1_teacher_4.jpg';
-import annoimg5 from './1サンプルv2/1_teacher_5.jpg';
-import annoimg6 from './1サンプルv2/1_teacher_6.jpg';
-import annoimg7 from './1サンプルv2/1_teacher_7.jpg';
-import annoimg8 from './1サンプルv2/1_teacher_8.jpg';
-import annoimg9 from './1サンプルv2/1_teacher_9.jpg';
-import annoimg10 from './1サンプルv2/1_teacher_10.jpg';
-import annoimg11 from './1サンプルv2/1_teacher_11.jpg';
-import annoimg12 from './1サンプルv2/1_teacher_12.jpg';
-import annoimg13 from './1サンプルv2/1_teacher_13.jpg';
-import annoimg14 from './1サンプルv2/1_teacher_14.jpg';
-import annoimg15 from './1サンプルv2/1_teacher_15.jpg';
-import annoimg16 from './1サンプルv2/1_teacher_16.jpg';
-import annoimg17 from './1サンプルv2/1_teacher_17.jpg';
-import annoimg18 from './1サンプルv2/1_teacher_18.jpg';
-import annoimg19 from './1サンプルv2/1_teacher_19.jpg';
-import annoimg20 from './1サンプルv2/1_teacher_20.jpg';
-import annoimg21 from './1サンプルv2/1_teacher_21.jpg';
-import annoimg22 from './1サンプルv2/1_teacher_22.jpg';
-import annoimg23 from './1サンプルv2/1_teacher_23.jpg';
-import annoimg24 from './1サンプルv2/1_teacher_24.jpg';
-import annoimg25 from './1サンプルv2/1_teacher_25.jpg';
 
 
 export const head_CT_dicom = [
@@ -101,34 +77,66 @@ export const head_CT_dicom = [
 'dicomweb:' + dcmimage1734,
 ]
 
-export const anno_head = [
-    'http:' + annoimg1,
-    'http:' + annoimg2,
-    'http:' + annoimg3,
-    'http:' + annoimg4,
-    'http:' + annoimg5,
-    'http:' + annoimg6,
-    'http:' + annoimg7,
-    'http:' + annoimg8,
-    'http:' + annoimg9,
-    'http:' + annoimg10,
-    'http:' + annoimg11,
-    'http:' + annoimg12,
-    'http:' + annoimg13,
-    'http:' + annoimg14,
-    'http:' + annoimg15,
-    'http:' + annoimg16,
-    'http:' + annoimg17,
-    'http:' + annoimg18,
-    'http:' + annoimg19,
-    'http:' + annoimg20,
-    'http:' + annoimg21,
-    'http:' + annoimg22,
-    'http:' + annoimg23,
-    'http:' + annoimg24,
-    'http:' + annoimg25,
-]
 
+
+function anno_head_image(){
+    const path = 'Explanation/Head/anno-head/';
+    var anno_head_list = []
+    var array = []
+    for(let i =0;i<25;i++){
+    let fileName = '1_teacher_'+String(i+1)+'.jpg';
+    anno_head_list.push(path+fileName);
+    array.push(i);
+    }
+    anno_head_list.forEach((element,index)=>{
+        const spaceRef = storageRef.child(element);
+        spaceRef.getDownloadURL().then((url) => {
+        // This can be downloaded directly:
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        xhr.responseType = 'arraybuffer';
+        xhr.onload = function(event) {
+        var blob = xhr.response;
+        };
+        xhr.open('GET', url,true);
+        xhr.send();
+        array[index]=url;
+       });
+    })
+
+    return array
+};
+
+export const anno_head = anno_head_image();
+
+
+function head_MRI_T2W(){
+    const path = 'Explanation/Head/head_MRI_T2W/';
+    var anno_head_list = []
+    var array = []
+    for(let i =0;i<25;i++){
+    let fileName = '601_'+String(i+1)+'.dcm';
+    anno_head_list.push(path+fileName);
+    array.push(i);
+    }
+    anno_head_list.forEach((element,index)=>{
+        const spaceRef = storageRef.child(element);
+        spaceRef.getDownloadURL().then((url) => {
+            var xhr = new XMLHttpRequest();
+            xhr.withCredentials = true;
+            xhr.responseType = 'arraybuffer';
+            xhr.onload = function(event) {
+            var blob = xhr.response;
+            };
+            xhr.open('GET', url,true);
+            xhr.send();
+        array[index] = 'dicomweb:'+ url
+    });
+    });
+    return array;
+};
+
+export const head_mri = head_MRI_T2W();
 
 export function head_CT_explain(){
     return (

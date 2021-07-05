@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
-import 'firebaseui';
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/storage';
 
 const firebaseApp = firebase.initializeApp({
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -15,9 +15,9 @@ const firebaseApp = firebase.initializeApp({
     measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENTID
 });
 
-var firebaseui = require('firebaseui');
+const storage = firebaseApp.storage();
 
 export const auth = firebaseApp.auth();
-export const ui = firebaseui.auth.AuthUI(firebase.auth());
+export const storageRef = storage.ref();
 export const db = firebaseApp.firestore();
 export const provider = new firebase.auth.GoogleAuthProvider();

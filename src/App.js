@@ -143,10 +143,6 @@ export function Footer() {
 };
 
 function Index() {
-  const style = {
-    minHeight: '512px',
-  };
-
   const examples1 = {
     title: '進む',
     url: '/basic',
@@ -181,31 +177,30 @@ function Index() {
         <div className="row_body">
           <h2 className="thema"><span className='under'>使いやすいツールを目指して</span></h2>
           <div className="row_body_sentense">
-            <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-            <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-            <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-            <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-            <p>スキルアップをしてみませんか？</p>
+            <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。
+              医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。
+              解説はプロの放射線診断科医が作成しています。
+              このツールを通して、普段放射線診断医がどのように鑑別を行っているか垣間見ることができるでしょう。
+              今こそ自分のスキルアップをしてみませんか？</p>
           </div>
         </div>
         <div className="row_body">
           <h2 className="thema"><span className='under'>厳選された症例と洗練された解説</span></h2>
           <div className="row_body_sentense">
-            <p>このツールで使用している症例は、医学生と医師が話し合いを重ね、学習効果の高</p>
-            <p>いものばかりを扱っています。１つの症例から多くのことを吸収できるはずです。</p>
-            <p>解説は、放射線診断医監修のもと医学生で作成しています。医学生目線で作成して</p>
-            <p>いますので、本当に知りたかった部分がここで分かるかもしれません。</p>
+            <p>このツールで使用している症例は、医学生と医師が話し合いを重ね、学習効果の高いものばかりを扱っています。
+              １つの症例から多くのことを吸収できるはずです。
+              解説は、放射線診断医監修のもと医学生で作成しています。
+              医学生目線で作成していますので、本当に知りたかった部分がここで分かるかもしれません。</p>
           </div>
           {ExampleEntry(examples1)}
         </div>
         <div className="row_body">
           <h2 className="thema"><span className='under'>すぐに、実戦</span></h2>
           <div className="row_body_sentense">
-            <p>画像診断は、ただ見ていればできるようになるという甘いものではありません。でき</p>
-            <p>る人の話を聞きながら、自ら手を動かし、考えながら学習をすることで習得していく</p>
-            <p>ものです。そこで、このツールでは、ビューワーを用いながら実際に診断の練習がで</p>
-            <p>きるような形にしました。解説ページと合わせて実戦練習を積むことでより高い学習</p>
-            <p>効果が期待できます。</p>
+            <p>画像診断は、ただ見ていればできるようになるという甘いものではありません。
+              できる人の話を聞きながら、自ら手を動かし、考えながら学習をすることで習得していくものです。
+              そこで、このツールでは、ビューワーを用いながら実際に診断の練習ができるような形にしました。
+              解説ページと合わせて実戦練習を積むことでより高い学習効果が期待できます。</p>
           </div>
           {ExampleEntry(examples2)}
         </div>
@@ -224,6 +219,30 @@ function explaination(){
       {Header()}
       </div>
     <div className='explanation'>
+    <div className="exp">
+        <h2>画像診断</h2>
+        <div className="exp_row">
+          <h3>CT</h3>
+          <p>この章ではCTに関する基本的</p>
+          <p>な事項についてまとめていき</p>
+          <p>ます。</p>
+          {ExampleEntry({title:'GO',url:'/basic/ct',})}
+        </div>
+        <div className="exp_row">
+          <h3>MRI</h3>
+          <p>この章ではMRIに関する基本的</p>
+          <p>な事項についてまとめていき</p>
+          <p>ます。</p>
+          {ExampleEntry({title:'GO',url:'/basic/mri',})}
+        </div>
+        <div className="exp_row">
+          <h3>X線</h3>
+          <p>この章ではX線に関する基本的</p>
+          <p>な事項についてまとめていき</p>
+          <p>ます。</p>
+          {ExampleEntry({title:'GO',url:'/basic/x_ray',})}
+        </div>
+      </div>
       <div className="exp">
         <h2>頭部</h2>
         <div className="exp_row">
@@ -330,6 +349,7 @@ function Example(props) {
 
 
 function AppRouter() {
+  const ct = () => Example({ children: <ExamplePageBasic myprop='ct'/> });
   const head = () => Example({ children: <ExamplePageBasic myprop='head'/> });
   const auth = () => Example({ children:  <AuthProvider>
                               <div style={{ margin: '2em' }}>
@@ -348,6 +368,7 @@ function AppRouter() {
           <Route exact path="/" component={Index} />
           <Route exact path="/auth/" render={auth} />
           <PrivateRoute exact path="/basic/" render={explaination} />
+          <PrivateRoute exact path="/basic/ct/" render={ct} />
           <PrivateRoute exact path="/basic/head/" render={head} />
           <PrivateRoute exact path="/basic/thorax/" render={thorax} />
           <PrivateRoute exact path="/basic/abdomen/" render={abdomen} />

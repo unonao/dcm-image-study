@@ -29,6 +29,7 @@ export class Auth extends React.Component{
       });
       // [END auth_google_provider_params]
       auth.signInWithRedirect(provider)
+      //ホーム画面に遷移する
     }
     //signInWithRedirectでGoogleのログインページに接続して、Google プロバイダ オブジェクトのインスタンスを作成する。
     logout() {

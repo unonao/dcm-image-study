@@ -5,6 +5,7 @@ import cornerstoneWebImageLoader from 'cornerstone-web-image-loader';
 import cornerstoneMath from 'cornerstone-math';
 import cornerstoneTools from 'cornerstone-tools';
 import Hammer from 'hammerjs';
+import { storageRef } from './firebase';
 
 export default function initCornerstone() {
     // Cornertone Tools
@@ -26,6 +27,7 @@ export default function initCornerstone() {
     cornerstoneTools.store.state.touchProximity = 40;
 
     // IMAGE LOADER
+
     cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
     cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
     cornerstoneWADOImageLoader.webWorkerManager.initialize({
@@ -47,3 +49,5 @@ export default function initCornerstone() {
     window.cornerstone = cornerstone;
     window.cornerstoneTools = cornerstoneTools;
 }
+
+

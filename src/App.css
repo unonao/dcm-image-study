@@ -185,9 +185,15 @@ footer {
   width: 47%;
   height: auto;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 40px;
   margin-bottom: 30px;
   padding: auto;
+}
+
+.row_body_sentense p{
+  width: 100%;
+  line-height: 40px;
+  font-size: medium;
 }
 
 .btn_txt {
@@ -285,6 +291,9 @@ footer {
   text-align: left;
 }
 
+.basic_sentense h3{
+  text-align: center;
+}
 /*Quiz*/
 #overlay{
   /*　画面全体を覆う設定　*/

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import VTR from './Video';
 
 import dcmimage1400 from './shoulder/vhf.1400.dcm';
 import dcmimage1401 from './shoulder/vhf.1401.dcm';
@@ -210,53 +211,56 @@ export function thorax_explain(){
     return (
         <div className = "basic_sentenses">
             <h2>解説</h2>
-            <h2>STEP1. 胸腔の臓器を把握しよう</h2>
+            <h2>STEP1. 縦隔条件と肺野条件を見比べてみよう！</h2>
             <div className = "basic_sentense">
-               <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-               <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-               <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-               <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-               <p>スキルアップをしてみませんか？</p>
+               <VTR src = 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FThorax%2FVideos%2F%E8%82%BA%E9%87%8E%E6%9D%A1%E4%BB%B6%E3%81%A8%E7%B8%A6%E9%9A%94%E6%9D%A1%E4%BB%B6%E3%82%92%E8%A6%8B%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AE%E9%81%95%E3%81%84(%E4%B8%80%E9%83%A8%E3%83%8E%E3%82%A4%E3%82%BA%E3%81%82%E3%82%8A).mp4?alt=media&token=e73c7829-b387-4698-82bf-44180aeb9f0c'>
+               </VTR>
             </div>
-            <h2>STEP2. 縦隔の構造を理解しよう</h2>
+            <h2>STEP2. 縦隔の構造を理解しよう。</h2>
             <div className = "basic_sentense">
-                <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                <p>スキルアップをしてみませんか？</p>
+                <p>画像は縦隔条件にしてください。
+                頭側から甲状腺、胸腺、気管、食道、大動脈弓、上行大動脈、
+                下行大動脈、肺動静脈の位置を確認してみましょう。</p>
+                <h4>甲状腺と副甲状腺について</h4>
+                <VTR src = 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FThorax%2FVideos%2F%E7%94%B2%E7%8A%B6%E8%85%BA%E3%81%A8%E5%89%AF%E7%94%B2%E7%8A%B6%E8%85%BA%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6.mp4?alt=media&token=0d078c7b-dab0-4d5a-8e08-61a0ec9c463f'>
+               </VTR>
+               <div className = "basic_sentense">
+               <h4>胸腺について</h4>
+               <VTR src = 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FThorax%2FVideos%2F%E8%83%B8%E8%85%BA%E3%81%AE%E8%A6%8B%E6%96%B9.mp4?alt=media&token=ee8276c0-77ac-40be-bd74-3f1ea3ba6e13'>
+               </VTR>
+               </div>
+               <div className = "basic_sentense">
+               <h4>食道について</h4>
+               <VTR src = 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FThorax%2FVideos%2F%E9%A3%9F%E9%81%93%E3%81%AE%E8%A6%8B%E6%96%B9.mp4?alt=media&token=05c4e335-7cdb-4c91-ab9b-68f06d39834c'>
+               </VTR>
+               </div>
+               <div className = "basic_sentense">
+               <h4>大動脈と奇静脈について</h4>
+               <VTR src = 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FThorax%2FVideos%2F%E5%A4%A7%E5%8B%95%E8%84%88%E3%81%A8%E5%A5%87%E9%9D%99%E8%84%88.mp4?alt=media&token=902908b3-c5e7-40ee-ad52-252dc5b37a6f'>
+               </VTR>
+               </div>
+               <div className = "basic_sentense">
+               <h4>後縦隔について</h4>
+               <VTR src = 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FThorax%2FVideos%2F%E5%BE%8C%E7%B8%A6%E9%9A%94(%E8%84%8A%E9%AB%84)%E3%81%AE%E8%A6%8B%E6%96%B9.mp4?alt=media&token=6a9af8c3-6853-44a0-bac8-50586842e70c'>
+               </VTR>
+               </div>
             </div>
-            <h2>STEP3. 肺の構造を理解しよう</h2>
+            <h2>STEP3. 肺の構造を確認しよう。</h2>
             <div className = "basic_sentense">
-                <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                <p>スキルアップをしてみませんか？</p>
+                <p>画像は肺野条件にしてください。
+                肺区域、動静脈、気管支を確認してみましょう。</p>
+                <VTR src = 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FThorax%2FVideos%2F%E8%82%BA%E5%8C%BA%E5%9F%9F%E3%80%81%E5%8B%95%E9%9D%99%E8%84%88%E3%80%81%E6%B0%97%E7%AE%A1%E3%81%AE%E8%A6%8B%E5%88%86%E3%81%91%E6%96%B9.mp4?alt=media&token=188f522a-6981-4d3e-ba0d-2438932466b5'>
+               </VTR>
             </div>
-            <h2>STEP4. 気管支と間質を理解しよう</h2>
             <div className = "basic_sentense">
-                <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                <p>スキルアップをしてみませんか？</p>
-            </div>
-            <h2>STEP5. 心臓の構造を把握しよう</h2>
-            <div className = "basic_sentense">
-                <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                <p>スキルアップをしてみませんか？</p>
-            </div>
-            <h2>STEP6. 血管と気管支の走行を理解しよう</h2>
-            <div className = "basic_sentense">
-                <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                <p>スキルアップをしてみませんか？</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
             </div>
         </div>
     )

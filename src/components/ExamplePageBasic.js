@@ -1,33 +1,36 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
 import {Header,Footer} from '../App';
-import { head_CT_dicom , head_CT_explain ,anno_head } from "./Head";
+import { head_CT_dicom , head_CT_explain ,anno_head ,head_mri} from "./Head";
 import { thorax_dicom , thorax_explain } from "./Thorax";
 import { abdomen_dicom , abdomen_explain } from "./Abdomen";
+import { CT_explain } from "./Diagnostic_imaging";
 
 var dicomdata= {
+    'ct':thorax_dicom,
     'head':head_CT_dicom,
     'thorax': thorax_dicom,
     'abdomen':abdomen_dicom,
 }
 var explaindata= {
+    'ct':CT_explain(),
     'head':head_CT_explain(),
     'thorax':thorax_explain(),
     'abdomen':abdomen_explain(),
 };
 
-var annodata={
-    'head':anno_head,
-}
+
 
 const img_list = {
-    'head':[head_CT_dicom,anno_head],
+    'ct':[thorax_dicom],
+    'head':[head_CT_dicom,anno_head,head_mri],
     'thorax':[thorax_dicom],
     'abdomen':[abdomen_dicom],
 }
 
 const img_list_name = {
-    'head':['頭部CT','頭部動脈アノテーション'],
+    'ct':['胸部CT'],
+    'head':['頭部CT','頭部動脈アノテーション','頭部MRI'],
     'thorax':['胸部CT'],
     'abdomen':['腹部CT'],
 }
