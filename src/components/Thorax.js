@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import VTR from './Video';
 
 import dcmimage1400 from './shoulder/vhf.1400.dcm';

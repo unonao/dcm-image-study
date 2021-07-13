@@ -12,7 +12,7 @@ import githubimg from './components/images/github.png'
 import mnesimg from './components/images/logo_mnes.jpg'
 import laimeimg from './components/images/logo_white.png'
 import mnistimg from './components/images/MNiST.png'
-import image1 from './image1.jpg'
+import image1 from './components/images/28774EB8-7CDC-4656-9D36-406A7B4F1AEC.png'
 import headimg1 from './components/images/img_mri.png'
 import lungimg1 from './components/images/lung_CT.jpg'
 import abdimg1 from './components/images/abdomine_CT.jpg'
@@ -20,7 +20,7 @@ import abdimg1 from './components/images/abdomine_CT.jpg'
 // cornerstone tools
 import initCornerstone from './initCornerstone.js';
 import {auth} from './firebase';
-import {Auth} from './components/userAuth';
+import {Auth,Sub_Auth} from './components/userAuth';
 import { useAuthContext,AuthProvider } from './AuthContext';
 
 
@@ -45,7 +45,7 @@ const PrivateRoute = ({render, ...rest }) => {
         : props => (
             <Redirect
               to={{
-                pathname: "/auth",
+                pathname: "/log",
                 state: { from: props.location }
               }}
             />
@@ -60,9 +60,9 @@ const Log= ()=> {
  const user = auth.currentUser;
 
 if (user) {
-  return(<div><p>{user.displayName}</p></div>)
+  return(<div><p><a href="/auth">{user.displayName}</a></p></div>)
 } else {
-  return(<p>ログイン</p>)
+  return(<p><a href="/log">ログイン</a></p>)
  }
 }
 
@@ -173,7 +173,6 @@ function Index() {
         <img className="row_head_img" src={image1} alt='background'></img>
       </div>
       <div className="row">
-        <h1 className="row_body">見る人から、診る人へ</h1>
         <div className="row_body">
           <h2 className="thema"><span className='under'>使いやすいツールを目指して</span></h2>
           <div className="row_body_sentense">
@@ -294,34 +293,57 @@ function practice_menu(){
       {Header()}
       </div>
     <div className='explanation'>
-      <div className="exp">
-        <h2>頭部</h2>
-        <div className="exp_row">
-          <img className="exp_row_img" src={headimg1}></img>
-          <h3>頭部MRI1</h3>
-          <p>頭部MRI part1</p>
-          {ExampleEntry({title:'GO',url:'/grid/viewer',target:'_blank'})}
-        </div>
-      </div>
-      <div className="exp">
-        <h2>胸部</h2>
-        <div className="exp_row">
-          <img className="exp_row_img" src={lungimg1}></img>
-          <h3>胸部CT1</h3>
-          <p>胸部CT part1</p>
-          {ExampleEntry({title:'GO',url:'/grid/viewer',target:'_blank'})}
-        </div>
-      </div>
-      <div className="exp">
-        <h2>腹部</h2>
-        <div className="exp_row">
-          <img className="exp_row_img" src={abdimg1}></img>
-          <h3>腹部CT1</h3>
-          <p>腹部CT part1</p>
-          {ExampleEntry({title:'GO',url:'/grid/viewer',target:'_blank'})}
-        </div>
-      </div>
+    <table>
+    <tr>
+      <th>　　</th>
+      <th>部位</th>
+      <th>Level A</th>
+      <th>Level B</th>
+      <th>Level C</th>
+      <th>Level D</th>
+      <th>Level E</th>
+    </tr>
+    <tr>
+      <th class="icon bird"><img className="exp_row_img" src={headimg1} alt='頭'></img></th>
+      <th>頭部</th>
+      <td>705601001</td>
+      <td>701401002</td>
+      <td>707712001</td>
+      <td>700800001</td>
+      <td>707711002</td>
+    </tr>
+    <tr>
+      <th class="icon whale"><img className="exp_row_img" src={lungimg1} alt='胸'></img></th>
+      <th>胸部</th>
+      <td>0400601001</td>
+      <td>0403911001</td>
+      <td>0403501001</td>
+      <td>0400112001</td>
+      <td>0407801001</td>
+    </tr>
+    <tr>
+      <th class="icon crab"><img className="exp_row_img" src={abdimg1} alt='腹'></img></th>
+      <th>腹部</th>
+      <td>　　</td>
+      <td>　　</td>
+      <td>　　</td>
+      <td>　　</td>
+      <td>　　</td>
+    </tr>
+    <tr>
+      <th class="icon whale"><img className="exp_row_img" src={lungimg1} alt='胸'></img></th>
+      <th>骨盤部</th>
+      <td>0901012003</td>
+      <td>0901101001</td>
+      <td>0901702001</td>
+      <td>0808201002</td>
+      <td>0807912001</td>
+    </tr>
+    </table>
     </div>
+    <div className='practice_sample'>
+      <p><a href="/grid/viewer" target="_blank">サンプル</a></p>
+      </div>
     <div>
       {Footer()}
       </div>
@@ -351,11 +373,13 @@ function Example(props) {
 function AppRouter() {
   const ct = () => Example({ children: <ExamplePageBasic myprop='ct'/> });
   const head = () => Example({ children: <ExamplePageBasic myprop='head'/> });
-  const auth = () => Example({ children:  <AuthProvider>
+  const auth = () => Example({ children:
                               <div style={{ margin: '2em' }}>
                                       <Auth />
-                               </div>
-                                          </AuthProvider> });
+                               </div> });
+  const subauth = () => Example({ children: <div style={{ margin: '2em' }}>
+                                                    <Sub_Auth/>
+                                             </div>});
   const thorax = () => Example({ children: <ExamplePageBasic myprop='thorax'/> });
   const abdomen = () => Example({ children: <ExamplePageBasic myprop='abdomen'/> });
   const viewer = () => Example({ children: <Viewer myprop='stack'/> });
@@ -366,6 +390,7 @@ function AppRouter() {
       <Switch>
         <AuthProvider>
           <Route exact path="/" component={Index} />
+          <Route exact path="/log/" render={subauth} />
           <Route exact path="/auth/" render={auth} />
           <PrivateRoute exact path="/basic/" render={explaination} />
           <PrivateRoute exact path="/basic/ct/" render={ct} />

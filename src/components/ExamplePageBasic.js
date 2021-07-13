@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
 import {Header,Footer} from '../App';
-import { head_CT_dicom , head_CT_explain ,anno_head ,head_mri} from "./Head";
+import { head_CT_explain ,Head_CT,anno_head ,head_mri} from "./Head";
 import { thorax_dicom , thorax_explain } from "./Thorax";
 import { abdomen_dicom , abdomen_explain } from "./Abdomen";
 import { CT_explain } from "./Diagnostic_imaging";
 
-var dicomdata= {
-    'ct':thorax_dicom,
-    'head':head_CT_dicom,
-    'thorax': thorax_dicom,
-    'abdomen':abdomen_dicom,
-}
 var explaindata= {
     'ct':CT_explain(),
     'head':head_CT_explain(),
@@ -19,11 +13,9 @@ var explaindata= {
     'abdomen':abdomen_explain(),
 };
 
-
-
 const img_list = {
     'ct':[thorax_dicom],
-    'head':[head_CT_dicom,anno_head,head_mri],
+    'head':[Head_CT,anno_head,head_mri],
     'thorax':[thorax_dicom],
     'abdomen':[abdomen_dicom],
 }
@@ -77,7 +69,7 @@ class ExamplePageBasic extends Component {
         imageIdIndex: 0,
         isPlaying: false,
         frameRate: 5,
-        imageIds: dicomdata[this.props.myprop]
+        imageIds: img_list[this.props.myprop][0]
         };
     };
 

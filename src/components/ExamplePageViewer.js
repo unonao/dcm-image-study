@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
 import {Quiz,Viewer_Quiz,Viewer_Quiz_ArrowAnnotate,Viewer_Quiz_Freehand} from './ExamplePageQuiz'
-import { head_CT_dicom ,anno_head } from "./Head";
+import { anno_head } from "./Head";
 import { thorax_dicom  } from "./Thorax";
 import { abdomen_dicom } from "./Abdomen";
 import Angleimg from "./images/Icon/Angle.png";
@@ -35,7 +35,6 @@ const stack2 = [
 
 var dicomdata = {
     'stack':[stack1,stack2],
-    'head':[head_CT_dicom],
     'thorax': [thorax_dicom],
     'abdomen':[abdomen_dicom],
 }
@@ -48,7 +47,7 @@ const quiz5 = 'img=3層で病変部を指摘し、病変名を入れてくださ
 
 
 const img_list = {
-    'head':[head_CT_dicom,anno_head],
+    'head':[anno_head],
     'thorax':[thorax_dicom],
     'abdomen':[abdomen_dicom],
 }
@@ -195,7 +194,7 @@ class Viewer extends Component {
                                         activeToolIndex: index,
                                             });
                                     }}>
-                                <img className="tool_icon" src={toolimglist[index]} title={toollabel[index]}></img>
+                                <img className="tool_icon" src={toolimglist[index]} title={toollabel[index]} alt={toollabel[index]}></img>
                             </div>
                             ))}
                         </div>
@@ -257,18 +256,19 @@ class Viewer extends Component {
                         </div>
                     </div>
                 </div>
-                <div className={this.state.style}>
-                    {this.state.viewports.map((index) => (
-                    index<=(this.state.imageIds.length-1)?
-                    <div className= {this.state.viewerstyle[index]}
-                    onDoubleClick={() => {
-                        stylelist=reset_list(stylelist,'viewer')
-                        stylelist[index]='viewer_big_box';
-                        this.setState({
-                        style: 'viewers_click',
-                        viewerstyle: stylelist,
-                        });
-                    }}>
+                <div className='viewsize'>
+                    <div className={this.state.style}>
+                        {this.state.viewports.map((index) => (
+                        index<=(this.state.imageIds.length-1)?
+                        <div className= {this.state.viewerstyle[index]}
+                        onDoubleClick={() => {
+                            stylelist=reset_list(stylelist,'viewer')
+                            stylelist[index]='viewer_big_box';
+                            this.setState({
+                            style: 'viewers_click',
+                            viewerstyle: stylelist,
+                            });
+                        }}>
                         <CornerstoneViewport
                             key={index}
                             tools={this.state.tools}
@@ -283,11 +283,12 @@ class Viewer extends Component {
                                 });
                             }}
                         />
-                    </div>
-                    :<div className= 'viewer'>
-                        viewer{String(index+1)}
                         </div>
-                        ))}
+                        :<div className= 'viewer'>
+                            viewer{String(index+1)}
+                            </div>
+                            ))}
+                    </div>
                 </div>
             </div>
     )}
