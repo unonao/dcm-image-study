@@ -1,5 +1,22 @@
-import React from 'react';
-import { storageRef } from '../firebase';
+import React, { Component } from 'react';
+import CornerstoneViewport from 'react-cornerstone-viewport';
+import {Header,Footer} from '../App';
+
+function mklist(name,num) {
+    var new_list = []
+    for(let i=0;i<=num-1;i++){
+        new_list.push(name)
+    }
+    return new_list
+};
+
+const reset_list = function(oldlist,name){
+    var new_list = []
+    for(let i=0;i<=oldlist.length-1;i++){
+        new_list.push(name)
+    }
+    return new_list
+};
 
 export const Head_CT = [
 'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2FHead_CT%2F2_1.dcm?alt=media&token=356efa99-ba50-4143-a7e4-424a7c84f230',
@@ -44,116 +61,287 @@ export const Head_CT = [
 'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2FHead_CT%2F2_40.dcm?alt=media&token=21a70eaf-9c76-4dc9-85ff-d0bcd61c33ff',
 'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2FHead_CT%2F2_41.dcm?alt=media&token=94ff2582-2ecf-4346-8e9b-c123b7d22b6a']
 
-function anno_head_image(){
-    const path = 'Explanation/Head/anno-head/';
-    var anno_head_list = []
-    var array = []
-    for(let i =0;i<25;i++){
-    let fileName = '1_teacher_'+String(i+1)+'.jpg';
-    anno_head_list.push(path+fileName);
-    array.push(i);
+
+export const anno_head = [
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_1.jpg?alt=media&token=cc226e5f-41e6-441b-afbf-422f3e9f47c7',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_2.jpg?alt=media&token=e4c006f0-63af-46c8-9526-916b01b96d95',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_3.jpg?alt=media&token=64221f3b-b4c8-4908-bfe3-093f3a7b82a8',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_4.jpg?alt=media&token=3810012f-0033-4dee-9532-654ca4cc8e26',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_5.jpg?alt=media&token=ea848751-b152-4242-89fe-8ea761376454',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_6.jpg?alt=media&token=db95f159-3614-4305-af23-c1d419f3d2ea',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_7.jpg?alt=media&token=c6e674bd-413e-4ca8-b25d-49015a0a52db',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_8.jpg?alt=media&token=b8693579-4fb6-4766-aafc-aa837481a5e6',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_9.jpg?alt=media&token=6f017d9f-a924-4433-9ef2-eab3efe18f1e',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_10.jpg?alt=media&token=a46180c8-655a-4a10-a0e9-5e3f41daea75',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_11.jpg?alt=media&token=02fd2d9a-ab00-4a33-b0a7-e177ed3e2e24',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_12.jpg?alt=media&token=c1e8a381-7597-4d0c-91fa-e7d16f818de5',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_13.jpg?alt=media&token=9c2cea8e-6d6c-413c-aa2f-5f9396fb3af2',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_14.jpg?alt=media&token=ec4d331f-86fd-4fda-9ecc-65ae0a7fc512',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_15.jpg?alt=media&token=0efaf7d1-cafd-40e1-87a2-61f1f39ea6d3',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_16.jpg?alt=media&token=34575977-0f4c-4660-905e-9299c477af97',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_17.jpg?alt=media&token=6d4fdb98-61a4-4b9d-bdaa-3fc02463d003',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_18.jpg?alt=media&token=eecb8952-2c76-4ce5-958e-ad5e5bed375b',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_19.jpg?alt=media&token=04447cc5-f119-4531-b0c3-82a38aac6427',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_20.jpg?alt=media&token=330feab7-d9c3-4f82-ae14-0cbcd31d1ab2',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_21.jpg?alt=media&token=10ab9114-a25a-42d9-972f-f5040da36610',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_22.jpg?alt=media&token=6f466c65-72ea-4867-bce3-fabf137d4144',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_23.jpg?alt=media&token=68a32781-02a7-4027-bc37-ff7ad187ce79',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_24.jpg?alt=media&token=72c4749c-e193-4098-9f40-f390cb7e4f1a',
+'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fanno-head%2F1_teacher_25.jpg?alt=media&token=fbbb3aa2-e567-4d5c-82d1-d4b165c5ac66']
+
+export const head_mri = [
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_1.dcm?alt=media&token=24cc405a-e2e4-46db-80ef-0410f0b35161',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_2.dcm?alt=media&token=5d297446-e9ec-40ed-b358-029c823cf9dc',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_3.dcm?alt=media&token=34c52176-c407-485f-92fc-8f7c7b698977',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_4.dcm?alt=media&token=e9658c20-a675-4fdb-8119-53d2477aece2',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_5.dcm?alt=media&token=bfeca0ef-0f37-4daf-8337-d8353b12287e',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_6.dcm?alt=media&token=e9791766-fe05-4a13-bf32-a2e8872a690e',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_7.dcm?alt=media&token=ffb915ef-c582-44e8-b8cd-00f05882d11d',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_8.dcm?alt=media&token=1fa1a964-b7b6-46b0-9156-35aed87967a7',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_9.dcm?alt=media&token=31db56c3-38bb-4116-8ef8-01c7494bf97c',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_10.dcm?alt=media&token=d800ec72-9eae-4c1b-be94-51164f645bd9',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_11.dcm?alt=media&token=e9ce9681-d30e-45c0-9dc7-483ae912ac73',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_12.dcm?alt=media&token=54bcce5f-7786-40af-9bf0-2996ddd6b27a',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_13.dcm?alt=media&token=fa00b2c0-5954-4d02-ba68-886fc0334e62',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_14.dcm?alt=media&token=e4947d3d-a7bc-42cd-9fe9-29903105b1f8',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_15.dcm?alt=media&token=09cf649e-09e6-45a9-85f5-f7d4259f80ca',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_16.dcm?alt=media&token=f5213eca-61ff-4df6-a001-77dd0493379d',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_17.dcm?alt=media&token=ba7a2b05-46ef-4f70-a437-2cc9b01536be',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_18.dcm?alt=media&token=647e601d-9dcf-45ce-9e39-7e0bd75ad27b',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_19.dcm?alt=media&token=f9b08896-e759-48f0-963c-99ace2581793',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_20.dcm?alt=media&token=002c28cd-e2e9-4fe3-bd83-f282f33a53b6',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_21.dcm?alt=media&token=c119d467-521f-4ae4-9bcb-d280b0df3b26',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_22.dcm?alt=media&token=96adb38c-2013-4c7e-a94c-582675fa770e',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_23.dcm?alt=media&token=d4a7ec82-3ded-45af-b2f4-3ac89b352b8b',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_24.dcm?alt=media&token=c4c97b16-fe5f-4b5a-ad1d-a1ee4897b716',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_25.dcm?alt=media&token=d4c32c05-9aa3-4db3-86ab-977a19b07b96'];
+
+
+
+const img_list = [Head_CT,anno_head,head_mri];
+
+const img_list_name = ['頭部CT','頭部動脈アノテーション','頭部MRI']
+
+
+const get_img = function(img_list,img_list_name){
+    var option_list = [];
+    for(let i=0;i<=img_list.length-1;i++){
+        option_list.push(<option value={String(i)}>{img_list_name[i]}</option>);
     }
-    anno_head_list.forEach((element,index)=>{
-        const spaceRef = storageRef.child(element);
-        spaceRef.getDownloadURL().then((url) => {
-        // This can be downloaded directly:
-        var xhr = new XMLHttpRequest();
-        xhr.withCredentials = true;
-        xhr.responseType = 'arraybuffer';
-        xhr.onload = function(event) {
-        };
-        xhr.open('GET', url,true);
-        xhr.send();
-        array[index]=url;
-       });
-    })
+    return option_list
+}
 
-    return array
-};
+class Head extends Component {
+    state = {
+        activeViewportIndex: 0,
+        viewports: [0,1,2,3],
+        tools: [
+            // Mouse
+            {
+                name: 'Wwwc',
+                mode: 'active',
+                modeOptions: { mouseButtonMask: 1 },
+            },
+            {
+                name: 'Zoom',
+                mode: 'active',
+                modeOptions: { mouseButtonMask: 2 },
+            },
+            {
+                name: 'Pan',
+                mode: 'active',
+                modeOptions: { mouseButtonMask: 4 },
+            },
+            // Scroll
+            { name: 'StackScrollMouseWheel', mode: 'active' },
+        ],
+        upper_imageIds: img_list,
+        upper_imageNames: img_list_name,
+        defaultIndex: 0,
+        middle_imageIds: anno_head,
+        lower_imageIds: img_list,
+        lower_imageNames: img_list_name,
+        lowerIndex: 0,
+        // FORM
+        activeTool: 'Wwwc',
+        activeToolIndex: 10,
+        imageIdIndex: 0,
+        quizIndex: 0,
+        isPlaying: false,
+        frameRate: 5,
+        bigviwer: false,
+        style: 'viewers',
+    };
 
-export const anno_head = anno_head_image();
-
-
-function head_MRI_T2W(){
-    const path = 'Explanation/Head/head_MRI_T2W/';
-    var anno_head_list = []
-    var array = []
-    for(let i =0;i<25;i++){
-    let fileName = '601_'+String(i+1)+'.dcm';
-    anno_head_list.push(path+fileName);
-    array.push(i);
-    }
-    anno_head_list.forEach((element,index)=>{
-        const spaceRef = storageRef.child(element);
-        spaceRef.getDownloadURL().then((url) => {
-            var xhr = new XMLHttpRequest();
-            xhr.withCredentials = true;
-            xhr.responseType = 'arraybuffer';
-            xhr.onload = function(event) {
-            };
-            xhr.open('GET', url,true);
-            xhr.send();
-        array[index] = 'dicomweb:'+ url
-    });
-    });
-    return array;
-};
-
-export const head_mri = head_MRI_T2W();
-
-export function head_CT_explain(){
-    return (
-        <div className = "basic_sentenses">
-            <h2>解説</h2>
-            <h2>STEP1. 中心溝を見つけよう</h2>
-            <div className = "basic_sentense">
-               <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-               <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-               <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-               <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-               <p>スキルアップをしてみませんか？</p>
+    render() {
+        return (
+            <div>
+            <div>
+                {Header()}
             </div>
-            <h2>STEP2. 皮質の構造を理解しよう</h2>
-            <div className = "basic_sentense">
-                <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                <p>スキルアップをしてみませんか？</p>
+            <div className='Head'>
+                <div className='Head_contents'>
+                    <div>
+                        <h2>Viewer</h2>
+                        {this.state.bigviwer===false ?
+                        <div className='Head_viewer'>
+                        {this.state.viewports.map((index) => (
+                            index<=(this.state.upper_imageIds.length-1)?
+                            <div className= 'viewer'
+                            onDoubleClick={()=>{
+                                this.setState({
+                                    defaultIndex: index,
+                                    bigviwer: true,
+                                })
+                            }}>
+                            <CornerstoneViewport
+                            key={index}
+                            tools={this.state.tools}
+                            imageIds={this.state.upper_imageIds[index]}
+                            imageIdIndex={this.state.imageIdIndex}
+                            isPlaying={this.state.isPlaying}
+                            frameRate={this.state.frameRate}
+                            activeTool={this.state.activeTool}
+                            setViewportActive={() => {
+                                this.setState({
+                                    activeViewportIndex: index,
+                                });
+                            }}
+                            />
+                            </div>
+                            :<div className= 'viewer'>
+                            viewer{String(index+1)}
+                            </div>
+                        )
+                        )}
+                        </div>:
+                        <div>
+                            <CornerstoneViewport
+                            tools={this.state.tools}
+                            style={{minWidth: '50%', height: '512px', flex: '1'}}
+                            imageIds={this.state.upper_imageIds[this.state.defaultIndex]}
+                            imageIdIndex={this.state.imageIdIndex}
+                            isPlaying={this.state.isPlaying}
+                            frameRate={this.state.frameRate}
+                            activeTool={this.state.activeTool}
+                        />
+                        </div>}
+                        <div>
+                        <label htmlFor="image-id-stack">Image ID Stack:</label>
+                            <select
+                                defaultValue={0}
+                                onChange={evt => {
+                                        this.setState({
+                                            defaultIndex: parseInt(evt.target.value),
+                                            });
+                                        }}
+                                        className="form-control"
+                                        id="image-id-stack"
+                                    >
+                                        {get_img(this.state.upper_imageIds,this.state.upper_imageNames)}
+                                    </select>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    this.setState({
+                                        bigviwer: !this.state.bigviwer,
+                                            });
+                                        }}
+                            >
+                                {this.state.bigviwer ? '縮小' : '拡大'}
+                            </button>
+                        </div>
+                        <div>
+                        <label>Frame Rate</label>
+                        <input
+                            type="number"
+                            className="form-control"
+                            value={this.state.frameRate}
+                                onChange={evt => {
+                                const frameRateInput = parseInt(evt.target.value);
+                                const frameRate = Math.max(Math.min(frameRateInput, 90), 1);
+                                this.setState({ frameRate });
+                                    }}
+                                />
+                                <p><span className="input-group-btn">
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            this.setState({
+                                                isPlaying: !this.state.isPlaying,
+                                                });
+                                            }}
+                                        >
+                                            {this.state.isPlaying ? 'Stop' : 'Start'}
+                                        </button>
+                                    </span></p>
+                            </div>
+                    </div>
+                    <div>
+                        <h2>STEP1. 色んなMRIで脳を見てみよう</h2>
+                        <div className = "basic_sentense">
+                            <p>comimg soon</p>
+                        </div>
+                    </div>
+                    <div style={{padding:'0px',width: '100%', display: 'flex', flexWrap: 'wrap' }}>
+                        <CornerstoneViewport
+                            tools={this.state.tools}
+                            style={{minWidth: '50%', height: '512px', flex: '1'}}
+                            imageIds={this.state.middle_imageIds}
+                            imageIdIndex={this.state.imageIdIndex}
+                            isPlaying={false}
+                            frameRate={this.state.frameRate}
+                            activeTool={this.state.activeTool}
+                        />
+                    </div>
+                    <div>
+                        <h2>STEP2. T2で脳MRIを見てみよう</h2>
+                        <div className = "basic_sentense">
+                            <p>comimg soon</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div style={{padding:'0px',width: '100%', display: 'flex', flexWrap: 'wrap' }}>
+                        <CornerstoneViewport
+                            tools={this.state.tools}
+                            style={{minWidth: '50%', height: '512px', flex: '1'}}
+                            imageIds={this.state.lower_imageIds[this.state.lowerIndex]}
+                            imageIdIndex={this.state.imageIdIndex}
+                            isPlaying={false}
+                            frameRate={this.state.frameRate}
+                            activeTool={this.state.activeTool}
+                        />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="image-id-stack">Image ID Stack:</label>
+                            <select
+                                defaultValue={0}
+                                onChange={evt => {
+                                        this.setState({
+                                            lowerIndex: parseInt(evt.target.value),
+                                            imageIdIndex: 0,
+                                            });
+                                        }}
+                                        className="form-control"
+                                        id="image-id-stack"
+                                    >
+                                    {get_img(this.state.lower_imageIds,this.state.lower_imageNames)}
+                                    </select>
+                        </div>
+                    </div>
+                    <div>
+                        <h2>STEP3. 脳動脈の走行と灌流領域</h2>
+                        <div className = "basic_sentense">
+                            <p>comimg soon</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h2>STEP3. 大脳基底核の構造を理解しよう</h2>
-            <div className = "basic_sentense">
-                <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                <p>スキルアップをしてみませんか？</p>
-            </div>
-            <h2>STEP4. 脳室の場所を把握しよう</h2>
-            <div className = "basic_sentense">
-                <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                <p>スキルアップをしてみませんか？</p>
-            </div>
-            <h2>STEP5. 脳幹の構造を理解しよう</h2>
-            <div className = "basic_sentense">
-                <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                <p>スキルアップをしてみませんか？</p>
-            </div>
-            <h2>STEP6. 鼻腔にも目をむけよう</h2>
-            <div className = "basic_sentense">
-                <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                <p>スキルアップをしてみませんか？</p>
+            <div>
+                {Footer()}
             </div>
         </div>
-    )
+    )}
 };
 
+export default Head;

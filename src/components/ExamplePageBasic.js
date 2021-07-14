@@ -1,28 +1,25 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
 import {Header,Footer} from '../App';
-import { head_CT_explain ,Head_CT,anno_head ,head_mri} from "./Head";
+import { Head_CT,anno_head ,head_mri} from "./Head";
 import { thorax_dicom , thorax_explain } from "./Thorax";
 import { abdomen_dicom , abdomen_explain } from "./Abdomen";
 import { CT_explain } from "./Diagnostic_imaging";
 
 var explaindata= {
     'ct':CT_explain(),
-    'head':head_CT_explain(),
     'thorax':thorax_explain(),
     'abdomen':abdomen_explain(),
 };
 
 const img_list = {
     'ct':[thorax_dicom],
-    'head':[Head_CT,anno_head,head_mri],
     'thorax':[thorax_dicom],
     'abdomen':[abdomen_dicom],
 }
 
 const img_list_name = {
     'ct':['胸部CT'],
-    'head':['頭部CT','頭部動脈アノテーション','頭部MRI'],
     'thorax':['胸部CT'],
     'abdomen':['腹部CT'],
 }

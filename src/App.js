@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-ro
 // Routes
 import ExamplePageBasic from './components/ExamplePageBasic.js';
 import Viewer from './components/ExamplePageViewer.js';
+import Head, { Head_CT } from './components/Head';
 
 //images
 import githubimg from './components/images/github.png'
@@ -372,7 +373,7 @@ function Example(props) {
 
 function AppRouter() {
   const ct = () => Example({ children: <ExamplePageBasic myprop='ct'/> });
-  const head = () => Example({ children: <ExamplePageBasic myprop='head'/> });
+  const head = () => Example({ children: <Head/> });
   const auth = () => Example({ children:
                               <div style={{ margin: '2em' }}>
                                       <Auth />
