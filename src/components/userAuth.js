@@ -70,7 +70,7 @@ export class Auth extends React.Component{
   }
 }
 
-export class Sub_Auth extends React.Component{
+export class SubAuth extends React.Component{
   state = {
     user: null,
   }

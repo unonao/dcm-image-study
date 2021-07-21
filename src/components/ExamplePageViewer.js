@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
-import {Quiz,Viewer_Quiz,Viewer_Quiz_ArrowAnnotate,Viewer_Quiz_Freehand} from './ExamplePageQuiz'
-import { anno_head } from "./Head";
-import { thorax_dicom  } from "./Thorax";
-import { abdomen_dicom } from "./Abdomen";
 import Angleimg from "./images/Icon/Angle.png";
 import ArrowAnnotateimg from "./images/Icon/ArrowAnnotate.png";
 import Bidirectionalimg from "./images/Icon/Bidirectional.png";
@@ -18,45 +14,7 @@ import Rotateimg from "./images/Icon/Rotate.png";
 import Wwwcimg from "./images/Icon/Wwwc.png";
 import Zoomimg from "./images/Icon/Zoom.png";
 
-const stack1 = [
-    'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.7.dcm',
-    'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.8.dcm',
-    'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.9.dcm',
-    'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.10.dcm',
-    'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.11.dcm',
-    'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.12.dcm',
-];
 
-const stack2 = [
-    'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.9.dcm',
-    'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.10.dcm',
-    'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.11.dcm',
-];
-
-var dicomdata = {
-    'stack':[stack1,stack2],
-    'thorax': [thorax_dicom],
-    'abdomen':[abdomen_dicom],
-}
-
-const quiz1 = 'img=1層で大動脈弓を丸く囲ってください。'
-const quiz2 = 'img=4層で左側の肺を四角く囲んでください。'
-const quiz3 = '心原性脳塞栓症の原因として最も多いものはどれか'
-const quiz4 = 'img=2層で胸骨の輪郭をなぞってください。'
-const quiz5 = 'img=3層で病変部を指摘し、病変名を入れてください。'
-
-
-const img_list = {
-    'head':[anno_head],
-    'thorax':[thorax_dicom],
-    'abdomen':[abdomen_dicom],
-}
-
-const img_list_name = {
-    'head':['頭部CT','頭部動脈アノテーション'],
-    'thorax':['胸部CT'],
-    'abdomen':['腹部CT'],
-}
 function mklist(name,num) {
     var new_list = []
     for(let i=0;i<=num-1;i++){
@@ -85,16 +43,12 @@ const reset_list = function(oldlist,name){
     return new_list
 };
 
-var quiz_dict = {
-    'stack':[<Viewer_Quiz num={0} text={quiz1} data={stack1} tooltype="CircleRoi" ans_st_x={99} ans_st_y={181} ans_end_x={379} ans_end_y={440}></Viewer_Quiz>,
-    <Viewer_Quiz num={3} text={quiz2} data={stack1} tooltype="RectangleRoi" ans_st_x={273} ans_st_y={272} ans_end_x={378} ans_end_y={362}></Viewer_Quiz>,
-    <Quiz answer_num={3} text={quiz3} answer_list={['心筋梗塞','心筋症','非弁膜症性心房細動','人工弁','洞不全症候群']}></Quiz>,
-    <Viewer_Quiz_Freehand num={1} text={quiz4} data={stack1} ans_st_x={222} ans_st_y={258} ans_end_x={290} ans_end_y={288}></Viewer_Quiz_Freehand>,
-    <Viewer_Quiz_ArrowAnnotate num={2} text={quiz5} data={stack1} ans_st_x={264} ans_st_y={351} ans_end_x={370} ans_end_y={451} ans_text='胸水'></Viewer_Quiz_ArrowAnnotate>]
-}
+
 
 class Viewer extends Component {
-    state = {
+    constructor(props){
+    super(props);
+    this.state = {
         activeViewportIndex: 0,
         viewports: [0,1,2,3,4,5],
         toolports: [0,1,2,3,4,5,6,7,8,9,10,11],
@@ -133,8 +87,8 @@ class Viewer extends Component {
             { name: 'StackScrollMultiTouch', mode: 'active' },
             {name: 'Rotate',mode:'active'},
         ],
-        imageIds: dicomdata[this.props.myprop],
-        quiz: quiz_dict[this.props.myprop],
+        imageIds: this.props.img_list,
+        quiz: this.props.quiz_list,
         // FORM
         activeTool: 'Wwwc',
         activeToolIndex: 10,
@@ -146,10 +100,13 @@ class Viewer extends Component {
         style: 'viewers',
         viewerstyle: stylelist,
         toolstyle: toolstylelist,
-        quizstylelist: mklist('question_num',quiz_dict[this.props.myprop].length)
+        quizstylelist: mklist('question_num',this.props.quiz_list.length)
     };
+};
 
-    componentDidMount() { }
+    componentDidMount() {
+        this.setState({imageIds: this.props.img_list})
+    }
 
     render() {
         return (
@@ -160,7 +117,7 @@ class Viewer extends Component {
                             <div className='label_menu'>
                                 <div className='label'><h3>ID:</h3></div>
                                 <div className='label_box id_num'>
-                                    <h3>9999999999</h3>
+                                    <h3>{this.props.patientInfo[0]}</h3>
                                 </div>
                             </div>
                         </div>
@@ -168,7 +125,7 @@ class Viewer extends Component {
                             <div className='label_menu'>
                                 <div className='label'><h3>年齢:</h3></div>
                                 <div className='label_box'>
-                                    <h3>63歳</h3>
+                                    <h3>{this.props.patientInfo[1]}</h3>
                                 </div>
                             </div>
                         </div>
@@ -176,7 +133,7 @@ class Viewer extends Component {
                             <div className='label_menu'>
                                 <div className='label'><h3>性別:</h3></div>
                                 <div className='label_box'>
-                                    <h3>男性</h3>
+                                    <h3>{this.props.patientInfo[2]}</h3>
                                 </div>
                             </div>
                         </div>
@@ -226,7 +183,7 @@ class Viewer extends Component {
                     <div className="propaty">
                     <label htmlFor="active-tool">Information</label>
                             <div className='complain'>
-                                <p>精査希望</p>
+                                {this.props.text}
                             </div>
                     </div>
                     <div className='propaty'>

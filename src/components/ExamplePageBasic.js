@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
 import {Header,Footer} from '../App';
-import { Head_CT,anno_head ,head_mri} from "./Head";
 import { thorax_dicom , thorax_explain } from "./Thorax";
 import { abdomen_dicom , abdomen_explain } from "./Abdomen";
 import { CT_explain } from "./Diagnostic_imaging";
@@ -69,7 +68,7 @@ class ExamplePageBasic extends Component {
         imageIds: img_list[this.props.myprop][0]
         };
     };
-
+   //compomet
     render() {
         return (
         <div>

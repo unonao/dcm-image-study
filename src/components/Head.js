@@ -2,21 +2,6 @@ import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
 import {Header,Footer} from '../App';
 
-function mklist(name,num) {
-    var new_list = []
-    for(let i=0;i<=num-1;i++){
-        new_list.push(name)
-    }
-    return new_list
-};
-
-const reset_list = function(oldlist,name){
-    var new_list = []
-    for(let i=0;i<=oldlist.length-1;i++){
-        new_list.push(name)
-    }
-    return new_list
-};
 
 export const Head_CT = [
 'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2FHead_CT%2F2_1.dcm?alt=media&token=356efa99-ba50-4143-a7e4-424a7c84f230',
@@ -172,7 +157,7 @@ class Head extends Component {
         bigviwer: false,
         style: 'viewers',
     };
-
+    //componentdidmount
     render() {
         return (
             <div>
@@ -280,7 +265,25 @@ class Head extends Component {
                     <div>
                         <h2>STEP1. 色んなMRIで脳を見てみよう</h2>
                         <div className = "basic_sentense">
-                            <p>comimg soon</p>
+                            <p>MRI：撮影時に人体内の水素原子核から放出された電波の強弱（信号強度）によって、
+                                白黒のコントラストが表現される。黒く写るのは低信号、白く写るのは高信号</p>
+                            <p>（T1強調画像とT2強調画像）</p>
+                            <p>T1では水は低信号で黒く写る</p>
+                            <p>T2では水は高信号で白く写る</p>
+                            <h4>（拡散強調画像（DWI））</h4>
+                            <p>水分子の拡散運動を画像化したもの
+                               拡散が激しい部分は黒く写り（低信号）、
+                               拡散が低下した部分は白く写る（高信号）
+                               正常な脳では水分子に動きがあるので黒く写るが、
+                               急性期の脳梗塞では、梗塞部の水の動きが低下しているので白く写る
+　　                           →急性期脳梗塞の早期診断に有用</p>
+
+                            <h4>（FLAIR画像）</h4>
+                           <p>水の信号を抑えたT2強調画像
+　　                           →T2では脳室が白く写るが、FLAIRでは黒く写るため、
+                               脳室と接する病変が鮮明に見える
+　　                           →隠れ脳梗塞や慢性期の脳梗塞は白く写り、
+                               確認しやすくなる</p>
                         </div>
                     </div>
                     <div style={{padding:'0px',width: '100%', display: 'flex', flexWrap: 'wrap' }}>

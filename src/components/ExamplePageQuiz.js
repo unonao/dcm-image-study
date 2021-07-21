@@ -1,5 +1,5 @@
 //import { render } from '@testing-library/react';
-import React, { Component } from 'react';
+import React  from 'react';
 import cornerstoneTools from 'cornerstone-tools';
 //import { act } from 'react-dom/cjs/react-dom-test-utils.development';
 
@@ -67,7 +67,6 @@ export class Quiz extends React.Component {
                     onChange={evt =>
                     this.setState({ choice_num: parseInt(evt.target.value) })
                     }
-                    className="form-control"
                     id="active-tool"
                 >
                     {mk_answer(this.props.answer_list)}
@@ -134,7 +133,7 @@ export class Quiz extends React.Component {
 }
 
 //CircleRoi,RectangleRoi用
-export class Viewer_Quiz extends React.Component {
+export class ViewerQuiz extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -150,7 +149,7 @@ export class Viewer_Quiz extends React.Component {
                 a = -2
             }else if(toolState[dcmdataset[num]][tooltype]===undefined){
                 a = -1
-            }else {
+            }else{
                 const start_x=toolState[dcmdataset[num]][tooltype]["data"][0]["handles"]["start"]["x"];
                 const start_y=toolState[dcmdataset[num]][tooltype]["data"][0]["handles"]["start"]["y"];
                 const end_x=toolState[dcmdataset[num]][tooltype]["data"][0]["handles"]["end"]["x"];
@@ -274,7 +273,7 @@ export class Viewer_Quiz extends React.Component {
 };
 
 //FreehandROi用
-export class Viewer_Quiz_Freehand extends React.Component {
+export class ViewerQuizFreehand extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -410,7 +409,7 @@ export class Viewer_Quiz_Freehand extends React.Component {
 };
 
 //ArrowAnnotate用
-export class Viewer_Quiz_ArrowAnnotate extends React.Component {
+export class ViewerQuizArrowAnnotate extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
