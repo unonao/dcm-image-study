@@ -1,0 +1,64 @@
+[debug] [2021-07-22T02:53:46.021Z] ----------------------------------------------------------------------
+[debug] [2021-07-22T02:53:46.023Z] Command:       /usr/local/bin/firebase /home/hiroki/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2021-07-22T02:53:46.023Z] CLI Version:   9.14.0
+[debug] [2021-07-22T02:53:46.023Z] Platform:      linux
+[debug] [2021-07-22T02:53:46.024Z] Node Version:  v12.18.1
+[debug] [2021-07-22T02:53:46.024Z] Time:          Thu Jul 22 2021 11:53:46 GMT+0900 (Japan Standard Time)
+[debug] [2021-07-22T02:53:46.024Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-07-22T02:53:46.026Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2021-07-22T02:53:46.040Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-07-22T02:53:46.040Z] > authorizing via signed-in user (yoshimura-h@mnes.org)
+[debug] [2021-07-22T02:53:46.041Z] [iam] checking project mnes-mnist-imagestudy for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2021-07-22T02:53:46.042Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-07-22T02:53:46.042Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-22T02:53:56.060Z] [iam] error while checking permissions, command may fail: FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2021-07-22T02:53:56.061Z] > refreshing access token with scopes: []
+[debug] [2021-07-22T02:53:56.061Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-22T02:54:06.076Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2021-07-22T02:54:16.099Z] FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+    at invalidCredentialError (/home/hiroki/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/auth.js:141:12)
+    at refreshTokens (/home/hiroki/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/auth.js:448:15)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[error] 
+[error] Error: Failed to get Firebase project mnes-mnist-imagestudy. Please make sure the project exists and your account has permission to access it.
+[debug] [2021-07-22T02:57:27.114Z] ----------------------------------------------------------------------
+[debug] [2021-07-22T02:57:27.116Z] Command:       /usr/local/bin/firebase /home/hiroki/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2021-07-22T02:57:27.116Z] CLI Version:   9.14.0
+[debug] [2021-07-22T02:57:27.116Z] Platform:      linux
+[debug] [2021-07-22T02:57:27.116Z] Node Version:  v12.18.1
+[debug] [2021-07-22T02:57:27.117Z] Time:          Thu Jul 22 2021 11:57:27 GMT+0900 (Japan Standard Time)
+[debug] [2021-07-22T02:57:27.117Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-07-22T02:57:27.119Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2021-07-22T02:57:27.133Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-07-22T02:57:27.134Z] > authorizing via signed-in user (yoshimura-h@mnes.org)
+[debug] [2021-07-22T02:57:27.134Z] [iam] checking project mnes-mnist-imagestudy for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2021-07-22T02:57:27.135Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-07-22T02:57:27.136Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-22T02:57:37.154Z] [iam] error while checking permissions, command may fail: FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2021-07-22T02:57:37.154Z] > refreshing access token with scopes: []
+[debug] [2021-07-22T02:57:37.155Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-07-22T02:57:47.169Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2021-07-22T02:57:57.199Z] FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+    at invalidCredentialError (/home/hiroki/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/auth.js:141:12)
+    at refreshTokens (/home/hiroki/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/auth.js:448:15)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[error] 
+[error] Error: Failed to get Firebase project mnes-mnist-imagestudy. Please make sure the project exists and your account has permission to access it.
