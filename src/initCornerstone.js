@@ -1,6 +1,7 @@
 import dicomParser from 'dicom-parser';
 import cornerstone from 'cornerstone-core';
 import cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
+import cornerstoneWebImageLoader from 'cornerstone-web-image-loader';
 import cornerstoneMath from 'cornerstone-math';
 import cornerstoneTools from 'cornerstone-tools';
 import Hammer from 'hammerjs';
@@ -25,6 +26,7 @@ export default function initCornerstone() {
     cornerstoneTools.store.state.touchProximity = 40;
 
     // IMAGE LOADER
+
     cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
     cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
     cornerstoneWADOImageLoader.webWorkerManager.initialize({
@@ -39,7 +41,12 @@ export default function initCornerstone() {
         },
     });
 
+    // JPEG IMAGE LOADER
+    cornerstoneWebImageLoader.external.cornerstone = cornerstone;
+
     // Debug
     window.cornerstone = cornerstone;
     window.cornerstoneTools = cornerstoneTools;
 }
+
+

@@ -1,38 +1,675 @@
-.App {
+/**
+      header
+**/
+header {
+  background: #0c4da2;
+  height: 100px;
+  color: White;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.img_mnist{
+position: relative;
+top: 10px;
+right: 580px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.img_github{
+ margin-right: 5px;
+ margin-left: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.head_box{
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-direction: row-reverse;
+}
+
+
+.contents {
+display: flex;
+}
+
+.content {
+margin: auto;
+height: 30px;
+width: 120px;
+margin-top: 14px;
+padding-bottom: auto;
+z-index: 10;
+}
+
+.content:hover {
+background-color: #799ecf;
+}
+
+a {
+color:white;
+text-decoration: none;
+}
+
+.sub-menu > ul {
+text-align: center;
+list-style: none;
+margin: 0;
+padding: 0;
+width: 200px;
+}
+
+.sub-menu > ul > li > a {
+text-decoration: none;
+color: #ffffff;
+}
+
+.sub-menu {
+background-color: #799ecf;
+width: 200px;
+display: none;
+}
+
+.content:hover .sub-menu {
+display: block;
+}
+
+
+/**
+     footer
+**/
+footer {
+  color: whitesmoke;
+  background-color: rgb(23, 30, 61);
+  height: 300px;
+}
+
+.foots {
+  margin: 1%;
+  padding: 1%;
+  height: 250px;
+}
+
+.foot {
+  font-size: large;
+  height: auto;
+  width: auto;
+  margin-top: 3px;
+  margin-left: 0px;
+}
+
+
+.btn {
+  padding: 10px 30px;
+  background-color: pink;
+  font-size: large;
+  color: white;
+  display: right;
+  opacity: 0.8;
+  border-radius: 4px;
+  position: relative;
+  top: 50px;
+  left: 1000px;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+.button {
+  margin-right: 5px;
+  position: relative;
+  top: 10px;
+  left: 30px;
+}
+
+.bottom{
+  font-size: small;
+  text-align: center;
+  margin-top: 50px;
+  padding-left: 150px;
+}
+
+.link_imgs{
+  display: flex;
+  grid-template-columns: auto;
+  grid-row: 250px;
+  gap:30px;
+}
+
+.img:hover {
+  opacity: 0.8;
+}
+
+.img_mnes{
+  position: relative;
+  bottom: 0px;
+  left: 30px;
+}
+
+.img_laime{
+  position: relative;
+  bottom: 0px;
+  left: 80px;
+}
+
+
+
+/** index **/
+
+.row {
+  text-align: center;
+  flex-direction: column;
+}
+
+.row_head {
+  font-family: "Franklin Gothic Medium";
+}
+
+.row_head_img {
+  height: 400px;
+  width: 100%;
+}
+
+.under {
+  background: linear-gradient(transparent 75%, #62e293 50%);
+}
+
+.row_body{
+  margin-top: 80px;
+  margin-bottom: 100px;
+}
+
+.thema{
+  margin-bottom: 30px;
+}
+
+.row_body_sentense {
+  text-align: left;
+  width: 47%;
+  height: auto;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  padding: auto;
+}
+
+.row_body_sentense p{
+  width: 100%;
+  line-height: 40px;
+  font-size: medium;
+}
+
+.btn_txt {
+  font-family: 'Gill Sans';
+  font-weight: bold;
+}
+
+.body_btn {
+  padding: 10px 30px;
+  background-color: greenyellow;
+  font-size: large;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.body_btn:hover {
+  opacity: 0.8;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/**
+  explanation
+**/
+.explanation {
+  height: auto;
 }
+
+.exp {
+  display: flex;
+  padding: 2%;
+  margin: 3%;
+  border: solid 3px;
+  border-radius: 10px;
+  background-color: azure;
+}
+
+.exp_row {
+  text-align: center;
+  font-size: small;
+  width: 30%;
+  letter-spacing: 0ch;
+  padding: 3%;
+  padding-bottom: 0%;
+  margin: 3%;
+  margin-bottom: 0%;
+}
+
+.exp_row_img {
+  height: 150px;
+  width: 150px;
+}
+
+.exp_row p{
+  text-align: left;
+  font-size: medium;
+  line-height: 25px;
+}
+
+/**
+============================================================
+                    Practice
+============================================================
+**/
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table tr{
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+table td:hover{
+  background-color: #d4f0fd;
+}
+
+table th,table td{
+  text-align: center;
+  width: 13%;
+  padding: 15px 0;
+}
+
+.practice_sample a{
+  color: black;
+}
+
+/**
+============================================================
+                    Head
+============================================================
+**/
+.Head{
+  background-color: rgb(239, 253, 249);
+}
+
+.Head_contents{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 10px;
+}
+
+.Head_viewer{
+  display: grid;
+  height: 512px;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+}
+
+
+
+/**
+============================================================
+                      Basic
+============================================================
+**/
+
+.row_basic {
+  text-align: center;
+  width:100%;
+  padding:10px;
+}
+
+.basic_contents {
+  display: flex;
+  width: 100%;
+  background-color: rgb(239, 253, 249);
+}
+
+.basic_content {
+  position: sticky; /* ←必要なもの */
+  top: 0px;
+  bottom: 0px;
+  width: 47%;
+  height: 800px;
+  padding: 5px;
+  padding-left: 10px;
+  text-align: center;
+  /**background-color: blueviolet;**/
+}
+
+.basic_sentenses{
+  text-align: center;
+  overflow: auto;
+  width: 47%;
+  padding: 5px;
+  padding-left: 5%;
+}
+
+.basic_sentense{
+  text-align: left;
+}
+
+.basic_sentense h3{
+  text-align: center;
+}
+
+/*Quiz*/
+#overlay{
+  /*　画面全体を覆う設定　*/
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.5);
+    z-index: 10;
+
+    /*　画面の中央に要素を表示させる設定　*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#quiz_content{
+  z-index:20;
+  width:50%;
+  padding: 1em;
+  background:#fff;
+}
+
+.close_btn:hover{
+  background-color: rgb(255, 140, 140);
+}
+
+
+.quiz-group{
+  margin: 5%;
+  margin-top: 2%;
+  padding-top: 0%;
+  padding: 3%;
+  border: solid 3px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.Quiz_contents{
+  display: flex;
+  text-align: left;
+  margin-left: 5%;
+}
+
+.quiz_text{
+  height:60px;
+  width: 500px;
+  padding-left: 5px;
+  margin-top: 5px;
+  overflow-y: scroll;
+  border: solid 2px;
+}
+
+.quiz_btn{
+  color: white;
+  background-color: greenyellow;
+  font-size: large;
+}
+
+.choice_box{
+  margin-left: 5px;
+}
+
+.answer_box{
+  margin-left: 5%;
+  margin-top: 5px;
+  width: 120px;
+  height: 60px;
+}
+
+.explain_box{
+  margin-left: 55%;
+}
+
+.Quiz_contents a{
+  background-color: crimson;
+}
+
+.quiz_boolen{
+  font-size: large;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+
+.true{
+  color:rgba(0, 60, 255, 0.685);
+  font-size: x-large;
+}
+.false{
+  color: red;
+  font-size: x-large;
+}
+
+.quiz_explain{
+  text-align: left;
+  font-size: medium;
+  background-color: rgb(253, 165, 155);
+  padding: 3%;
+  margin: 3%;
+  border-radius: 10px;
+}
+
+/*===============================================
+=================================================
+
+                      viewer
+
+==================================================
+=================================================/*
+
+
+/* ========================================
+           viewer header
+==============================================*/
+.practice_contents{
+  position:static;
+}
+
+.viewer_header{
+  display: flex;
+  column-gap: 80px;
+  grid-column: 1/5;
+  background-color: green;
+  height: 45px;
+  margin: 0%;
+  padding: 0%;
+  padding-left: 20px;
+}
+
+.label_menu{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  column-gap:10px;
+}
+
+.label{
+  color: antiquewhite;
+}
+
+.label_box h3{
+  text-align: center;
+  background-color: white;
+  height: 75%;
+  width: 150%;
+}
+
+
+.id_num h3{
+  width: 150px;
+}
+
+/* ================================================
+              viewer propaty
+===================================================*/
+.viewer_propaties {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 25% 20% 52%;
+  grid-row: inherit;
+  height: 280px;
+  column-gap: 10px;
+  background:rgb(255, 197, 131);
+}
+
+.tool_contents{
+  display: grid;
+  text-align: center;
+  gap: 5px;
+  grid-template-columns: 15% 15% 15% 15% 15% 15%;
+  grid-row: inherit;
+  padding: 5px;
+  margin: 5px;
+  border: solid 3px;
+  border-radius: 10px;
+  background-color: ghostwhite;
+  cursor: pointer;
+}
+
+.tool_box{
+  text-align: center;
+  background-color: rgb(240, 236, 236);
+}
+
+.tool_box_click{
+  text-align: center;
+  background-color: orange;
+}
+
+.tool_icon{
+  width: 100%;
+  height: 90%;
+}
+
+.propaty{
+  text-align: center;
+  background-color:rgb(254, 255, 199);
+  color: black;
+  padding: 5px;
+  padding-bottom: 0%;
+  margin-top: 0%;
+  margin: 5px;
+  border: solid 3px;
+  border-radius: 10px;
+}
+
+.tool_info{
+  display: flex;
+}
+
+.window{
+  padding: 5px;
+  margin: 5px;
+  border: solid 3px;
+  border-radius: 10px;
+  background-color: ghostwhite;
+  cursor: pointer;
+}
+
+.tool_status{
+  padding:auto;
+  margin: auto;
+}
+
+.window:hover{
+  background-color: rgb(193, 255, 94);
+}
+
+.tool_img{
+  width: 40px;
+  height: 40px;
+}
+
+.form_tool{
+  width: 60px;
+}
+
+.complain{
+  display: grid;
+  grid-template-rows: 50px 80px;
+  text-align: left;
+  padding: 5px;
+  margin: 5px;
+  border: solid 3px;
+  border-radius: 0px;
+  background-color: ghostwhite;
+  overflow-y: scroll;
+}
+
+
+.Numbers{
+  display: flex;
+  flex-direction: row;
+  gap:10px;
+}
+
+.question_nums{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.question_num{
+  width: 25px;
+  height: 25px;
+  background-color: rgb(236, 228, 228);
+  cursor: pointer;
+}
+
+.question_num_click{
+  width: 25px;
+  height: 25px;
+  background-color: rgb(160, 252, 255);
+  cursor: default;
+}
+
+/*=============================================
+                 viewer
+==============================================*/
+.viewsize{
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+}
+
+.viewers {
+  display: grid;
+  background-color: black;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 256px 256px;
+  margin-bottom: 10px;
+}
+
+.viewers_click {
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+  grid-template-rows: 256px 256px;
+  margin-bottom: 10px;
+}
+
+.viewer_big_box{
+  grid-column: 1/2;
+  grid-row: 1/3;
+  background: black;
+  color: aliceblue;
+  border: solid 3px;
+  border-color: gray;
+  padding: 10px;
+}
+
+.viewer {
+  background: black;
+  color: aliceblue;
+  border: solid 3px;
+  border-color: gray;
+  padding: 10px;
+}
+
+.viewer:hover{
+  border-color: blue;
+}
+
