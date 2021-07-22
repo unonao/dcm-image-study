@@ -231,6 +231,7 @@ footer {
 .exp_row {
   text-align: center;
   font-size: small;
+  width: 30%;
   letter-spacing: 0ch;
   padding: 3%;
   padding-bottom: 0%;
@@ -240,12 +241,13 @@ footer {
 
 .exp_row_img {
   height: 150px;
-  width: 170px;
+  width: 150px;
 }
 
 .exp_row p{
   text-align: left;
-  line-height: 1ch;
+  font-size: medium;
+  line-height: 25px;
 }
 
 /**

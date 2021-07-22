@@ -14,9 +14,10 @@ import mnesimg from './components/images/logo_mnes.jpg'
 import laimeimg from './components/images/logo_white.png'
 import mnistimg from './components/images/MNiST.png'
 import image1 from './components/images/28774EB8-7CDC-4656-9D36-406A7B4F1AEC.png'
-import headimg1 from './components/images/img_mri.png'
-import lungimg1 from './components/images/lung_CT.jpg'
-import abdimg1 from './components/images/abdomine_CT.jpg'
+import headimg from './components/images/Head.jpg'
+import thoraximg from './components/images/Thorax.jpg'
+import abdomenimg from './components/images/Abdomen.jpg'
+import pelvisimg from './components/images/Pelvis.jpg'
 
 // cornerstone tools
 import initCornerstone from './initCornerstone.js';
@@ -112,6 +113,7 @@ export function Header() {
              <li><a href="/basic/head/">頭部の正常構造と機能</a></li>
              <li><a href="/basic/thorax/">胸部の正常構造と機能</a></li>
              <li><a href="/basic/abdomen/">腹部の正常構造と機能</a></li>
+             <li><a href="/basic/pelvis/">骨盤部の正常構造と機能</a></li>
             </ul>
           </div>
         </div>
@@ -228,60 +230,66 @@ function explaination(){
         <h2>画像診断</h2>
         <div className="exp_row">
           <h3>CT</h3>
-          <p>この章ではCTに関する基本的</p>
-          <p>な事項についてまとめていき</p>
-          <p>ます。</p>
+          <p>この章ではCTに関する基本的な事項についてまとめていきます。</p>
           {ExampleEntry({title:'GO',url:'/basic/ct',})}
         </div>
         <div className="exp_row">
           <h3>MRI</h3>
-          <p>この章ではMRIに関する基本的</p>
-          <p>な事項についてまとめていき</p>
-          <p>ます。</p>
+          <p>この章ではMRIに関する基本的な事項についてまとめていきます。</p>
           {ExampleEntry({title:'GO',url:'/basic/mri',})}
         </div>
         <div className="exp_row">
           <h3>X線</h3>
-          <p>この章ではX線に関する基本的</p>
-          <p>な事項についてまとめていき</p>
-          <p>ます。</p>
+          <p>この章ではX線に関する基本的な事項についてまとめていきます。</p>
           {ExampleEntry({title:'GO',url:'/basic/x_ray',})}
         </div>
       </div>
       <div className="exp">
         <h2>頭部</h2>
-        <div className="exp_row">
-          <img className="exp_row_img" src={headimg1} alt='headimg'></img>
+        <div>
+          <div className="exp_row">
+          <img className="exp_row_img" src={headimg} alt='headimg'></img>
           <h3>頭部の正常解剖と構造</h3>
-          <p>この章では頭部の正常画像を</p>
-          <p>もとに、頭部の解剖学的構造</p>
-          <p>を理解しながら頭部診断時の</p>
-          <p> ルーティンを確認します。</p>
+          <p>この章では頭部の正常画像をもとに、
+              頭部の解剖学的構造を理解しながら頭部診断時のルーティンを確認します。</p>
           {ExampleEntry({title:'GO',url:'/basic/head',})}
+          </div>
         </div>
       </div>
       <div className="exp">
         <h2>胸部</h2>
-        <div className="exp_row">
-          <img className="exp_row_img" src={lungimg1} alt='thoraximg'></img>
+        <div>
+          <div className="exp_row">
+          <img className="exp_row_img" src={thoraximg} alt='thoraximg'></img>
           <h3>胸部の正常解剖と構造</h3>
-          <p>この章では胸部の正常画像を</p>
-          <p>もとに、胸部の解剖学的構造</p>
-          <p>を理解しながら胸部診断時の</p>
-          <p>ルーティンを確認します。</p>
+          <p>この章では胸部の正常画像をもとに、
+            胸部の解剖学的構造を理解しながら胸部診断時のルーティンを確認します。</p>
           {ExampleEntry({title:'GO',url:'/basic/thorax',})}
+          </div>
         </div>
       </div>
       <div className="exp">
         <h2>腹部</h2>
+        <div>
         <div className="exp_row">
-          <img className="exp_row_img" src={abdimg1} alt='abdoimg'></img>
+          <img className="exp_row_img" src={abdomenimg} alt='abdoimg'></img>
           <h3>腹部の正常解剖と構造</h3>
-          <p>この章では頭部の正常画像を</p>
-          <p>もとに、腹部の解剖学的構造</p>
-          <p>を理解しながら頭部診断時の</p>
-          <p>ルーティンを確認します。</p>
+          <p>この章では腹部の正常画像をもとに、
+            腹部の解剖学的構造を理解しながら腹部診断時のルーティンを確認します。</p>
           {ExampleEntry({title:'GO',url:'/basic/abdomen',})}
+        </div>
+        </div>
+      </div>
+      <div className="exp">
+        <h2>骨盤部</h2>
+        <div>
+        <div className="exp_row">
+          <img className="exp_row_img" src={pelvisimg} alt='pelvisimg'></img>
+          <h3>骨盤部の正常解剖と構造</h3>
+          <p>この章では骨盤部の正常画像をもとに、
+            骨盤部の解剖学的構造を理解しながら骨盤部診断時のルーティンを確認します。</p>
+          {ExampleEntry({title:'GO',url:'/basic/pelvis',})}
+        </div>
         </div>
       </div>
     </div>
@@ -310,7 +318,7 @@ function practice_menu(){
       <th>Level E</th>
     </tr>
     <tr>
-      <th class="icon bird"><img className="exp_row_img" src={headimg1} alt='頭'></img></th>
+      <th class="icon bird"><img className="exp_row_img" src={headimg} alt='頭'></img></th>
       <th>頭部</th>
       <td onClick ={()=>{window.open('/grid/705601001','_blank')}}>705601001</td>
       <td onClick ={()=>{window.open('/grid/701401002','_blank')}}>701401002</td>
@@ -319,7 +327,7 @@ function practice_menu(){
       <td onClick ={()=>{window.open('/grid/707711002','_blank')}}>707711002</td>
     </tr>
     <tr>
-      <th class="icon whale"><img className="exp_row_img" src={lungimg1} alt='胸'></img></th>
+      <th class="icon whale"><img className="exp_row_img" src={thoraximg} alt='胸'></img></th>
       <th>胸部</th>
       <td>0400601001</td>
       <td>0403911001</td>
@@ -328,7 +336,7 @@ function practice_menu(){
       <td>0407801001</td>
     </tr>
     <tr>
-      <th class="icon crab"><img className="exp_row_img" src={abdimg1} alt='腹'></img></th>
+      <th class="icon crab"><img className="exp_row_img" src={abdomenimg} alt='腹'></img></th>
       <th>腹部</th>
       <td>　　</td>
       <td>　　</td>
@@ -337,7 +345,7 @@ function practice_menu(){
       <td>　　</td>
     </tr>
     <tr>
-      <th class="icon whale"><img className="exp_row_img" src={lungimg1} alt='胸'></img></th>
+      <th class="icon whale"><img className="exp_row_img" src={pelvisimg} alt='胸'></img></th>
       <th>骨盤部</th>
       <td>0901012003</td>
       <td>0901101001</td>
@@ -414,6 +422,7 @@ function AppRouter() {
                                              </div>});
   const thorax = () => Example({ children: <ExamplePageBasic myprop='thorax'/> });
   const abdomen = () => Example({ children: <ExamplePageBasic myprop='abdomen'/> });
+  const pelvis = () => Example({ children: <ExamplePageBasic myprop='pelvis'/> });
   const viewer = () => Example({ children: <Viewer myprop='stack' img_list={sample_list} text={<p>精査</p>} quiz_list={quiz_list} patientInfo={['999999999','63','男性']}/> });
   const head705601001 = () => Example({ children: <Viewer img_list={img_705601001} text={text_705601001} quiz_list={quiz_705601001} patientInfo={['705601001','80代','男性']}/> });
   const head701401002 = () => Example({ children: <Viewer img_list={img_701401002} text={text_701401002} quiz_list={quiz_701401002} patientInfo={['701401002','60代','男性']}/> });
@@ -434,6 +443,7 @@ function AppRouter() {
           <PrivateRoute exact path="/basic/head/" render={head} />
           <PrivateRoute exact path="/basic/thorax/" render={thorax} />
           <PrivateRoute exact path="/basic/abdomen/" render={abdomen} />
+          <PrivateRoute exact path="/basic/pelvis/" render={pelvis} />
           <PrivateRoute exact path="/grid/" render={practice_menu} />
           <PrivateRoute exact path="/grid/viewer" render={viewer} />
           <PrivateRoute exact path="/grid/705601001" render={head705601001} />

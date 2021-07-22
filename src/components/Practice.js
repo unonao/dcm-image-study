@@ -620,3 +620,4 @@ export const quiz_700800001 = [<ViewerQuiz num={12} text='主訴の原因と考�
 export const img_707711002 = [head_707711002_301,head_707711002_501,head_707711002_510,head_707711002_602]
 export const text_707711002 = <p>主訴：頭痛、めまい。進行性の両目の視力低下</p>
 export const quiz_707711002 = [<Quiz answer_num={4} text='主訴の原因と考えられる疾患名を答えよ。' answer_list={['神経膠腫','神経鞘腫','下垂体腺腫','髄膜腫','髄芽腫']}></Quiz>]
+//=======================head=============================//
