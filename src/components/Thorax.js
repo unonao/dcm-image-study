@@ -1,262 +1,118 @@
-import React, { Component } from 'react';
-
-import dcmimage1400 from './shoulder/vhf.1400.dcm';
-import dcmimage1401 from './shoulder/vhf.1401.dcm';
-import dcmimage1402 from './shoulder/vhf.1402.dcm';
-import dcmimage1403 from './shoulder/vhf.1403.dcm';
-import dcmimage1404 from './shoulder/vhf.1404.dcm';
-import dcmimage1405 from './shoulder/vhf.1405.dcm';
-import dcmimage1406 from './shoulder/vhf.1406.dcm';
-import dcmimage1407 from './shoulder/vhf.1407.dcm';
-import dcmimage1408 from './shoulder/vhf.1408.dcm';
-import dcmimage1409 from './shoulder/vhf.1409.dcm';
-import dcmimage1410 from './shoulder/vhf.1410.dcm';
-import dcmimage1411 from './shoulder/vhf.1411.dcm';
-import dcmimage1412 from './shoulder/vhf.1412.dcm';
-import dcmimage1413 from './shoulder/vhf.1413.dcm';
-import dcmimage1414 from './shoulder/vhf.1414.dcm';
-import dcmimage1415 from './shoulder/vhf.1415.dcm';
-import dcmimage1416 from './shoulder/vhf.1416.dcm';
-import dcmimage1417 from './shoulder/vhf.1417.dcm';
-import dcmimage1418 from './shoulder/vhf.1418.dcm';
-import dcmimage1419 from './shoulder/vhf.1419.dcm';
-import dcmimage1420 from './shoulder/vhf.1420.dcm';
-import dcmimage1421 from './shoulder/vhf.1421.dcm';
-import dcmimage1422 from './shoulder/vhf.1422.dcm';
-import dcmimage1423 from './shoulder/vhf.1423.dcm';
-import dcmimage1424 from './shoulder/vhf.1424.dcm';
-import dcmimage1425 from './shoulder/vhf.1425.dcm';
-import dcmimage1426 from './shoulder/vhf.1426.dcm';
-import dcmimage1427 from './shoulder/vhf.1427.dcm';
-import dcmimage1428 from './shoulder/vhf.1428.dcm';
-import dcmimage1429 from './shoulder/vhf.1429.dcm';
-import dcmimage1430 from './shoulder/vhf.1430.dcm';
-import dcmimage1431 from './shoulder/vhf.1431.dcm';
-import dcmimage1432 from './shoulder/vhf.1432.dcm';
-import dcmimage1433 from './shoulder/vhf.1433.dcm';
-import dcmimage1434 from './shoulder/vhf.1434.dcm';
-import dcmimage1435 from './shoulder/vhf.1435.dcm';
-import dcmimage1436 from './shoulder/vhf.1436.dcm';
-import dcmimage1437 from './shoulder/vhf.1437.dcm';
-import dcmimage1438 from './shoulder/vhf.1438.dcm';
-import dcmimage1439 from './shoulder/vhf.1439.dcm';
-import dcmimage1440 from './shoulder/vhf.1440.dcm';
-import dcmimage1441 from './shoulder/vhf.1441.dcm';
-import dcmimage1442 from './shoulder/vhf.1442.dcm';
-import dcmimage1443 from './shoulder/vhf.1443.dcm';
-import dcmimage1444 from './shoulder/vhf.1444.dcm';
-import dcmimage1445 from './shoulder/vhf.1445.dcm';
-import dcmimage1446 from './shoulder/vhf.1446.dcm';
-import dcmimage1447 from './shoulder/vhf.1447.dcm';
-import dcmimage1448 from './shoulder/vhf.1448.dcm';
-import dcmimage1449 from './shoulder/vhf.1449.dcm';
-import dcmimage1450 from './shoulder/vhf.1450.dcm';
-import dcmimage1451 from './shoulder/vhf.1451.dcm';
-import dcmimage1452 from './shoulder/vhf.1452.dcm';
-import dcmimage1453 from './shoulder/vhf.1453.dcm';
-import dcmimage1454 from './shoulder/vhf.1454.dcm';
-import dcmimage1455 from './shoulder/vhf.1455.dcm';
-import dcmimage1456 from './shoulder/vhf.1456.dcm';
-import dcmimage1457 from './shoulder/vhf.1457.dcm';
-import dcmimage1458 from './shoulder/vhf.1458.dcm';
-import dcmimage1459 from './shoulder/vhf.1459.dcm';
-import dcmimage1460 from './shoulder/vhf.1460.dcm';
-import dcmimage1461 from './shoulder/vhf.1461.dcm';
-import dcmimage1462 from './shoulder/vhf.1462.dcm';
-import dcmimage1463 from './shoulder/vhf.1463.dcm';
-import dcmimage1464 from './shoulder/vhf.1464.dcm';
-import dcmimage1465 from './shoulder/vhf.1465.dcm';
-import dcmimage1466 from './shoulder/vhf.1466.dcm';
-import dcmimage1467 from './shoulder/vhf.1467.dcm';
-import dcmimage1468 from './shoulder/vhf.1468.dcm';
-import dcmimage1469 from './shoulder/vhf.1469.dcm';
-import dcmimage1470 from './shoulder/vhf.1470.dcm';
-import dcmimage1471 from './shoulder/vhf.1471.dcm';
-import dcmimage1472 from './shoulder/vhf.1472.dcm';
-import dcmimage1473 from './shoulder/vhf.1473.dcm';
-import dcmimage1474 from './shoulder/vhf.1474.dcm';
-import dcmimage1475 from './shoulder/vhf.1475.dcm';
-import dcmimage1476 from './shoulder/vhf.1476.dcm';
-import dcmimage1477 from './shoulder/vhf.1477.dcm';
-import dcmimage1478 from './shoulder/vhf.1478.dcm';
-import dcmimage1479 from './shoulder/vhf.1479.dcm';
-import dcmimage1480 from './shoulder/vhf.1480.dcm';
-import dcmimage1481 from './shoulder/vhf.1481.dcm';
-import dcmimage1482 from './shoulder/vhf.1482.dcm';
-import dcmimage1483 from './shoulder/vhf.1483.dcm';
-import dcmimage1484 from './shoulder/vhf.1484.dcm';
-import dcmimage1485 from './shoulder/vhf.1485.dcm';
-import dcmimage1486 from './shoulder/vhf.1486.dcm';
-import dcmimage1487 from './shoulder/vhf.1487.dcm';
-import dcmimage1488 from './shoulder/vhf.1488.dcm';
-import dcmimage1489 from './shoulder/vhf.1489.dcm';
-import dcmimage1490 from './shoulder/vhf.1490.dcm';
-import dcmimage1491 from './shoulder/vhf.1491.dcm';
-import dcmimage1492 from './shoulder/vhf.1492.dcm';
-import dcmimage1493 from './shoulder/vhf.1493.dcm';
-import dcmimage1494 from './shoulder/vhf.1494.dcm';
-import dcmimage1495 from './shoulder/vhf.1495.dcm';
-import dcmimage1496 from './shoulder/vhf.1496.dcm';
-import dcmimage1497 from './shoulder/vhf.1497.dcm';
-import dcmimage1498 from './shoulder/vhf.1498.dcm';
-import dcmimage1499 from './shoulder/vhf.1499.dcm';
-import dcmimage1500 from './shoulder/vhf.1500.dcm';
+import React from 'react';
+import VTR from './Video';
 
 export const thorax_dicom = [
-'dicomweb:' + dcmimage1400,
-'dicomweb:' + dcmimage1401,
-'dicomweb:' + dcmimage1402,
-'dicomweb:' + dcmimage1403,
-'dicomweb:' + dcmimage1404,
-'dicomweb:' + dcmimage1405,
-'dicomweb:' + dcmimage1406,
-'dicomweb:' + dcmimage1407,
-'dicomweb:' + dcmimage1408,
-'dicomweb:' + dcmimage1409,
-'dicomweb:' + dcmimage1410,
-'dicomweb:' + dcmimage1411,
-'dicomweb:' + dcmimage1412,
-'dicomweb:' + dcmimage1413,
-'dicomweb:' + dcmimage1414,
-'dicomweb:' + dcmimage1415,
-'dicomweb:' + dcmimage1416,
-'dicomweb:' + dcmimage1417,
-'dicomweb:' + dcmimage1418,
-'dicomweb:' + dcmimage1419,
-'dicomweb:' + dcmimage1420,
-'dicomweb:' + dcmimage1421,
-'dicomweb:' + dcmimage1422,
-'dicomweb:' + dcmimage1423,
-'dicomweb:' + dcmimage1424,
-'dicomweb:' + dcmimage1425,
-'dicomweb:' + dcmimage1426,
-'dicomweb:' + dcmimage1427,
-'dicomweb:' + dcmimage1428,
-'dicomweb:' + dcmimage1429,
-'dicomweb:' + dcmimage1430,
-'dicomweb:' + dcmimage1431,
-'dicomweb:' + dcmimage1432,
-'dicomweb:' + dcmimage1433,
-'dicomweb:' + dcmimage1434,
-'dicomweb:' + dcmimage1435,
-'dicomweb:' + dcmimage1436,
-'dicomweb:' + dcmimage1437,
-'dicomweb:' + dcmimage1438,
-'dicomweb:' + dcmimage1439,
-'dicomweb:' + dcmimage1440,
-'dicomweb:' + dcmimage1441,
-'dicomweb:' + dcmimage1442,
-'dicomweb:' + dcmimage1443,
-'dicomweb:' + dcmimage1444,
-'dicomweb:' + dcmimage1445,
-'dicomweb:' + dcmimage1446,
-'dicomweb:' + dcmimage1447,
-'dicomweb:' + dcmimage1448,
-'dicomweb:' + dcmimage1449,
-'dicomweb:' + dcmimage1450,
-'dicomweb:' + dcmimage1451,
-'dicomweb:' + dcmimage1452,
-'dicomweb:' + dcmimage1453,
-'dicomweb:' + dcmimage1454,
-'dicomweb:' + dcmimage1455,
-'dicomweb:' + dcmimage1456,
-'dicomweb:' + dcmimage1457,
-'dicomweb:' + dcmimage1458,
-'dicomweb:' + dcmimage1459,
-'dicomweb:' + dcmimage1460,
-'dicomweb:' + dcmimage1461,
-'dicomweb:' + dcmimage1462,
-'dicomweb:' + dcmimage1463,
-'dicomweb:' + dcmimage1464,
-'dicomweb:' + dcmimage1465,
-'dicomweb:' + dcmimage1466,
-'dicomweb:' + dcmimage1467,
-'dicomweb:' + dcmimage1468,
-'dicomweb:' + dcmimage1469,
-'dicomweb:' + dcmimage1470,
-'dicomweb:' + dcmimage1471,
-'dicomweb:' + dcmimage1472,
-'dicomweb:' + dcmimage1473,
-'dicomweb:' + dcmimage1474,
-'dicomweb:' + dcmimage1475,
-'dicomweb:' + dcmimage1476,
-'dicomweb:' + dcmimage1477,
-'dicomweb:' + dcmimage1478,
-'dicomweb:' + dcmimage1479,
-'dicomweb:' + dcmimage1480,
-'dicomweb:' + dcmimage1481,
-'dicomweb:' + dcmimage1482,
-'dicomweb:' + dcmimage1483,
-'dicomweb:' + dcmimage1484,
-'dicomweb:' + dcmimage1485,
-'dicomweb:' + dcmimage1486,
-'dicomweb:' + dcmimage1487,
-'dicomweb:' + dcmimage1488,
-'dicomweb:' + dcmimage1489,
-'dicomweb:' + dcmimage1490,
-'dicomweb:' + dcmimage1491,
-'dicomweb:' + dcmimage1492,
-'dicomweb:' + dcmimage1493,
-'dicomweb:' + dcmimage1494,
-'dicomweb:' + dcmimage1495,
-'dicomweb:' + dcmimage1496,
-'dicomweb:' + dcmimage1497,
-'dicomweb:' + dcmimage1498,
-'dicomweb:' + dcmimage1499,
-'dicomweb:' + dcmimage1500,
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_1.dcm?alt=media&token=8e2e3794-7e93-db3c-2adaf3f9f904',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_2.dcm?alt=media&token=9385f093-7d2d-ffcc-96bc322e5ca8',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_3.dcm?alt=media&token=829e820d-e897-239a-286c732770a8',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_4.dcm?alt=media&token=b2843437-0f39-ba49-8061a870d023',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_5.dcm?alt=media&token=206611bb-f4d5-3e00-6fd24ebbeda3',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_6.dcm?alt=media&token=683ca4cd-d75d-d9c1-4c9cf8c14e76',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_7.dcm?alt=media&token=74fdf2b0-8e2f-ed4c-a246239f2be8',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_8.dcm?alt=media&token=c86f615a-6b01-c899-0b63131a2758',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_9.dcm?alt=media&token=f586702c-99e7-3f66-4dc83641dc7b',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_10.dcm?alt=media&token=d913cfc2-cd30-a541-1e09b852bc8d',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_11.dcm?alt=media&token=ddb030b7-e999-1b4e-b9b285844a73',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_12.dcm?alt=media&token=84b47f39-6691-898e-1c361e7ba299',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_13.dcm?alt=media&token=3c18544c-8549-9dba-29dbfa224d8e',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_14.dcm?alt=media&token=e956c3e6-4362-6a53-6959d2452c22',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_15.dcm?alt=media&token=5e9b11e4-e888-a3d8-903880c14714',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_16.dcm?alt=media&token=3b5d926e-45a5-82e5-07d57c55d126',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_17.dcm?alt=media&token=0b904169-27bb-8a0f-b18e970578bd',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_18.dcm?alt=media&token=ecd04d3d-48d5-25b2-f0c7c0472c9e',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_19.dcm?alt=media&token=22284d4f-be17-791c-04a0ba5a2e9e',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_20.dcm?alt=media&token=1eb0f1d1-c67a-5a08-0cd22811df39',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_21.dcm?alt=media&token=5c79fba2-909f-95d1-c722587131c3',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_22.dcm?alt=media&token=51da9814-4a8c-c38a-2c7d5c5c2a69',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_23.dcm?alt=media&token=b7206e20-c283-59a2-54315270317f',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_24.dcm?alt=media&token=cf91daaa-c05b-b6d1-ac3032432868',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_25.dcm?alt=media&token=bf8a1f43-5d96-f23b-f4300b5c0923',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_26.dcm?alt=media&token=d2a6bf8b-02a7-7a48-68ab9ee6e361',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_27.dcm?alt=media&token=4028298b-88ad-85f1-56db7edc326c',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_28.dcm?alt=media&token=db6a4857-d679-e8d5-5a900483519a',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_29.dcm?alt=media&token=796bfe5d-2abd-69ad-56e95a81e407',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_30.dcm?alt=media&token=0a2d18bb-0d2f-02b6-04102181b435',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_31.dcm?alt=media&token=8a28ea0e-2576-8685-b66f10b1a8a3',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_32.dcm?alt=media&token=64953e34-ae9a-0581-b524e5dc9551',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_33.dcm?alt=media&token=9c265a03-7f07-f6ce-f629fcad543b',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_34.dcm?alt=media&token=98250300-0882-5004-f31d88e2b150',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_35.dcm?alt=media&token=dd37ea68-1c8c-86bf-81eedc3a4ec8',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_36.dcm?alt=media&token=e5c44341-2d7d-25e2-108ba3a66ba0',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_37.dcm?alt=media&token=86b447ce-a466-69fb-b8c97882c882',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_38.dcm?alt=media&token=1c3d6220-329b-623f-8e1f5eb89fff',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_39.dcm?alt=media&token=79027abb-7a46-60dc-546b2ed41a91',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_40.dcm?alt=media&token=3cb58994-6a0b-fba8-bb7e2c07fd09',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_41.dcm?alt=media&token=63fa7bce-3245-5417-45245cd55a0d',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_42.dcm?alt=media&token=0f7d7644-f0ac-ef00-f57ce619582e',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_43.dcm?alt=media&token=38fc2d9b-8ca0-c45d-c3bbfc6c9d6e',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_44.dcm?alt=media&token=72806751-22e1-19c1-61162f82c025',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_45.dcm?alt=media&token=04a872c4-a151-f02e-56fef6f9d3fc',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_46.dcm?alt=media&token=c483d98a-cbd3-8ed9-3806d5132064',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_47.dcm?alt=media&token=52d9b944-684f-29e7-dd83d5d2dbc3',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_48.dcm?alt=media&token=7bc06bd4-2d7b-3ef6-953d0b63fb40',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_49.dcm?alt=media&token=c0c33fad-4f6d-e49a-f31f31afda55',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_50.dcm?alt=media&token=1b4f652a-f00e-e987-cfc75c022c60',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_51.dcm?alt=media&token=70b7b456-c42f-6041-62f507ed2d7f',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_52.dcm?alt=media&token=e2d39e5b-abce-c89d-716a133ffa34',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_53.dcm?alt=media&token=d2d9f110-dc2b-0e76-2bd98ffc698e',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_54.dcm?alt=media&token=0e328a83-a669-2f37-034bda4a5b1d',
+'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_55.dcm?alt=media&token=f157ed91-c50c-0fe1-95285e6a847d',
 ]
 
 export function thorax_explain(){
     return (
         <div className = "basic_sentenses">
             <h2>解説</h2>
-            <h2>STEP1. 胸腔の臓器を把握しよう</h2>
+            <h2>STEP1. 縦隔条件と肺野条件を見比べてみよう！</h2>
             <div className = "basic_sentense">
-               <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-               <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-               <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-               <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-               <p>スキルアップをしてみませんか？</p>
+               <VTR src = 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FThorax%2FVideos%2F%E8%82%BA%E9%87%8E%E6%9D%A1%E4%BB%B6%E3%81%A8%E7%B8%A6%E9%9A%94%E6%9D%A1%E4%BB%B6%E3%82%92%E8%A6%8B%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AE%E9%81%95%E3%81%84(%E4%B8%80%E9%83%A8%E3%83%8E%E3%82%A4%E3%82%BA%E3%81%82%E3%82%8A).mp4?alt=media&token=e73c7829-b387-4698-82bf-44180aeb9f0c'>
+               </VTR>
             </div>
-            <h2>STEP2. 縦隔の構造を理解しよう</h2>
+            <h2>STEP2. 縦隔の構造を理解しよう。</h2>
             <div className = "basic_sentense">
-                <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                <p>スキルアップをしてみませんか？</p>
+                <p>画像は縦隔条件にしてください。
+                頭側から甲状腺、胸腺、気管、食道、大動脈弓、上行大動脈、
+                下行大動脈、肺動静脈の位置を確認してみましょう。</p>
+                <h4>甲状腺と副甲状腺について</h4>
+                <VTR src = 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FThorax%2FVideos%2F%E7%94%B2%E7%8A%B6%E8%85%BA%E3%81%A8%E5%89%AF%E7%94%B2%E7%8A%B6%E8%85%BA%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6.mp4?alt=media&token=0d078c7b-dab0-4d5a-8e08-61a0ec9c463f'>
+               </VTR>
+               <div className = "basic_sentense">
+               <h4>胸腺について</h4>
+               <VTR src = 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FThorax%2FVideos%2F%E8%83%B8%E8%85%BA%E3%81%AE%E8%A6%8B%E6%96%B9.mp4?alt=media&token=ee8276c0-77ac-40be-bd74-3f1ea3ba6e13'>
+               </VTR>
+               </div>
+               <div className = "basic_sentense">
+               <h4>食道について</h4>
+               <VTR src = 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FThorax%2FVideos%2F%E9%A3%9F%E9%81%93%E3%81%AE%E8%A6%8B%E6%96%B9.mp4?alt=media&token=05c4e335-7cdb-4c91-ab9b-68f06d39834c'>
+               </VTR>
+               </div>
+               <div className = "basic_sentense">
+               <h4>大動脈と奇静脈について</h4>
+               <VTR src = 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FThorax%2FVideos%2F%E5%A4%A7%E5%8B%95%E8%84%88%E3%81%A8%E5%A5%87%E9%9D%99%E8%84%88.mp4?alt=media&token=902908b3-c5e7-40ee-ad52-252dc5b37a6f'>
+               </VTR>
+               </div>
+               <div className = "basic_sentense">
+               <h4>後縦隔について</h4>
+               <VTR src = 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FThorax%2FVideos%2F%E5%BE%8C%E7%B8%A6%E9%9A%94(%E8%84%8A%E9%AB%84)%E3%81%AE%E8%A6%8B%E6%96%B9.mp4?alt=media&token=6a9af8c3-6853-44a0-bac8-50586842e70c'>
+               </VTR>
+               </div>
             </div>
-            <h2>STEP3. 肺の構造を理解しよう</h2>
+            <h2>STEP3. 肺の構造を確認しよう。</h2>
             <div className = "basic_sentense">
-                <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                <p>スキルアップをしてみませんか？</p>
+                <p>画像は肺野条件にしてください。
+                肺区域、動静脈、気管支を確認してみましょう。</p>
+                <VTR src = 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FThorax%2FVideos%2F%E8%82%BA%E5%8C%BA%E5%9F%9F%E3%80%81%E5%8B%95%E9%9D%99%E8%84%88%E3%80%81%E6%B0%97%E7%AE%A1%E3%81%AE%E8%A6%8B%E5%88%86%E3%81%91%E6%96%B9.mp4?alt=media&token=188f522a-6981-4d3e-ba0d-2438932466b5'>
+               </VTR>
             </div>
-            <h2>STEP4. 気管支と間質を理解しよう</h2>
             <div className = "basic_sentense">
-                <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                <p>スキルアップをしてみませんか？</p>
-            </div>
-            <h2>STEP5. 心臓の構造を把握しよう</h2>
-            <div className = "basic_sentense">
-                <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                <p>スキルアップをしてみませんか？</p>
-            </div>
-            <h2>STEP6. 血管と気管支の走行を理解しよう</h2>
-            <div className = "basic_sentense">
-                <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。</p>
-                <p>医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。解説</p>
-                <p>はプロの放射線診断科医が作成しています。このツールを通して、普段放射線診断</p>
-                <p>医がどのように鑑別を行っているか垣間見ることができるでしょう。今こそ自分の</p>
-                <p>スキルアップをしてみませんか？</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
+                <p>　　　　　　　　　　　　　　　　　　　　　</p>
             </div>
         </div>
     )

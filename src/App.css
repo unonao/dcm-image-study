@@ -1,4 +1,78 @@
 /**
+      header
+**/
+header {
+  background: #0c4da2;
+  height: 100px;
+  color: White;
+  text-align: center;
+}
+.img_mnist{
+position: relative;
+top: 10px;
+right: 580px;
+}
+
+
+.img_github{
+ margin-right: 5px;
+ margin-left: 10px;
+}
+
+.head_box{
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+
+.contents {
+display: flex;
+}
+
+.content {
+margin: auto;
+height: 30px;
+width: 120px;
+margin-top: 14px;
+padding-bottom: auto;
+z-index: 10;
+}
+
+.content:hover {
+background-color: #799ecf;
+}
+
+a {
+color:white;
+text-decoration: none;
+}
+
+.sub-menu > ul {
+text-align: center;
+list-style: none;
+margin: 0;
+padding: 0;
+width: 200px;
+}
+
+.sub-menu > ul > li > a {
+text-decoration: none;
+color: #ffffff;
+}
+
+.sub-menu {
+background-color: #799ecf;
+width: 200px;
+display: none;
+}
+
+.content:hover .sub-menu {
+display: block;
+}
+
+
+/**
      footer
 **/
 footer {
@@ -111,9 +185,15 @@ footer {
   width: 47%;
   height: auto;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 40px;
   margin-bottom: 30px;
   padding: auto;
+}
+
+.row_body_sentense p{
+  width: 100%;
+  line-height: 40px;
+  font-size: medium;
 }
 
 .btn_txt {
@@ -151,6 +231,7 @@ footer {
 .exp_row {
   text-align: center;
   font-size: small;
+  width: 30%;
   letter-spacing: 0ch;
   padding: 3%;
   padding-bottom: 0%;
@@ -160,19 +241,73 @@ footer {
 
 .exp_row_img {
   height: 150px;
-  width: 170px;
+  width: 150px;
 }
 
 .exp_row p{
   text-align: left;
-  line-height: 1ch;
+  font-size: medium;
+  line-height: 25px;
+}
+
+/**
+============================================================
+                    Practice
+============================================================
+**/
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table tr{
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+table td:hover{
+  background-color: #d4f0fd;
+}
+
+table th,table td{
+  text-align: center;
+  width: 13%;
+  padding: 15px 0;
+}
+
+.practice_sample a{
+  color: black;
+}
+
+/**
+============================================================
+                    Head
+============================================================
+**/
+.Head{
+  background-color: rgb(239, 253, 249);
+}
+
+.Head_contents{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 10px;
+}
+
+.Head_viewer{
+  display: grid;
+  height: 512px;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
 }
 
 
 
-
 /**
-   Basic
+============================================================
+                      Basic
+============================================================
 **/
 
 .row_basic {
@@ -209,6 +344,10 @@ footer {
 
 .basic_sentense{
   text-align: left;
+}
+
+.basic_sentense h3{
+  text-align: center;
 }
 
 /*Quiz*/
@@ -258,41 +397,27 @@ footer {
 
 .quiz_text{
   height:60px;
-  width: 420px;
+  width: 500px;
   padding-left: 5px;
   margin-top: 5px;
   overflow-y: scroll;
   border: solid 2px;
 }
 
-.answer_boxies{
-  position: relative;
-  left:45%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap:10px;
-  padding: 5px;
-  width: 50%;
-  line-height: auto;
-}
-
-.answer_boxies>label{
-  position: relative;
-  top: 7px;
-  text-align: right;
+.quiz_btn{
+  color: white;
+  background-color: greenyellow;
   font-size: large;
-  font-family: Verdana;
-  margin: 2px;
 }
 
-.answer_boxies>select{
-  font-size: medium;
+.choice_box{
+  margin-left: 5px;
 }
 
 .answer_box{
   margin-left: 5%;
   margin-top: 5px;
-  width: 70px;
+  width: 120px;
   height: 60px;
 }
 
@@ -328,14 +453,66 @@ footer {
   border-radius: 10px;
 }
 
+/*===============================================
+=================================================
+
+                      viewer
+
+==================================================
+=================================================/*
 
 
-/* viewer */
+/* ========================================
+           viewer header
+==============================================*/
+.practice_contents{
+  position:static;
+}
+
+.viewer_header{
+  display: flex;
+  column-gap: 80px;
+  grid-column: 1/5;
+  background-color: green;
+  height: 45px;
+  margin: 0%;
+  padding: 0%;
+  padding-left: 20px;
+}
+
+.label_menu{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  column-gap:10px;
+}
+
+.label{
+  color: antiquewhite;
+}
+
+.label_box h3{
+  text-align: center;
+  background-color: white;
+  height: 75%;
+  width: 150%;
+}
+
+
+.id_num h3{
+  width: 150px;
+}
+
+/* ================================================
+              viewer propaty
+===================================================*/
 .viewer_propaties {
+  width: 100%;
   display: grid;
-  grid-template-columns: 2fr 0.7fr 1.5fr 3fr;
+  grid-template-columns: 25% 20% 52%;
   grid-row: inherit;
-  gap: 10px;
+  height: 280px;
+  column-gap: 10px;
   background:rgb(255, 197, 131);
 }
 
@@ -343,7 +520,7 @@ footer {
   display: grid;
   text-align: center;
   gap: 5px;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 15% 15% 15% 15% 15% 15%;
   grid-row: inherit;
   padding: 5px;
   margin: 5px;
@@ -364,8 +541,8 @@ footer {
 }
 
 .tool_icon{
-  width: 40px;
-  height: 35px;
+  width: 100%;
+  height: 90%;
 }
 
 .propaty{
@@ -374,9 +551,14 @@ footer {
   color: black;
   padding: 5px;
   padding-bottom: 0%;
+  margin-top: 0%;
   margin: 5px;
   border: solid 3px;
   border-radius: 10px;
+}
+
+.tool_info{
+  display: flex;
 }
 
 .window{
@@ -398,8 +580,8 @@ footer {
 }
 
 .tool_img{
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
 }
 
 .form_tool{
@@ -413,20 +595,11 @@ footer {
   padding: 5px;
   margin: 5px;
   border: solid 3px;
-  border-radius: 10px;
+  border-radius: 0px;
   background-color: ghostwhite;
-}
-
-.age_sex{
-  text-align: center;
-  height: 50px;
-}
-
-.info{
   overflow-y: scroll;
-  border: solid 2px;
-  padding-left: 5px;
 }
+
 
 .Numbers{
   display: flex;
@@ -454,17 +627,26 @@ footer {
   cursor: default;
 }
 
+/*=============================================
+                 viewer
+==============================================*/
+.viewsize{
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+}
+
 .viewers {
   display: grid;
   background-color: black;
-  grid-template-columns: 450px 450px 450px;
+  grid-template-columns: 33% 33% 33%;
   grid-template-rows: 256px 256px;
   margin-bottom: 10px;
 }
 
 .viewers_click {
   display: grid;
-  grid-template-columns: 675px 337.5px 337.5px;
+  grid-template-columns: 50% 25% 25%;
   grid-template-rows: 256px 256px;
   margin-bottom: 10px;
 }

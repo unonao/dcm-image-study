@@ -1,35 +1,30 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
 import {Header,Footer} from '../App';
-import { head_CT_dicom , head_CT_explain ,anno_head } from "./Head";
 import { thorax_dicom , thorax_explain } from "./Thorax";
 import { abdomen_dicom , abdomen_explain } from "./Abdomen";
+import { pelvis_ct , pelvis_explain } from "./Pelvis";
+import { CT_explain } from "./Diagnostic_imaging";
 
-var dicomdata= {
-    'head':head_CT_dicom,
-    'thorax': thorax_dicom,
-    'abdomen':abdomen_dicom,
-}
 var explaindata= {
-    'head':head_CT_explain(),
+    'ct':CT_explain(),
     'thorax':thorax_explain(),
     'abdomen':abdomen_explain(),
+    'pelvis':pelvis_explain(),
 };
 
-var annodata={
-    'head':anno_head,
-}
-
 const img_list = {
-    'head':[head_CT_dicom,anno_head],
+    'ct':[thorax_dicom],
     'thorax':[thorax_dicom],
     'abdomen':[abdomen_dicom],
+    'pelvis':[pelvis_ct]
 }
 
 const img_list_name = {
-    'head':['頭部CT','頭部動脈アノテーション'],
+    'ct':['胸部CT'],
     'thorax':['胸部CT'],
     'abdomen':['腹部CT'],
+    'pelvis':['女性骨盤CT']
 }
 
 const get_img = function(myprop){
@@ -74,10 +69,10 @@ class ExamplePageBasic extends Component {
         imageIdIndex: 0,
         isPlaying: false,
         frameRate: 5,
-        imageIds: dicomdata[this.props.myprop]
+        imageIds: img_list[this.props.myprop][0]
         };
     };
-
+   //compomet
     render() {
         return (
         <div>
