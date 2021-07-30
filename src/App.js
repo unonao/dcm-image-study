@@ -4,9 +4,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
 
 // Routes
+import { basicDiagnosis } from "./components/Diagnostic_imaging";
 import ExamplePageBasic from './components/ExamplePageBasic.js';
 import Viewer from './components/ExamplePageViewer.js';
 import Head from './components/Head';
+import Pelvis from "./components/Pelvis";
 
 //images
 import githubimg from './components/images/github.png'
@@ -110,6 +112,7 @@ export function Header() {
           <a href="/basic/">lecture <span>▼</span></a>
           <div className='sub-menu'>
            <ul>
+             <li><a href="/base/">基本事項</a></li>
              <li><a href="/basic/head/">頭部の正常構造と機能</a></li>
              <li><a href="/basic/thorax/">胸部の正常構造と機能</a></li>
              <li><a href="/basic/abdomen/">腹部の正常構造と機能</a></li>
@@ -142,7 +145,8 @@ export function Footer() {
           </div>
         </div>
         <div class="button">
-         <button class = "btn">CONTACT</button>
+         <button class = "btn"><a rel="noreferrer" href='https://docs.google.com/forms/d/e/1FAIpQLScjbavDL6OZIceMCKTC1tIolA6jvbM-em4QBX9kvKcbeLCfUg/viewform' target="_blank">
+           CONTACT</a></button>
         </div>
         <div class = "bottom">©MNiST</div>
       </div>
@@ -226,24 +230,6 @@ function explaination(){
       {Header()}
       </div>
     <div className='explanation'>
-    <div className="exp">
-        <h2>画像診断</h2>
-        <div className="exp_row">
-          <h3>CT</h3>
-          <p>この章ではCTに関する基本的な事項についてまとめていきます。</p>
-          {ExampleEntry({title:'GO',url:'/basic/ct',})}
-        </div>
-        <div className="exp_row">
-          <h3>MRI</h3>
-          <p>この章ではMRIに関する基本的な事項についてまとめていきます。</p>
-          {ExampleEntry({title:'GO',url:'/basic/mri',})}
-        </div>
-        <div className="exp_row">
-          <h3>X線</h3>
-          <p>この章ではX線に関する基本的な事項についてまとめていきます。</p>
-          {ExampleEntry({title:'GO',url:'/basic/x_ray',})}
-        </div>
-      </div>
       <div className="exp">
         <h2>頭部</h2>
         <div>
@@ -422,7 +408,7 @@ function AppRouter() {
                                              </div>});
   const thorax = () => Example({ children: <ExamplePageBasic myprop='thorax'/> });
   const abdomen = () => Example({ children: <ExamplePageBasic myprop='abdomen'/> });
-  const pelvis = () => Example({ children: <ExamplePageBasic myprop='pelvis'/> });
+  const pelvis = () => Example({ children: <Pelvis/> });
   const viewer = () => Example({ children: <Viewer myprop='stack' img_list={sample_list} text={<p>精査</p>} quiz_list={quiz_list} patientInfo={['999999999','63','男性']}/> });
   const head705601001 = () => Example({ children: <Viewer img_list={img_705601001} text={text_705601001} quiz_list={quiz_705601001} patientInfo={['705601001','80代','男性']}/> });
   const head701401002 = () => Example({ children: <Viewer img_list={img_701401002} text={text_701401002} quiz_list={quiz_701401002} patientInfo={['701401002','60代','男性']}/> });
@@ -438,6 +424,7 @@ function AppRouter() {
           <Route exact path="/" component={Index} />
           <Route exact path="/log/" render={subauth} />
           <Route exact path="/auth/" render={auth} />
+          <PrivateRoute exact path="/base/" render={basicDiagnosis} />
           <PrivateRoute exact path="/basic/" render={explaination} />
           <PrivateRoute exact path="/basic/ct/" render={ct} />
           <PrivateRoute exact path="/basic/head/" render={head} />

@@ -1,5 +1,47 @@
 import React from 'react';
+import {Header,Footer} from '../App';
 
+function ExampleEntry({ title, url, text, target=undefined }) {
+    return (
+      <div>
+        <p><span className="btn_txt">{text}</span></p>
+        <h5>
+          <a href={url} target={target}><button className="row body_btn">{title}</button></a>
+        </h5>
+      </div>
+    );
+  }
+
+export function basicDiagnosis(){
+    return(
+    <div>
+      <div>
+      {Header()}
+      </div>
+      <div className='explanation'>
+        <div className="exp">
+        <h2>基礎事項</h2>
+        <div className="exp_row">
+          <h3>CT</h3>
+          {ExampleEntry({title:'GO',url:'/basic/ct',})}
+        </div>
+        <div className="exp_row">
+          <h3>MRI</h3>
+          {ExampleEntry({title:'GO',url:'/basic/mri',})}
+        </div>
+        <div className="exp_row">
+          <h3>X線</h3>
+
+          {ExampleEntry({title:'GO',url:'/basic/x_ray',})}
+        </div>
+       </div>
+      </div>
+      <div>
+        {Footer()}
+      </div>
+    </div>
+    )
+}
 export function CT_explain(){
     return (
         <div className = "basic_sentenses">
