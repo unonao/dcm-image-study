@@ -1,38 +1,50 @@
 # dcm-image-study
-医療画像の勉強サイト
+React + cornerstone tools + Firebase を利用した医療画像の勉強サイト
 
-# 開発の仕方
-詳細は CONTRIBUTING.md を参照のこと
 
-# Structure
-React + React router
+## 開発の準備
+### 1. Firebase CLI のインストール
 
+windows:
 ```
-react-todo-list
-├── README.md
-├── node_modules
-├── package.json
-├── .gitignore
-├── public ← buildする必要のないコンテンツを配置する(画像など)
-│   ├── favicon.ico ← ブラウザのタグに表示されるIcon
-│   ├── index.html ← 【重要】メインのHTMLファイル
-│   └── manifest.json <- ウェブアプリマニフェスト
-└── src ← buildが必要なソースコードを配置する
-    ├── App.css ← Appコンポーネント用のCSSファイル
-    ├── App.js ← Appコンポーネントの定義ファイル
-    ├── App.test.js ← Appコンポーネントのテストファイル(`$ npm test` にて使用される)
-    ├── index.css ← HTML全体に適用するCSSファイル
-    ├── index.js ← 【重要】ビルド時のエントリーポイント、ReactコンポーネントをHTMLへの適用やservice workerの登録を行っている。
-    ├── logo.svg ← ぐるぐる回っているロゴ
-    └── serviceWorker.js ← service workerで動作させるソースコードファイル(今回は扱わない)
+npm install -g firebase-tools
 ```
 
-- Creat React app : https://create-react-app.dev/docs/getting-started
-    - このソースコードは元々は create react app で作成しています
-    - 基本のフォルダ構成：https://create-react-app.dev/docs/folder-structure
-- [Facebook公式のcreate-react-appコマンドを使ってReact.jsアプリを爆速で作成する](https://qiita.com/chibicode/items/8533dd72f1ebaeb4b614)
-    - npm の使い方とか分かりやすいですかね
-- React router : https://reactrouter.com/web/guides/quick-start
-    - npm install react-router-dom でインストール済み
-    - Creat React app してできたファイルを React router が使うように書き換えています。
-- react-cornerstone-viewport
+mac,linux:
+```
+curl -sL https://firebase.tools | bash
+```
+
+### 2. ライブラリのインストール(最初か、他の人が新しいライブラリをpackage-lock.jsonに加えるたびに行う)
+```
+npm install
+```
+
+### 3. .env ファイルについて Y.H さんに聞く
+.envファイルはセキュリティの観点から公開しないこと
+
+
+-----
+
+## ローカルでの起動方法
+```
+npm start
+```
+
+-----
+
+## デプロイの仕方
+### 1. Firebase CLIにLogin
+```
+$ firebase login
+```
+
+### 2. buildファイルの作成
+```
+$ npm run build
+```
+
+### 3. deployする
+```
+$ firebase deploy
+```
