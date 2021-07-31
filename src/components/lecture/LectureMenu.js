@@ -14,17 +14,17 @@ export function LectureMenu() {
                     <div className="exp_row">
                         <h3>CT</h3>
                         <p>この章ではCTに関する基本的な事項についてまとめていきます。</p>
-                        {LinkButton({ title: 'GO', url: '/basic/ct', })}
+                        {LinkButton({ title: 'GO', url: '/lecture/ct', })}
                     </div>
                     <div className="exp_row">
                         <h3>MRI</h3>
                         <p>この章ではMRIに関する基本的な事項についてまとめていきます。</p>
-                        {LinkButton({ title: 'GO', url: '/basic/mri', })}
+                        {LinkButton({ title: 'GO', url: '/lecture/mri', })}
                     </div>
                     <div className="exp_row">
                         <h3>X線</h3>
                         <p>この章ではX線に関する基本的な事項についてまとめていきます。</p>
-                        {LinkButton({ title: 'GO', url: '/basic/x_ray', })}
+                        {LinkButton({ title: 'GO', url: '/lecture/x_ray', })}
                     </div>
                 </div>
                 <div className="exp">
@@ -35,7 +35,7 @@ export function LectureMenu() {
                             <h3>頭部の正常解剖と構造</h3>
                             <p>この章では頭部の正常画像をもとに、
                                 頭部の解剖学的構造を理解しながら頭部診断時のルーティンを確認します。</p>
-                            {LinkButton({ title: 'GO', url: '/basic/head', })}
+                            {LinkButton({ title: 'GO', url: '/lecture/head', })}
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@ export function LectureMenu() {
                             <h3>胸部の正常解剖と構造</h3>
                             <p>この章では胸部の正常画像をもとに、
                                 胸部の解剖学的構造を理解しながら胸部診断時のルーティンを確認します。</p>
-                            {LinkButton({ title: 'GO', url: '/basic/thorax', })}
+                            {LinkButton({ title: 'GO', url: '/lecture/thorax', })}
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ export function LectureMenu() {
                             <h3>腹部の正常解剖と構造</h3>
                             <p>この章では腹部の正常画像をもとに、
                                 腹部の解剖学的構造を理解しながら腹部診断時のルーティンを確認します。</p>
-                            {LinkButton({ title: 'GO', url: '/basic/abdomen', })}
+                            {LinkButton({ title: 'GO', url: '/lecture/abdomen', })}
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ export function LectureMenu() {
                             <h3>骨盤部の正常解剖と構造</h3>
                             <p>この章では骨盤部の正常画像をもとに、
                                 骨盤部の解剖学的構造を理解しながら骨盤部診断時のルーティンを確認します。</p>
-                            {LinkButton({ title: 'GO', url: '/basic/pelvis', })}
+                            {LinkButton({ title: 'GO', url: '/lecture/pelvis', })}
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@ import { LinkButton } from './parts/LinkButton';
 export function Home() {
     const examples1 = {
         title: '進む',
-        url: '/basic',
+        url: '/lecture',
         text: '解説ページへ',
     };
     const examples2 = {
@@ -12,14 +12,6 @@ export function Home() {
         url: '/practice_menu',
         text: '演習ページへ',
     };
-
-    // MOST COMPLEX: (mini viewer)
-    // - (mini viewer) Dynamic Grid + Global Tool Sync + Changing Tools
-    // Misc. Other Props: (just list them all, prop-types, basic comments for docs)
-    // - onElementEnabled (escape hatch)
-    // - eventListeners
-    // - isStackPrefetchEnabled
-    // - react-resize-observer
 
     return (
         <div className="container">
