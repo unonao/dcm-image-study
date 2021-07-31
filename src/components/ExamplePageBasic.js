@@ -1,91 +1,86 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
-import {Header,Footer} from '../App';
-import { thorax_dicom , thorax_explain } from "./Thorax";
-import { abdomen_dicom , abdomen_explain } from "./Abdomen";
-import { pelvis_ct , pelvis_explain } from "./Pelvis";
+import { thorax_dicom, thorax_explain } from "./Thorax";
+import { abdomen_dicom, abdomen_explain } from "./Abdomen";
+import { pelvis_ct, pelvis_explain } from "./Pelvis";
 import { CT_explain } from "./Diagnostic_imaging";
 
-var explaindata= {
-    'ct':CT_explain(),
-    'thorax':thorax_explain(),
-    'abdomen':abdomen_explain(),
-    'pelvis':pelvis_explain(),
+var explaindata = {
+    'ct': CT_explain(),
+    'thorax': thorax_explain(),
+    'abdomen': abdomen_explain(),
+    'pelvis': pelvis_explain(),
 };
 
 const img_list = {
-    'ct':[thorax_dicom],
-    'thorax':[thorax_dicom],
-    'abdomen':[abdomen_dicom],
-    'pelvis':[pelvis_ct]
+    'ct': [thorax_dicom],
+    'thorax': [thorax_dicom],
+    'abdomen': [abdomen_dicom],
+    'pelvis': [pelvis_ct]
 }
 
 const img_list_name = {
-    'ct':['胸部CT'],
-    'thorax':['胸部CT'],
-    'abdomen':['腹部CT'],
-    'pelvis':['女性骨盤CT']
+    'ct': ['胸部CT'],
+    'thorax': ['胸部CT'],
+    'abdomen': ['腹部CT'],
+    'pelvis': ['女性骨盤CT']
 }
 
-const get_img = function(myprop){
+const get_img = function (myprop) {
     var option_list = [];
-    for(let i=0;i<=img_list[myprop].length-1;i++){
+    for (let i = 0; i <= img_list[myprop].length - 1; i++) {
         option_list.push(<option value={String(i)}>{img_list_name[myprop][i]}</option>);
     }
     return option_list
 }
 
 class ExamplePageBasic extends Component {
-    constructor(props){
-      super(props);
-    this.state = {
-        activeViewportIndex: 0,
-        viewports: [0],
-        tools: [
-            // Mouse
-            {
-                name: 'Wwwc',
-                mode: 'active',
-                modeOptions: { mouseButtonMask: 1 },
-            },
-            {
-                name: 'Zoom',
-                mode: 'active',
-                modeOptions: { mouseButtonMask: 2 },
-            },
-            {
-                name: 'Pan',
-                mode: 'active',
-                modeOptions: { mouseButtonMask: 4 },
-            },
-            // Scroll
-            { name: 'StackScrollMouseWheel', mode: 'active' },
-            // Touch
-            { name: 'PanMultiTouch', mode: 'active' },
-            { name: 'ZoomTouchPinch', mode: 'active' },
-            { name: 'StackScrollMultiTouch', mode: 'active' },
-        ],
-        activeTool: 'Wwwc',
-        imageIdIndex: 0,
-        isPlaying: false,
-        frameRate: 5,
-        imageIds: img_list[this.props.myprop][0]
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeViewportIndex: 0,
+            viewports: [0],
+            tools: [
+                // Mouse
+                {
+                    name: 'Wwwc',
+                    mode: 'active',
+                    modeOptions: { mouseButtonMask: 1 },
+                },
+                {
+                    name: 'Zoom',
+                    mode: 'active',
+                    modeOptions: { mouseButtonMask: 2 },
+                },
+                {
+                    name: 'Pan',
+                    mode: 'active',
+                    modeOptions: { mouseButtonMask: 4 },
+                },
+                // Scroll
+                { name: 'StackScrollMouseWheel', mode: 'active' },
+                // Touch
+                { name: 'PanMultiTouch', mode: 'active' },
+                { name: 'ZoomTouchPinch', mode: 'active' },
+                { name: 'StackScrollMultiTouch', mode: 'active' },
+            ],
+            activeTool: 'Wwwc',
+            imageIdIndex: 0,
+            isPlaying: false,
+            frameRate: 5,
+            imageIds: img_list[this.props.myprop][0]
         };
     };
-   //compomet
+    //compomet
     render() {
         return (
-        <div>
-            <div>
-                {Header()}
-            </div>
-            <div className = "basic_contents">
-                <div className = "basic_content">
+            <div className="basic_contents">
+                <div className="basic_content">
                     <h2>Viewer</h2>
-                    <div style={{padding:'0px',width: '100%', display: 'flex', flexWrap: 'wrap' }}>
+                    <div style={{ padding: '0px', width: '100%', display: 'flex', flexWrap: 'wrap' }}>
                         <CornerstoneViewport
                             tools={this.state.tools}
-                            style={{minWidth: '50%', height: '512px', flex: '1'}}
+                            style={{ minWidth: '50%', height: '512px', flex: '1' }}
                             imageIds={this.state.imageIds}
                             imageIdIndex={this.state.imageIdIndex}
                             isPlaying={this.state.isPlaying}
@@ -156,7 +151,7 @@ class ExamplePageBasic extends Component {
                                 <div className="form-group">
                                     <label htmlFor="image-id-index">
                                         Image ID Index:
-                                       </label>
+                                    </label>
                                     <input
                                         type="number"
                                         min="0"
@@ -205,10 +200,6 @@ class ExamplePageBasic extends Component {
                 </div>
                 {explaindata[this.props.myprop]}
             </div>
-            <div>
-                {Footer()}
-            </div>
-        </div>
         );
     }
 }
