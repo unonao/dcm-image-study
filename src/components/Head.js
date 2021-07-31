@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
-import { Header, Footer } from '../App';
 
 //const Head_CT =Get_Dicom_Image('/Explanation/Head/Head_CT/','2_',1,41)
 
