@@ -1,27 +1,25 @@
 import "./App.css"
 
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch, Redirect, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 // Routes
 import ExamplePageBasic from './components/ExamplePageBasic.js';
+
+//
 import Viewer from './components/ExamplePageViewer.js';
 import Head from './components/Head';
 
-//images
-import githubimg from './components/images/github.png'
-import mnesimg from './components/images/logo_mnes.jpg'
-import laimeimg from './components/images/logo_white.png'
-import mnistimg from './components/images/MNiST.png'
-import image1 from './components/images/28774EB8-7CDC-4656-9D36-406A7B4F1AEC.png'
-import headimg from './components/images/Head.jpg'
-import thoraximg from './components/images/Thorax.jpg'
-import abdomenimg from './components/images/Abdomen.jpg'
-import pelvisimg from './components/images/Pelvis.jpg'
+// components
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
+import { Home } from "./components/Home";
+import { LectureMenu } from "./components/lecture/LectureMenu";
+import PracticeMenu from "./components/practice/PracticeMenu"
+
 
 // cornerstone tools
 import initCornerstone from './initCornerstone.js';
-import { auth } from './firebase';
 import { Auth, SubAuth } from './components/userAuth';
 import { useAuthContext, AuthProvider } from './AuthContext';
 
@@ -38,12 +36,7 @@ import { Quiz, ViewerQuiz, ViewerQuizArrowAnnotate, ViewerQuizFreehand } from '.
 // cornerstone tools の初期化
 initCornerstone();
 
-/**
- *
- *
- * @param {*} { href, text }
- * @returns
- */
+
 const PrivateRoute = ({ render, ...rest }) => {
   const { user } = useAuthContext();
   return (
@@ -66,289 +59,8 @@ const PrivateRoute = ({ render, ...rest }) => {
 };
 
 
-const Log = () => {
-  const user = auth.currentUser;
-
-  if (user) {
-    return (<div><p><a href="/auth">{user.displayName}</a></p></div>)
-  } else {
-    return (<p><a href="/log">ログイン</a></p>)
-  }
-}
-
-/**
- *
- *
- * @param {*} { title, url, text, screenshotUrl }
- * @returns
- */
-function ExampleEntry({ title, url, text, target = undefined }) {
-  return (
-    <div>
-      <p><span className="btn_txt">{text}</span></p>
-      <h5>
-        <Link to={url} target={target}><button className="row body_btn">{title}</button></Link>
-      </h5>
-    </div>
-  );
-}
 
 
-export function Header() {
-  return (
-    <header className="head">
-      <div className='head_box'>
-        <div>
-          <a rel='noreferrer' href="https://github.com/unonao/dcm-image-study" target="_blank"><img class="img img_github" src={githubimg} width="50" height="50" alt="github"></img></a>
-        </div>
-        <div className='login'>
-          <a href="/auth">{Log()}</a>
-        </div>
-      </div>
-      <div className="contents">
-        <div className="content">
-          <a href="/">home</a>
-        </div>
-        <div className="content">
-          <a href="/basic/">lecture <span>▼</span></a>
-          <div className='sub-menu'>
-            <ul>
-              <li><a href="/basic/head/">頭部の正常構造と機能</a></li>
-              <li><a href="/basic/thorax/">胸部の正常構造と機能</a></li>
-              <li><a href="/basic/abdomen/">腹部の正常構造と機能</a></li>
-              <li><a href="/basic/pelvis/">骨盤部の正常構造と機能</a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="content">
-          <a href="/practice_menu/" >practice</a>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-export function Footer() {
-  return (
-    <footer>
-      <div className="foots">
-        <div className="foot">関連団体</div>
-        <div className="link_imgs">
-          <div className='link_img'>
-            <a rel="noreferrer" href="https://mnes.life/" target="_blank"><img class="img" border="0" width="250" height="125" src={mnesimg} alt="MNES"></img></a>
-          </div>
-          <div className='link_img'>
-            <a rel="noreferrer" href="https://laime-ml.github.io/?fbclid=IwAR2ETxkW4ZUq9oRqd7Mn04ffzviU7GYSrS3Ho3SzAsgkB5wmxdrhR8QzLi4" target="_blank"><img class="img" border="1" width="330" height="125" src={laimeimg} alt="LAIME"></img></a>
-          </div>
-          <div className='link_img'>
-            <a rel="noreferrer" href="https://sites.google.com/mnes.org/mnist-official/home" target="_blank"><img class="img" width="240" height="125" src={mnistimg} alt="MNiST"></img></a>
-          </div>
-        </div>
-        <div class="button">
-          <button class="btn">CONTACT</button>
-        </div>
-        <div class="bottom">©MNiST</div>
-      </div>
-    </footer>
-  )
-};
-
-function Index() {
-  const examples1 = {
-    title: '進む',
-    url: '/basic',
-    text: '解説ページへ',
-  };
-  const examples2 = {
-    title: '進む',
-    url: '/practice_menu',
-    text: '演習ページへ',
-  };
-  // MOST COMPLEX: (mini viewer)
-  // - (mini viewer) Dynamic Grid + Global Tool Sync + Changing Tools
-  // Misc. Other Props: (just list them all, prop-types, basic comments for docs)
-  // - onElementEnabled (escape hatch)
-  // - eventListeners
-  // - isStackPrefetchEnabled
-  // - react-resize-observer
-
-  return (
-    <div className="container">
-      <div className="row" >
-        <h1 className="row_head">画像診断勉強ツール「dcm-image-study」へようこそ！</h1>
-      </div>
-      <div>
-        <img className="row_head_img" src={image1} alt='background'></img>
-      </div>
-      <div className="row">
-        <div className="row_body">
-          <h2 className="thema"><span className='under'>使いやすいツールを目指して</span></h2>
-          <div className="row_body_sentense">
-            <p>このツールは,放射線診断科医、医学生、情報科の学生によって作られたものです。
-              医学生が欲しいものを形にしたので、効率よく勉強できる形になっています。
-              解説はプロの放射線診断科医が作成しています。
-              このツールを通して、普段放射線診断医がどのように鑑別を行っているか垣間見ることができるでしょう。
-              今こそ自分のスキルアップをしてみませんか？</p>
-          </div>
-        </div>
-        <div className="row_body">
-          <h2 className="thema"><span className='under'>厳選された症例と洗練された解説</span></h2>
-          <div className="row_body_sentense">
-            <p>このツールで使用している症例は、医学生と医師が話し合いを重ね、学習効果の高いものばかりを扱っています。
-              １つの症例から多くのことを吸収できるはずです。
-              解説は、放射線診断医監修のもと医学生で作成しています。
-              医学生目線で作成していますので、本当に知りたかった部分がここで分かるかもしれません。</p>
-          </div>
-          {ExampleEntry(examples1)}
-        </div>
-        <div className="row_body">
-          <h2 className="thema"><span className='under'>すぐに、実戦</span></h2>
-          <div className="row_body_sentense">
-            <p>画像診断は、ただ見ていればできるようになるという甘いものではありません。
-              できる人の話を聞きながら、自ら手を動かし、考えながら学習をすることで習得していくものです。
-              そこで、このツールでは、ビューワーを用いながら実際に診断の練習ができるような形にしました。
-              解説ページと合わせて実戦練習を積むことでより高い学習効果が期待できます。</p>
-          </div>
-          {ExampleEntry(examples2)}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function explaination() {
-  return (
-    <div>
-      <div className='explanation'>
-        <div className="exp">
-          <h2>画像診断</h2>
-          <div className="exp_row">
-            <h3>CT</h3>
-            <p>この章ではCTに関する基本的な事項についてまとめていきます。</p>
-            {ExampleEntry({ title: 'GO', url: '/basic/ct', })}
-          </div>
-          <div className="exp_row">
-            <h3>MRI</h3>
-            <p>この章ではMRIに関する基本的な事項についてまとめていきます。</p>
-            {ExampleEntry({ title: 'GO', url: '/basic/mri', })}
-          </div>
-          <div className="exp_row">
-            <h3>X線</h3>
-            <p>この章ではX線に関する基本的な事項についてまとめていきます。</p>
-            {ExampleEntry({ title: 'GO', url: '/basic/x_ray', })}
-          </div>
-        </div>
-        <div className="exp">
-          <h2>頭部</h2>
-          <div>
-            <div className="exp_row">
-              <img className="exp_row_img" src={headimg} alt='headimg'></img>
-              <h3>頭部の正常解剖と構造</h3>
-              <p>この章では頭部の正常画像をもとに、
-                頭部の解剖学的構造を理解しながら頭部診断時のルーティンを確認します。</p>
-              {ExampleEntry({ title: 'GO', url: '/basic/head', })}
-            </div>
-          </div>
-        </div>
-        <div className="exp">
-          <h2>胸部</h2>
-          <div>
-            <div className="exp_row">
-              <img className="exp_row_img" src={thoraximg} alt='thoraximg'></img>
-              <h3>胸部の正常解剖と構造</h3>
-              <p>この章では胸部の正常画像をもとに、
-                胸部の解剖学的構造を理解しながら胸部診断時のルーティンを確認します。</p>
-              {ExampleEntry({ title: 'GO', url: '/basic/thorax', })}
-            </div>
-          </div>
-        </div>
-        <div className="exp">
-          <h2>腹部</h2>
-          <div>
-            <div className="exp_row">
-              <img className="exp_row_img" src={abdomenimg} alt='abdoimg'></img>
-              <h3>腹部の正常解剖と構造</h3>
-              <p>この章では腹部の正常画像をもとに、
-                腹部の解剖学的構造を理解しながら腹部診断時のルーティンを確認します。</p>
-              {ExampleEntry({ title: 'GO', url: '/basic/abdomen', })}
-            </div>
-          </div>
-        </div>
-        <div className="exp">
-          <h2>骨盤部</h2>
-          <div>
-            <div className="exp_row">
-              <img className="exp_row_img" src={pelvisimg} alt='pelvisimg'></img>
-              <h3>骨盤部の正常解剖と構造</h3>
-              <p>この章では骨盤部の正常画像をもとに、
-                骨盤部の解剖学的構造を理解しながら骨盤部診断時のルーティンを確認します。</p>
-              {ExampleEntry({ title: 'GO', url: '/basic/pelvis', })}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function practice_menu() {
-  return (
-    <div>
-      <div className='explanation'>
-        <table>
-          <tr>
-            <th>　　</th>
-            <th>部位</th>
-            <th>Level A</th>
-            <th>Level B</th>
-            <th>Level C</th>
-            <th>Level D</th>
-            <th>Level E</th>
-          </tr>
-          <tr>
-            <th class="icon bird"><img className="exp_row_img" src={headimg} alt='頭'></img></th>
-            <th>頭部</th>
-            <td onClick={() => { window.open('/grid/705601001', '_blank') }}>705601001</td>
-            <td onClick={() => { window.open('/grid/701401002', '_blank') }}>701401002</td>
-            <td onClick={() => { window.open('/grid/707712001', '_blank') }}>707712001</td>
-            <td onClick={() => { window.open('/grid/700800001', '_blank') }}>700800001</td>
-            <td onClick={() => { window.open('/grid/707711002', '_blank') }}>707711002</td>
-          </tr>
-          <tr>
-            <th class="icon whale"><img className="exp_row_img" src={thoraximg} alt='胸'></img></th>
-            <th>胸部</th>
-            <td>0400601001</td>
-            <td>0403911001</td>
-            <td>0403501001</td>
-            <td>0400112001</td>
-            <td>0407801001</td>
-          </tr>
-          <tr>
-            <th class="icon crab"><img className="exp_row_img" src={abdomenimg} alt='腹'></img></th>
-            <th>腹部</th>
-            <td>　　</td>
-            <td>　　</td>
-            <td>　　</td>
-            <td>　　</td>
-            <td>　　</td>
-          </tr>
-          <tr>
-            <th class="icon whale"><img className="exp_row_img" src={pelvisimg} alt='胸'></img></th>
-            <th>骨盤部</th>
-            <td>0901012003</td>
-            <td>0901101001</td>
-            <td>0901702001</td>
-            <td>0808201002</td>
-            <td>0807912001</td>
-          </tr>
-        </table>
-      </div>
-      <div className='practice_sample'>
-        <p><a href="/grid/viewer" target="_blank">サンプル</a></p>
-      </div>
-    </div>
-  );
-}
 
 const stack1 = [
   'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.7.dcm',
@@ -419,23 +131,24 @@ function AppRouter() {
   const head700800001 = () => Example({ children: <Viewer img_list={img_700800001} text={text_700800001} quiz_list={quiz_700800001} patientInfo={['700800001', '50代', '男性']} /> });
   const head707711002 = () => Example({ children: <Viewer img_list={img_707711002} text={text_707711002} quiz_list={quiz_707711002} patientInfo={['701401002', '30代', '女性']} /> });
 
+
   return (
     <div>
       <Router basename={process.env.PUBLIC_URL}>
-        <Switch>
-          <Route exact path="/log" component={''} />
-          <Route exact path="/auth" component={''} />
-          <Route path="/grid/" component={''} />
-          <Route component={Header} />
-        </Switch>
+        <AuthProvider>
+          <Switch>
+            <Route path="/grid/" component={''} />
+            <Route component={Header} />
+          </Switch>
+        </AuthProvider>
       </Router>
 
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <AuthProvider>
-            <Route exact path="/" component={Index} />
-            <PrivateRoute exact path="/basic/" render={explaination} />
-            <PrivateRoute exact path="/practice_menu/" render={practice_menu} />
+            <Route exact path="/" component={Home} />
+            <PrivateRoute exact path="/basic/" render={LectureMenu} />
+            <PrivateRoute exact path="/practice_menu/" render={PracticeMenu} />
             <PrivateRoute exact path="/basic/ct/" render={ct} />
             <PrivateRoute exact path="/basic/head/" render={head} />
             <PrivateRoute exact path="/basic/thorax/" render={thorax} />
@@ -457,8 +170,6 @@ function AppRouter() {
 
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
-          <Route exact path="/log" component={''} />
-          <Route exact path="/auth" component={''} />
           <Route path="/grid/" component={''} />
           <Route component={Footer} />
         </Switch>

@@ -112,6 +112,7 @@ footer {
 .btn:hover {
   opacity: 1;
 }
+
 .button {
   margin-right: 5px;
   position: relative;
@@ -203,7 +204,7 @@ footer {
 
 .body_btn {
   padding: 10px 30px;
-  background-color: greenyellow;
+  background-color: green;
   font-size: large;
   color: white;
 }
@@ -672,4 +673,3 @@ table th,table td{
 .viewer:hover{
   border-color: blue;
 }
-

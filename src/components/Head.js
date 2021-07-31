@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
-import { Header, Footer } from '../App';
 
 
 export const Head_CT = [
