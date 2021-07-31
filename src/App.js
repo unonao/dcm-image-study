@@ -8,11 +8,11 @@ import ExamplePageBasic from './components/ExamplePageBasic.js';
 import Viewer from './components/ExamplePageViewer.js';
 import Head from './components/Head';
 
+// header
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
+
 //images
-import githubimg from './components/images/github.png'
-import mnesimg from './components/images/logo_mnes.jpg'
-import laimeimg from './components/images/logo_white.png'
-import mnistimg from './components/images/MNiST.png'
 import image1 from './components/images/28774EB8-7CDC-4656-9D36-406A7B4F1AEC.png'
 import headimg from './components/images/Head.jpg'
 import thoraximg from './components/images/Thorax.jpg'
@@ -21,7 +21,6 @@ import pelvisimg from './components/images/Pelvis.jpg'
 
 // cornerstone tools
 import initCornerstone from './initCornerstone.js';
-import { auth } from './firebase';
 import { Auth, SubAuth } from './components/userAuth';
 import { useAuthContext, AuthProvider } from './AuthContext';
 
@@ -66,15 +65,6 @@ const PrivateRoute = ({ render, ...rest }) => {
 };
 
 
-const Log = () => {
-  const user = auth.currentUser;
-
-  if (user) {
-    return (<div><p><a href="/auth">{user.displayName}</a></p></div>)
-  } else {
-    return (<p><a href="/log">ログイン</a></p>)
-  }
-}
 
 /**
  *
@@ -94,64 +84,7 @@ function ExampleEntry({ title, url, text, target = undefined }) {
 }
 
 
-export function Header() {
-  return (
-    <header className="head">
-      <div className='head_box'>
-        <div>
-          <a rel='noreferrer' href="https://github.com/unonao/dcm-image-study" target="_blank"><img class="img img_github" src={githubimg} width="50" height="50" alt="github"></img></a>
-        </div>
-        <div className='login'>
-          <a href="/auth">{Log()}</a>
-        </div>
-      </div>
-      <div className="contents">
-        <div className="content">
-          <a href="/">home</a>
-        </div>
-        <div className="content">
-          <a href="/basic/">lecture <span>▼</span></a>
-          <div className='sub-menu'>
-            <ul>
-              <li><a href="/basic/head/">頭部の正常構造と機能</a></li>
-              <li><a href="/basic/thorax/">胸部の正常構造と機能</a></li>
-              <li><a href="/basic/abdomen/">腹部の正常構造と機能</a></li>
-              <li><a href="/basic/pelvis/">骨盤部の正常構造と機能</a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="content">
-          <a href="/practice_menu/" >practice</a>
-        </div>
-      </div>
-    </header>
-  );
-}
 
-export function Footer() {
-  return (
-    <footer>
-      <div className="foots">
-        <div className="foot">関連団体</div>
-        <div className="link_imgs">
-          <div className='link_img'>
-            <a rel="noreferrer" href="https://mnes.life/" target="_blank"><img class="img" border="0" width="250" height="125" src={mnesimg} alt="MNES"></img></a>
-          </div>
-          <div className='link_img'>
-            <a rel="noreferrer" href="https://laime-ml.github.io/?fbclid=IwAR2ETxkW4ZUq9oRqd7Mn04ffzviU7GYSrS3Ho3SzAsgkB5wmxdrhR8QzLi4" target="_blank"><img class="img" border="1" width="330" height="125" src={laimeimg} alt="LAIME"></img></a>
-          </div>
-          <div className='link_img'>
-            <a rel="noreferrer" href="https://sites.google.com/mnes.org/mnist-official/home" target="_blank"><img class="img" width="240" height="125" src={mnistimg} alt="MNiST"></img></a>
-          </div>
-        </div>
-        <div class="button">
-          <button class="btn">CONTACT</button>
-        </div>
-        <div class="bottom">©MNiST</div>
-      </div>
-    </footer>
-  )
-};
 
 function Index() {
   const examples1 = {
@@ -164,6 +97,7 @@ function Index() {
     url: '/practice_menu',
     text: '演習ページへ',
   };
+
   // MOST COMPLEX: (mini viewer)
   // - (mini viewer) Dynamic Grid + Global Tool Sync + Changing Tools
   // Misc. Other Props: (just list them all, prop-types, basic comments for docs)
@@ -422,12 +356,12 @@ function AppRouter() {
   return (
     <div>
       <Router basename={process.env.PUBLIC_URL}>
-        <Switch>
-          <Route exact path="/log" component={''} />
-          <Route exact path="/auth" component={''} />
-          <Route path="/grid/" component={''} />
-          <Route component={Header} />
-        </Switch>
+        <AuthProvider>
+          <Switch>
+            <Route path="/grid/" component={''} />
+            <Route component={Header} />
+          </Switch>
+        </AuthProvider>
       </Router>
 
       <Router basename={process.env.PUBLIC_URL}>
@@ -457,8 +391,6 @@ function AppRouter() {
 
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
-          <Route exact path="/log" component={''} />
-          <Route exact path="/auth" component={''} />
           <Route path="/grid/" component={''} />
           <Route component={Footer} />
         </Switch>
