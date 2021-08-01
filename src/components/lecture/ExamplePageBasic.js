@@ -2,28 +2,24 @@ import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
 import { thorax_dicom, thorax_explain } from "./Thorax";
 import { abdomen_dicom, abdomen_explain } from "./Abdomen";
-import { pelvis_ct, pelvis_explain } from "./Pelvis";
 import { CT_explain } from "./Diagnostic_imaging";
 
 var explaindata = {
     'ct': CT_explain(),
     'thorax': thorax_explain(),
     'abdomen': abdomen_explain(),
-    'pelvis': pelvis_explain(),
 };
 
 const img_list = {
     'ct': [thorax_dicom],
     'thorax': [thorax_dicom],
     'abdomen': [abdomen_dicom],
-    'pelvis': [pelvis_ct]
 }
 
 const img_list_name = {
     'ct': ['胸部CT'],
     'thorax': ['胸部CT'],
     'abdomen': ['腹部CT'],
-    'pelvis': ['女性骨盤CT']
 }
 
 const get_img = function (myprop) {

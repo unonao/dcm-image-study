@@ -1,5 +1,6 @@
 import ExamplePageBasic from './ExamplePageBasic.js';
 import Head from './Head';
+import Pelvis from './Pelvis.js';
 
 export default function Lecture(props) {
 
@@ -18,7 +19,7 @@ export default function Lecture(props) {
             lecture = <ExamplePageBasic myprop='abdomen' />;
             break;
         case 'pelvis':
-            lecture = <ExamplePageBasic myprop='pelvis' />;
+            lecture = <Pelvis />;
             break;
         default:
             lecture = <p>no</p>

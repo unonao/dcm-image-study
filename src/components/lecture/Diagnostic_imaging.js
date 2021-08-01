@@ -1,58 +1,49 @@
 import React from 'react';
-import {Header,Footer} from '../App';
 
-function ExampleEntry({ title, url, text, target=undefined }) {
+function ExampleEntry({ title, url, text, target = undefined }) {
     return (
-      <div>
-        <p><span className="btn_txt">{text}</span></p>
-        <h5>
-          <a href={url} target={target}><button className="row body_btn">{title}</button></a>
-        </h5>
-      </div>
+        <div>
+            <p><span className="btn_txt">{text}</span></p>
+            <h5>
+                <a href={url} target={target}><button className="row body_btn">{title}</button></a>
+            </h5>
+        </div>
     );
-  }
+}
 
-export function basicDiagnosis(){
-    return(
-    <div>
-      <div>
-      {Header()}
-      </div>
-      <div className='explanation'>
-        <div className="exp">
-        <h2>基礎事項</h2>
-        <div className="exp_row">
-          <h3>CT</h3>
-          {ExampleEntry({title:'GO',url:'/basic/ct',})}
-        </div>
-        <div className="exp_row">
-          <h3>MRI</h3>
-          {ExampleEntry({title:'GO',url:'/basic/mri',})}
-        </div>
-        <div className="exp_row">
-          <h3>X線</h3>
+export function basicDiagnosis() {
+    return (
+        <div className='explanation'>
+            <div className="exp">
+                <h2>基礎事項</h2>
+                <div className="exp_row">
+                    <h3>CT</h3>
+                    {ExampleEntry({ title: 'GO', url: '/basic/ct', })}
+                </div>
+                <div className="exp_row">
+                    <h3>MRI</h3>
+                    {ExampleEntry({ title: 'GO', url: '/basic/mri', })}
+                </div>
+                <div className="exp_row">
+                    <h3>X線</h3>
 
-          {ExampleEntry({title:'GO',url:'/basic/x_ray',})}
+                    {ExampleEntry({ title: 'GO', url: '/basic/x_ray', })}
+                </div>
+            </div>
         </div>
-       </div>
-      </div>
-      <div>
-        {Footer()}
-      </div>
-    </div>
     )
 }
-export function CT_explain(){
+export function CT_explain() {
     return (
-        <div className = "basic_sentenses">
+        <div className="basic_sentenses">
             <h2>解説</h2>
             <h2>単純CT</h2>
-            <div className = "basic_sentense">
+            <div className="basic_sentense">
                 <h3>水</h3>
                 <div>
                     <p>体内での水は大体10HU。</p>
                     <p>無構造な10HU程度の領域を見たら、サラサラとした液体を想像する。
-                       境界明瞭な水濃度で辺縁や内部の造影増強効果のない場合には嚢胞が鑑別上位である。</p>
+                        境界明瞭な水濃度で辺縁や内部の造影増強効果のない場合には嚢胞が鑑別上位である。</p>
                 </div>
                 <h3>脂肪</h3>
                 <div>
@@ -95,7 +86,7 @@ export function CT_explain(){
                 </div>
             </div>
             <h2>造影CT</h2>
-            <div className = "basic_sentense">
+            <div className="basic_sentense">
                 <p>主にヨード造影剤が用いられる。腎機能が低下した患者に対して造影剤を使用する</p>
                 <p>ことで、造影剤腎症を起こすリスクがあるが、その基準には様々なものがある。一</p>
                 <p>般的にeGFR＞30(mL/min/1.73m), ヨード造影剤へのアレルギー、喘息、妊娠の有無</p>
@@ -115,7 +106,7 @@ export function CT_explain(){
                 </div>
             </div>
             <h2>dynamic 造影CT</h2>
-            <div className = "basic_sentense">
+            <div className="basic_sentense">
                 <p>造影剤の注入開始後から一定時間置いて、3〜4回撮影をするCT検査である。比較的</p>
                 <p>早いスピードで造影剤を注入することで、血管や腫瘍の造影効果を明瞭に描出できる。</p>
                 <h3>Dynamic CTが推奨される疾患</h3>
@@ -129,7 +120,7 @@ export function CT_explain(){
                 </div>
             </div>
             <h2>CTウログラフィ</h2>
-            <div className = "basic_sentense">
+            <div className="basic_sentense">
                 <p>単純CT、腎実質相CT、及び腎盂・尿管が造影剤で満たされるタイミングを撮影する</p>
                 <p>CT検査。尿路結石や尿路腫瘍などの評価に用いられる。</p>
                 <h3>CTウログラフィを行う疾患</h3>
@@ -139,7 +130,7 @@ export function CT_explain(){
                 </div>
             </div>
             <h2>CTの適応</h2>
-            <div className = "basic_sentense">
+            <div className="basic_sentense">
                 <h3>頭頸部</h3>
                 <div>
                     <p>骨折（特に頭蓋、側頭骨、顔面、眼窩）、頭蓋底頸椎移行部の病変、副鼻腔の腫</p>
