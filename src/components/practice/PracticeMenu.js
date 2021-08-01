@@ -1,10 +1,14 @@
+import React, { Component, useState, useMemo } from 'react';
+import { practice } from './PracticeData';
+import './PracticeMenu.css'
+
 //images
 import headimg from '../images/Head.jpg'
 import thoraximg from '../images/Thorax.jpg'
 import abdomenimg from '../images/Abdomen.jpg'
 import pelvisimg from '../images/Pelvis.jpg'
 
-export default function PracticeMenu() {
+export function PracticeMenu() {
     return (
         <div>
             <div className='explanation'>
@@ -63,4 +67,132 @@ export default function PracticeMenu() {
             </div>
         </div>
     );
+}
+
+
+
+class PracticeMenuRow extends React.Component {
+    render() {
+        const product = this.props.product;
+        return (
+            <tr className='PracticeMenu_box'>
+                <td>{product.practiceId}</td>
+                <td>{product.patientAge}</td>
+                <td>{product.patientSex}</td>
+                <td>{product.site}</td>
+                <td>{product.disease}</td>
+                <td>{product.findings}</td>
+            </tr>
+        );
+    }
+}
+
+class PracticeMenuTable extends React.Component {
+    render() {
+        const rows = [];
+
+        this.props.products.forEach((product) => {
+            rows.push(
+                <PracticeMenuRow
+                    product={product}
+                    key={product.name} />
+            );
+        });
+
+        return (
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>年代</th>
+                        <th>性別</th>
+                        <th>部位</th>
+                        <th>疾患</th>
+                        <th>所見</th>
+                    </tr>
+                </thead>
+                <tbody>{rows}</tbody>
+            </table>
+        );
+    }
+}
+
+class SearchBar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+        this.handleInStockChange = this.handleInStockChange.bind(this);
+    }
+
+    handleFilterTextChange(e) {
+        this.props.onFilterTextChange(e.target.value);
+    }
+
+    handleInStockChange(e) {
+        this.props.onInStockChange(e.target.checked);
+    }
+    render() {
+        return (
+            <form>
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    value={this.props.filterText}
+                    onChange={this.handleFilterTextChange}
+                />
+                <p>
+                    <input
+                        type="checkbox"
+                        checked={this.props.inStockOnly}
+                        onChange={this.handleInStockChange}
+                    />
+                    {' '}
+                    Only show products in stock
+                </p>
+            </form>
+        );
+    }
+}
+
+export class FilterablePracticeMenuTable extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            filterText: '',
+            inStockOnly: false
+        };
+
+        this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+        this.handleInStockChange = this.handleInStockChange.bind(this);
+    }
+
+    handleFilterTextChange(filterText) {
+        this.setState({
+            filterText: filterText
+        });
+    }
+
+    handleInStockChange(inStockOnly) {
+        this.setState({
+            inStockOnly: inStockOnly
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                <SearchBar
+                    filterText={this.state.filterText}
+                    inStockOnly={this.state.inStockOnly}
+                    onFilterTextChange={this.handleFilterTextChange}
+                    onInStockChange={this.handleInStockChange}
+                />
+                <PracticeMenuTable
+                    products={practice}
+                    filterText={this.state.filterText}
+                    inStockOnly={this.state.inStockOnly}
+                />
+            </div>
+        );
+    }
 }

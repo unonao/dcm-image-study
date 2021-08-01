@@ -1,0 +1,25 @@
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+  }
+
+  table tr{
+    border-bottom: solid 1px #eee;
+    cursor: 'allowed';
+  }
+
+  .PracticeMenu_box:hover{
+    background-color: #d4f0fd;
+    cursor: pointer;
+  }
+
+  table th,table td{
+    text-align: center;
+    width: 13%;
+    padding: 15px 0;
+  }
+
+  .practice_sample a{
+    color: black;
+  }

@@ -8,7 +8,7 @@ import Viewer from './components/ExamplePageViewer.js';
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Home } from "./components/Home";
-import PracticeMenu from "./components/practice/PracticeMenu"
+import PracticeMenu, { FilterablePracticeMenuTable } from "./components/practice/PracticeMenu"
 import Lecture from "./components/lecture/Lecture";
 import { LectureMenu } from "./components/lecture/LectureMenu";
 
@@ -76,6 +76,7 @@ function AppRouter() {
 
   const viewer = () => Example({ children: <Viewer myprop='stack' img_list={sample_list} text={<p>精査</p>} quiz_list={quiz_list} patientInfo={['999999999', '63', '男性']} /> });
 
+
   const head705601001 = () => Example({ children: <Viewer img_list={img_705601001} text={text_705601001} quiz_list={quiz_705601001} patientInfo={['705601001', '80代', '男性']} /> });
   const head701401002 = () => Example({ children: <Viewer img_list={img_701401002} text={text_701401002} quiz_list={quiz_701401002} patientInfo={['701401002', '60代', '男性']} /> });
   const head707712001 = () => Example({ children: <Viewer img_list={img_707712001} text={text_707712001} quiz_list={quiz_707712001} patientInfo={['707712001', '60代', '男性']} /> });
@@ -97,7 +98,7 @@ function AppRouter() {
             <Route exact path="/login/" component={Login} />
             <PrivateRoute exact path="/lecture" render={LectureMenu} />
             <PrivateRoute exact path="/lecture/:sitekind" render={Lecture} />
-            <PrivateRoute exact path="/practice_menu/" render={PracticeMenu} />
+            <PrivateRoute exact path="/practice_menu/" component={FilterablePracticeMenuTable} />
             <PrivateRoute exact path="/grid/viewer" render={viewer} />
             <PrivateRoute exact path="/grid/705601001" render={head705601001} />
             <PrivateRoute exact path="/grid/701401002" render={head701401002} />

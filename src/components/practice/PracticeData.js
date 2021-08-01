@@ -1,4 +1,4 @@
-const practice = [{
+export const practice = [{
     "practiceId": 705601001,
     "patientAge": 80,   // '80代'とか文字列にすると管理が大変だから数値型が良さそう
     "patientSex": "男性",  // 男性か女性かで 0,1 でも良さそうだけど、その他とか不明の場合もある？
@@ -8,7 +8,7 @@ const practice = [{
     "findings": ['側頭葉萎縮'],
     "quiz_list": [     // quiz も種類があるみたいだからそれぞれについてどんなデータが必要なのかまとめたい
         {
-            'quiz_kind': 'Quiz', // Quiz, ViewerQuiz, ViewerQuizFreehand, 
+            'quiz_kind': 'Quiz', // Quiz, ViewerQuiz, ViewerQuizFreehand,
             'question': '病変部はどこですか？',
             'answer_list': ['橋', '中脳', '扁桃体', '海馬', '小脳'],
             'answer': 4,
