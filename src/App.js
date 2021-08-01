@@ -1,29 +1,22 @@
 import "./App.css"
 
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-
-// Routes
-import { basicDiagnosis } from "./components/Diagnostic_imaging";
-import ExamplePageBasic from './components/ExamplePageBasic.js';
-
-//
-import Viewer from './components/ExamplePageViewer.js';
-import Head from './components/Head';
-import Pelvis from "./components/Pelvis";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // components
+import Viewer from './components/ExamplePageViewer.js';
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Home } from "./components/Home";
-import { LectureMenu } from "./components/lecture/LectureMenu";
 import PracticeMenu from "./components/practice/PracticeMenu"
-
+import Lecture from "./components/lecture/Lecture";
+import { LectureMenu } from "./components/lecture/LectureMenu";
 
 // cornerstone tools
 import initCornerstone from './initCornerstone.js';
-import { Auth, SubAuth } from './components/userAuth';
-import { useAuthContext, AuthProvider } from './AuthContext';
+import { AuthProvider } from './auth/AuthContext';
+import Login from "./auth/Login";
+import PrivateRoute from "./auth/PrivateRoute";
 
 // storage
 import {
@@ -34,35 +27,8 @@ import {
 import { Quiz, ViewerQuiz, ViewerQuizArrowAnnotate, ViewerQuizFreehand } from './components/ExamplePageQuiz';
 
 
-
 // cornerstone tools の初期化
 initCornerstone();
-
-
-const PrivateRoute = ({ render, ...rest }) => {
-  const { user } = useAuthContext();
-  return (
-    <Route
-      {...rest}
-      render={
-        user
-          ? render
-          : props => (
-            <Redirect
-              to={{
-                pathname: "/log",
-                state: { from: props.location }
-              }}
-            />
-          )
-      }
-    />
-  );
-};
-
-
-
-
 
 const stack1 = [
   'dicomweb://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.7.dcm',
@@ -106,24 +72,7 @@ function Example(props) {
 }
 
 
-
 function AppRouter() {
-  const ct = () => Example({ children: <ExamplePageBasic myprop='ct' /> });
-  const head = () => Example({ children: <Head /> });
-  const auth = () => Example({
-    children:
-      <div style={{ margin: '2em' }}>
-        <Auth />
-      </div>
-  });
-  const subauth = () => Example({
-    children: <div style={{ margin: '2em' }}>
-      <SubAuth />
-    </div>
-  });
-  const thorax = () => Example({ children: <ExamplePageBasic myprop='thorax' /> });
-  const abdomen = () => Example({ children: <ExamplePageBasic myprop='abdomen' /> });
-  const pelvis = () => Example({ children: <ExamplePageBasic myprop='pelvis' /> });
 
   const viewer = () => Example({ children: <Viewer myprop='stack' img_list={sample_list} text={<p>精査</p>} quiz_list={quiz_list} patientInfo={['999999999', '63', '男性']} /> });
 
@@ -137,29 +86,18 @@ function AppRouter() {
   return (
     <div>
       <Router basename={process.env.PUBLIC_URL}>
-        <AuthProvider>
-          <Switch>
-            <Route path="/grid/" component={''} />
-            <Route component={Header} />
-          </Switch>
-        </AuthProvider>
-      </Router>
+        <Switch>
+          <Route path="/grid/" component={''} />
+          <Route component={Header} />
+        </Switch>
 
-      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <AuthProvider>
             <Route exact path="/" component={Home} />
-            <PrivateRoute exact path="/basic/" render={LectureMenu} />
+            <Route exact path="/login/" component={Login} />
+            <PrivateRoute exact path="/lecture" render={LectureMenu} />
+            <PrivateRoute exact path="/lecture/:sitekind" render={Lecture} />
             <PrivateRoute exact path="/practice_menu/" render={PracticeMenu} />
-            <PrivateRoute exact path="/basic/ct/" render={ct} />
-            <PrivateRoute exact path="/basic/head/" render={head} />
-            <PrivateRoute exact path="/basic/thorax/" render={thorax} />
-            <PrivateRoute exact path="/basic/abdomen/" render={abdomen} />
-            <PrivateRoute exact path="/basic/pelvis/" render={pelvis} />
-
-            <Route exact path="/log/" render={subauth} />
-            <Route exact path="/auth/" render={auth} />
-
             <PrivateRoute exact path="/grid/viewer" render={viewer} />
             <PrivateRoute exact path="/grid/705601001" render={head705601001} />
             <PrivateRoute exact path="/grid/701401002" render={head701401002} />
@@ -168,9 +106,7 @@ function AppRouter() {
             <PrivateRoute exact path="/grid/707711002" render={head707711002} />
           </AuthProvider>
         </Switch>
-      </Router>
 
-      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route path="/grid/" component={''} />
           <Route component={Footer} />

@@ -1,12 +1,18 @@
+import React from 'react';
+import { Link } from 'react-router-dom'
 import { auth } from '../firebase';
 import githubimg from './images/github.png'
 
+
+/* リロード時にログインが間に合ってない現象
+https://qiita.com/hummer/items/65b296803f8b200838bd
+*/
 const Log = () => {
     const user = auth.currentUser;
     if (user) {
-        return (<div><p><a href="/auth">{user.displayName}</a></p></div>)
+        return (<p><Link to="/login">{user.displayName}</Link></p>)
     } else {
-        return (<p><a href="/log">ログイン</a></p>)
+        return (<p><Link to="/login">ログイン</Link></p>)
     }
 }
 
@@ -15,29 +21,29 @@ export function Header() {
         <header className="head">
             <div className='head_box'>
                 <div>
-                    <a rel='noreferrer' href="https://github.com/unonao/dcm-image-study" target="_blank"><img class="img img_github" src={githubimg} width="50" height="50" alt="github"></img></a>
+                    <a rel='noreferrer' href="https://github.com/unonao/dcm-image-study" target="_blank"><img className="img img_github" src={githubimg} width="50" height="50" alt="github"></img></a>
                 </div>
                 <div className='login'>
-                    <a href="/auth">{Log()}</a>
+                    {Log()}
                 </div>
             </div>
             <div className="contents">
                 <div className="content">
-                    <a href="/">home</a>
+                    <Link to="/">home</Link>
                 </div>
                 <div className="content">
-                    <a href="/basic/">lecture <span>▼</span></a>
+                    <Link to="/lecture/">lecture <span>▼</span></Link>
                     <div className='sub-menu'>
                         <ul>
-                            <li><a href="/basic/head/">頭部の正常構造と機能</a></li>
-                            <li><a href="/basic/thorax/">胸部の正常構造と機能</a></li>
-                            <li><a href="/basic/abdomen/">腹部の正常構造と機能</a></li>
-                            <li><a href="/basic/pelvis/">骨盤部の正常構造と機能</a></li>
+                            <li><Link to="/lecture/head">頭部の正常構造と機能</Link></li>
+                            <li><Link to="/lecture/thorax">胸部の正常構造と機能</Link></li>
+                            <li><Link to="/lecture/abdomen">腹部の正常構造と機能</Link></li>
+                            <li><Link to="/lecture/pelvis">骨盤部の正常構造と機能</Link></li>
                         </ul>
                     </div>
                 </div>
                 <div className="content">
-                    <a href="/practice_menu/" >practice</a>
+                    <Link to="/practice_menu" >practice</Link>
                 </div>
             </div>
         </header>
