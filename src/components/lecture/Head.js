@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
 
+//const Head_CT =Get_Dicom_Image('/Explanation/Head/Head_CT/','2_',1,41)
 
 export const Head_CT = [
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2FHead_CT%2F2_1.dcm?alt=media&token=356efa99-ba50-4143-a7e4-424a7c84f230',
@@ -101,10 +102,163 @@ export const head_mri = [
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_T2W%2F601_25.dcm?alt=media&token=d4c32c05-9aa3-4db3-86ab-977a19b07b96'];
 
 
+const head_dwi = [
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_76.dcm?alt=media&token=a8855f8f-4c2e-1aa9-63b11fdc7c1b',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_77.dcm?alt=media&token=03908b3a-8d03-4ed0-f33cdd92cc67',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_78.dcm?alt=media&token=a6ef1e9f-68c9-878e-bbdd03db74b0',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_79.dcm?alt=media&token=c1ccc749-6f46-7fa2-5cc8543de2af',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_80.dcm?alt=media&token=6c2818c3-8ada-6d87-f69ce6a876a6',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_81.dcm?alt=media&token=acad51f3-0fbf-9b12-88231ba48a41',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_82.dcm?alt=media&token=bb46c98d-2485-2618-9c3f00e76a24',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_83.dcm?alt=media&token=17baa855-4d9a-6a95-a6b02f7cbf17',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_84.dcm?alt=media&token=3040e7ce-d558-1d3f-9a913a837b22',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_85.dcm?alt=media&token=2d8f0e33-cff6-cae1-96da79067f05',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_86.dcm?alt=media&token=e43e2ee2-9f36-a3b3-8baa2576a925',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_87.dcm?alt=media&token=56ed675c-4d93-8650-58d7fbbd2c6c',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_88.dcm?alt=media&token=5d10343b-9eb5-5935-73237364cc43',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_89.dcm?alt=media&token=c10cfe1a-b254-590d-5445bb545353',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_90.dcm?alt=media&token=842c37fb-8c0d-f8be-51652b4196de',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_91.dcm?alt=media&token=8e4bc750-ecc7-a8e9-531c959d58d6',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_92.dcm?alt=media&token=f2e9719f-36b2-a4fe-56987252e702',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_93.dcm?alt=media&token=30d300ae-b8b8-2bd9-6b2ab77e45d7',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_94.dcm?alt=media&token=ed2de3b7-a8b2-a454-3780a21c4d6b',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_95.dcm?alt=media&token=609adbe5-d3ee-8625-b285b3ccfcfe',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_96.dcm?alt=media&token=6390335a-96e0-9561-1bf0c3e7f8f2',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_97.dcm?alt=media&token=e76921a7-f574-fafc-0ea202554182',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_98.dcm?alt=media&token=fdc21b4c-107d-5f5e-72e1dd18bcaa',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_99.dcm?alt=media&token=6315d4fb-ccb8-4a52-1ef66046275b',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F501b%2F501_100.dcm?alt=media&token=3e2305bb-1cef-2910-e94f7c3c678a'
+]
+const head_t2w = [
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_1.dcm?alt=media&token=837217de-478a-d18f-67e42b2830fb',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_2.dcm?alt=media&token=be3e0b11-1f2a-253f-458e1ad73f92',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_3.dcm?alt=media&token=9ce12d0a-a0ce-44f5-9a8f407863c7',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_4.dcm?alt=media&token=241dd3ee-b424-4bab-38aa9f88bcb4',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_5.dcm?alt=media&token=65e04809-a4f6-eaa4-78bf203a6286',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_6.dcm?alt=media&token=92f82077-c8dd-9401-e7382f593e53',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_7.dcm?alt=media&token=0492ac8d-4fe4-1880-229b0257f8db',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_8.dcm?alt=media&token=12dd8a61-6726-3cb1-2b2e59ea2f3e',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_9.dcm?alt=media&token=3aef67d6-8616-c322-16323cd327a6',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_10.dcm?alt=media&token=8991f78c-0851-70de-e548d27f0769',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_11.dcm?alt=media&token=dbb3470f-a6ec-2e75-9cbae7c94623',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_12.dcm?alt=media&token=f46b30c5-c407-4682-e3e70809499d',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_13.dcm?alt=media&token=c00d1583-2772-2994-957f12ac820e',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_14.dcm?alt=media&token=f14f6944-2ecf-1d83-3e8de1aa4db1',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_15.dcm?alt=media&token=9e0aff30-cf4b-7935-7e60bc4974c8',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_16.dcm?alt=media&token=152b4d46-93a8-5630-c187c5da7cd1',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_17.dcm?alt=media&token=a0849e0f-4307-1a83-310ab21e8f88',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_18.dcm?alt=media&token=411d9585-d2bb-b3a7-2d8240477d20',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_19.dcm?alt=media&token=e3d3b9ce-bf5d-bd21-b7b4f90be69c',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_20.dcm?alt=media&token=519b99af-57cc-5e27-bf11ebcccc48',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_21.dcm?alt=media&token=3960b8d2-141e-5314-d43e4d84ef0c',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_22.dcm?alt=media&token=4c8abd07-271c-6953-1b4a4ef24979',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_23.dcm?alt=media&token=9970102a-90a6-659b-89f10beeeef1',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_24.dcm?alt=media&token=ceee7eaa-434f-2d65-c8a696f96600',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F601%2F601_25.dcm?alt=media&token=06406b3f-df35-e9e2-188ac5055caf'
+]
+const head_flair = ['dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_1.dcm?alt=media&token=4a4a7116-1e46-d518-2687033dabe9',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_2.dcm?alt=media&token=8d343d6f-b25c-98cb-aaf2a8840c5d',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_3.dcm?alt=media&token=2f2d9175-9118-2098-7c3f62762736',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_4.dcm?alt=media&token=7335c6bd-2c31-4825-359e267b6ea2',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_5.dcm?alt=media&token=d5e1f7c0-3af6-7d31-b14067c4c85a',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_6.dcm?alt=media&token=e4d0bb1c-a9e4-569c-e37cd1e865f0',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_7.dcm?alt=media&token=3ce29906-6064-a6bf-b524fd4e8340',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_8.dcm?alt=media&token=bd7955c3-58c4-1bd0-3cea3f58914b',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_9.dcm?alt=media&token=35a1b5f6-32d2-f5d1-f1f53b3111b3',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_10.dcm?alt=media&token=f7d99547-a212-5ee3-5cbbf981d68c',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_11.dcm?alt=media&token=63d98b54-0934-5631-5fc9746bed01',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_12.dcm?alt=media&token=2cfaa491-d849-8bd0-ec73227dd332',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_13.dcm?alt=media&token=b1d502c1-f25d-918d-aee1f58c659d',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_14.dcm?alt=media&token=0c371e13-ec88-679b-8738fc0014e1',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_15.dcm?alt=media&token=dd79c769-7de8-25cb-ebdf5a08ca8c',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_16.dcm?alt=media&token=f66000d2-7495-c99f-ad08127d5fe6',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_17.dcm?alt=media&token=55dcb57f-8546-4c3d-3f6c225f6200',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_18.dcm?alt=media&token=487cf183-8948-8d15-a79502a90834',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_19.dcm?alt=media&token=925da44d-b0fe-243f-13d5e6f21093',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_20.dcm?alt=media&token=fde55cc1-7f71-71a9-150c4e4ee4a6',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_21.dcm?alt=media&token=70702215-1422-b262-317cc9a872b8',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_22.dcm?alt=media&token=e583680a-4fe9-3a76-2c4724a0ee0c',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_23.dcm?alt=media&token=b31bf36c-8abb-af2b-2aa4a0e331bb',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_24.dcm?alt=media&token=f3513108-27fc-9632-a6356f4df142',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F610%2F610_25.dcm?alt=media&token=2b66e190-ad18-96b7-1ee79a7c26d5']
+const head_t1w = ['dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_1.dcm?alt=media&token=fc7d96c6-ac6b-9f0c-badd55ac3119',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_2.dcm?alt=media&token=c798c82d-a102-a938-88133239314b',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_3.dcm?alt=media&token=759d9df9-f646-af61-07d7b1139ae7',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_4.dcm?alt=media&token=7f99cb3f-d833-4b5d-645cc5e8948a',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_5.dcm?alt=media&token=2b67d69a-849c-1033-5b89c8da32ae',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_6.dcm?alt=media&token=98b4a35e-ed94-3bce-a7d5febb654a',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_7.dcm?alt=media&token=d426b9f0-a497-bd2b-bd826192d824',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_8.dcm?alt=media&token=bc834fd0-81cb-6cc1-935f2f8749b0',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_9.dcm?alt=media&token=c3722a29-135a-e697-b978326a036d',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_10.dcm?alt=media&token=0947c609-a516-852d-64968855711e',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_11.dcm?alt=media&token=8f610678-6ea3-0617-ce5df18d4be9',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_12.dcm?alt=media&token=7d7ad47b-d360-d366-04ac3e8748be',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_13.dcm?alt=media&token=2d4aac96-40ff-18c5-f6bf399624f6',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_14.dcm?alt=media&token=60b83daf-6481-1151-82b253336dd6',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_15.dcm?alt=media&token=a0de9a39-461d-66f1-61622b545cdd',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_16.dcm?alt=media&token=863723d4-2a5a-6121-359222ca4236',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_17.dcm?alt=media&token=a8bb1fde-e81e-e144-9a818e669f8f',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_18.dcm?alt=media&token=a73995a7-8c93-e8f6-1f2660d4e908',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_19.dcm?alt=media&token=921f24b2-6f20-032f-5ca39c237315',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_20.dcm?alt=media&token=bfdfd58c-4313-3bef-ee6811a2af20',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_21.dcm?alt=media&token=204f5c3f-67d9-412e-d7447027156a',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_22.dcm?alt=media&token=16b319ba-030a-0388-4917df1c789d',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_23.dcm?alt=media&token=2a6515c9-6144-5f7e-ae3e4f169e9b',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_24.dcm?alt=media&token=16773249-a4bb-86a8-6317a148ec5c',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F630%2F630_25.dcm?alt=media&token=a0b98a75-4a13-a40d-a498ad058ffa']
+const head_mra1 = ['dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F705%2F705_1.dcm?alt=media&token=7cc88c0d-6876-b2e2-ff6cff4a4403',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F705%2F705_2.dcm?alt=media&token=33128dba-3ac3-50ad-d1d76799fb69',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F705%2F705_3.dcm?alt=media&token=87402ce2-8d4e-ef58-bffd6230b403',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F705%2F705_4.dcm?alt=media&token=38178459-cf68-e8cd-de9cf5fd377c',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F705%2F705_5.dcm?alt=media&token=5dd337b6-71ee-cf7a-444180051476',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F705%2F705_6.dcm?alt=media&token=c35abd07-8df5-7183-b86e198e36f8',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F705%2F705_7.dcm?alt=media&token=a2529a3f-011e-c1f0-be94430b138f',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F705%2F705_8.dcm?alt=media&token=ce8ba601-c777-cd2f-d5362e8c03c0',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F705%2F705_9.dcm?alt=media&token=bd266571-7416-94d5-e8017dcca40f',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F705%2F705_10.dcm?alt=media&token=42a61034-f46f-e5da-6c4a10f3f3da',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F705%2F705_11.dcm?alt=media&token=2710c05f-56c2-274a-3c36cde4f43f',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F705%2F705_12.dcm?alt=media&token=25b6caa1-35f2-be69-a511aa1b2fc6',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F705%2F705_13.dcm?alt=media&token=2e76545a-ae6e-0f7b-ed691d1f8e56',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F705%2F705_14.dcm?alt=media&token=67eafae1-8e30-7a6b-ab93be03df44',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F705%2F705_15.dcm?alt=media&token=9087a26b-3b4a-d25a-e8237e9e9f07']
+const head_mra2 = ['dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F706%2F706_1.dcm?alt=media&token=a876591f-38e7-b137-932687dd818f',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F706%2F706_2.dcm?alt=media&token=41ec258e-5c89-ab32-dd7b5b0e6cb7',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F706%2F706_3.dcm?alt=media&token=f91b1060-638d-617a-3c99f0b04c5f',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F706%2F706_4.dcm?alt=media&token=9de35d2a-4c13-3e83-c5bcf31ecd75',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F706%2F706_5.dcm?alt=media&token=d47a04c1-b3b1-0912-fe8497133c7c',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F706%2F706_6.dcm?alt=media&token=5330c77c-074e-414d-a520742af41a',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F706%2F706_7.dcm?alt=media&token=856b6c5c-cea8-7d07-d849f51a5f65',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F706%2F706_8.dcm?alt=media&token=d73d1bf2-0ab6-190b-9b7a6c206c6c',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F706%2F706_9.dcm?alt=media&token=7e68b251-9a57-2dd5-77eb0c443404',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F706%2F706_10.dcm?alt=media&token=cbe9a7a9-05ff-db54-6c894b549cbd',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F706%2F706_11.dcm?alt=media&token=a9e686e9-3053-67cd-59d2532070e7',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F706%2F706_12.dcm?alt=media&token=b10bef73-f1aa-5547-2c4d7d55a393',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F706%2F706_13.dcm?alt=media&token=f7bd15bc-5253-07d1-5975ac77f50b',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F706%2F706_14.dcm?alt=media&token=c24c1a1c-238a-1d19-691c1051b501',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F706%2F706_15.dcm?alt=media&token=614601d2-a9eb-caae-6a84a72e0994']
+const head_mra3 = ['dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F707%2F707_1.dcm?alt=media&token=3b648d89-b30e-de52-681c96c9ee95',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F707%2F707_2.dcm?alt=media&token=c752ce8a-d32e-f0cb-85456c0ff138',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F707%2F707_3.dcm?alt=media&token=922489dd-d6e6-d15f-39abd148e25d',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F707%2F707_4.dcm?alt=media&token=43192dce-75e5-c5a7-ae6897f3174e',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F707%2F707_5.dcm?alt=media&token=256c794e-37d6-d778-37b6abcb8a4a',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F707%2F707_6.dcm?alt=media&token=34d53afc-6b6e-6923-284141263422',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F707%2F707_7.dcm?alt=media&token=3d76c668-1930-72e1-7d8d9e40eefd',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F707%2F707_8.dcm?alt=media&token=01670777-e793-f066-7519ff35d79b',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F707%2F707_9.dcm?alt=media&token=5ae0399e-a362-58be-85bec37db2d9',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F707%2F707_10.dcm?alt=media&token=11a79287-a0de-1e3a-00785b703c1c',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F707%2F707_11.dcm?alt=media&token=ed7c94e2-8fd6-e58c-5dfae4dfa8ce',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F707%2F707_12.dcm?alt=media&token=396c240c-7662-26e7-bf38b38ae627',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F707%2F707_13.dcm?alt=media&token=58bf2e33-2bcc-98b4-1757af78e938',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F707%2F707_14.dcm?alt=media&token=cfc35cb9-6f52-4853-5062469c6712',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2Fhead_MRI_female%2F707%2F707_15.dcm?alt=media&token=21f9e1ba-d927-fc61-7d0d46690a7c']
 
-const img_list = [Head_CT, anno_head, head_mri];
+const img_list1 = [head_t1w, head_t2w, head_flair, head_dwi]
+export const img_list = [Head_CT, anno_head, head_mri];
+const img_list2 = [head_mra1, head_mra2, head_mra3]
 
-const img_list_name = ['頭部CT', '頭部動脈アノテーション', '頭部MRI']
+const img_list_name1 = ['sT1W SE CLEAR', 'aT2 TSE SENSE', 'HEAD FLAIR TSE SENSE', 'DWI EPI SENSE']
+export const img_list_name = ['頭部CT', '頭部動脈アノテーション', '頭部MRI']
+const img_list_name2 = ['3D HEAD MRA 1', '3D HEAD MRA 2', '3D HEAD MRA 3']
 
 
 const get_img = function (img_list, img_list_name) {
@@ -116,47 +270,54 @@ const get_img = function (img_list, img_list_name) {
 }
 
 class Head extends Component {
-    state = {
-        activeViewportIndex: 0,
-        viewports: [0, 1, 2, 3],
-        tools: [
-            // Mouse
-            {
-                name: 'Wwwc',
-                mode: 'active',
-                modeOptions: { mouseButtonMask: 1 },
-            },
-            {
-                name: 'Zoom',
-                mode: 'active',
-                modeOptions: { mouseButtonMask: 2 },
-            },
-            {
-                name: 'Pan',
-                mode: 'active',
-                modeOptions: { mouseButtonMask: 4 },
-            },
-            // Scroll
-            { name: 'StackScrollMouseWheel', mode: 'active' },
-        ],
-        upper_imageIds: img_list,
-        upper_imageNames: img_list_name,
-        defaultIndex: 0,
-        middle_imageIds: anno_head,
-        lower_imageIds: img_list,
-        lower_imageNames: img_list_name,
-        lowerIndex: 0,
-        // FORM
-        activeTool: 'Wwwc',
-        activeToolIndex: 10,
-        imageIdIndex: 0,
-        quizIndex: 0,
-        isPlaying: false,
-        frameRate: 5,
-        bigviwer: false,
-        style: 'viewers',
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeViewportIndex: 0,
+            viewports: [0, 1, 2, 3],
+            tools: [
+                // Mouse
+                {
+                    name: 'Wwwc',
+                    mode: 'active',
+                    modeOptions: { mouseButtonMask: 1 },
+                },
+                {
+                    name: 'Zoom',
+                    mode: 'active',
+                    modeOptions: { mouseButtonMask: 2 },
+                },
+                {
+                    name: 'Pan',
+                    mode: 'active',
+                    modeOptions: { mouseButtonMask: 4 },
+                },
+                // Scroll
+                { name: 'StackScrollMouseWheel', mode: 'active' },
+            ],
+            upper_imageIds: img_list1,
+            upper_imageNames: img_list_name1,
+            imageIndex: 0,
+            defaultIndex: 0,
+            middle_imageIds: anno_head,
+            lower_imageIds: img_list2,
+            lower_imageNames: img_list_name2,
+            lowerIndex: 0,
+            // FORM
+            activeTool: 'Wwwc',
+            activeToolIndex: 10,
+            upper_imageIdIndex: 0,
+            imageIdIndex: 0,
+            quizIndex: 0,
+            isPlaying: false,
+            frameRate: 5,
+            bigviwer: false,
+            style: 'viewers',
+        };
     };
-    //componentdidmount
+    //componentDidMount(){
+    //this.setstate({middle_imageIds: Head_CT})
+    //}
     render() {
         return (
             <div className='Head'>
@@ -230,6 +391,35 @@ class Head extends Component {
                             >
                                 {this.state.bigviwer ? '縮小' : '拡大'}
                             </button>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="image-id-index">Image ID Index:</label>
+                            <input
+                                type="range"
+                                min="0"
+                                max={this.state.upper_imageIds[0].length - 1}
+                                value={this.state.upper_imageIdIndex}
+                                onChange={evt =>
+                                    this.setState({ upper_imageIdIndex: parseInt(evt.target.value) })
+                                }
+                                className="form-control"
+                                id="image-id-index"
+                            ></input>
+                            <input
+                                type="number"
+                                min="0"
+                                max={this.state.upper_imageIds[0].length - 1}
+                                value={this.state.upper_imageIdIndex + 1}
+                                onChange={evt => {
+                                    const maxid = this.state.upper_imageIds[0].length - 1
+                                    const imageIdInput = parseInt(evt.target.value);
+                                    const imageIdIndex = Math.max(Math.min(imageIdInput, maxid), 0);
+
+                                    this.setState({ upper_imageIdIndex: imageIdIndex });
+                                }}
+                                className="form-control"
+                                id="image-id-index"
+                            ></input>
                         </div>
                         <div>
                             <label>Frame Rate</label>
