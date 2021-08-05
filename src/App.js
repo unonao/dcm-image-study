@@ -8,7 +8,7 @@ import Viewer from './components/ExamplePageViewer.js';
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Home } from "./components/Home";
-import PracticeMenu, { FilterablePracticeMenuTable } from "./components/practice/PracticeMenu"
+import { FilterablePracticeMenuTable } from "./components/practice/PracticeMenu"
 import Lecture from "./components/lecture/Lecture";
 import { LectureMenu } from "./components/lecture/LectureMenu";
 

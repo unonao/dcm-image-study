@@ -1,74 +1,7 @@
-import React, { Component, useState, useMemo } from 'react';
+import React from 'react';
+import { Blank } from '../parts/blankspace';
 import { practice } from './PracticeData';
 import './PracticeMenu.css'
-
-//images
-import headimg from '../images/Head.jpg'
-import thoraximg from '../images/Thorax.jpg'
-import abdomenimg from '../images/Abdomen.jpg'
-import pelvisimg from '../images/Pelvis.jpg'
-
-export function PracticeMenu() {
-    return (
-        <div>
-            <div className='explanation'>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>　　</th>
-                            <th>部位</th>
-                            <th>Level A</th>
-                            <th>Level B</th>
-                            <th>Level C</th>
-                            <th>Level D</th>
-                            <th>Level E</th>
-                        </tr>
-                        <tr>
-                            <th className="icon bird"><img className="exp_row_img" src={headimg} alt='頭'></img></th>
-                            <th>頭部</th>
-                            <td onClick={() => { window.open('/grid/705601001', '_blank') }}>705601001</td>
-                            <td onClick={() => { window.open('/grid/701401002', '_blank') }}>701401002</td>
-                            <td onClick={() => { window.open('/grid/707712001', '_blank') }}>707712001</td>
-                            <td onClick={() => { window.open('/grid/700800001', '_blank') }}>700800001</td>
-                            <td onClick={() => { window.open('/grid/707711002', '_blank') }}>707711002</td>
-                        </tr>
-                        <tr>
-                            <th className="icon whale"><img className="exp_row_img" src={thoraximg} alt='胸'></img></th>
-                            <th>胸部</th>
-                            <td>0400601001</td>
-                            <td>0403911001</td>
-                            <td>0403501001</td>
-                            <td>0400112001</td>
-                            <td>0407801001</td>
-                        </tr>
-                        <tr>
-                            <th className="icon crab"><img className="exp_row_img" src={abdomenimg} alt='腹'></img></th>
-                            <th>腹部</th>
-                            <td>　　</td>
-                            <td>　　</td>
-                            <td>　　</td>
-                            <td>　　</td>
-                            <td>　　</td>
-                        </tr>
-                        <tr>
-                            <th className="icon whale"><img className="exp_row_img" src={pelvisimg} alt='胸'></img></th>
-                            <th>骨盤部</th>
-                            <td>0901012003</td>
-                            <td>0901101001</td>
-                            <td>0901702001</td>
-                            <td>0808201002</td>
-                            <td>0807912001</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div className='practice_sample'>
-                <p><a href="/grid/viewer" target="_blank">サンプル</a></p>
-            </div>
-        </div>
-    );
-}
-
 
 
 class PracticeMenuRow extends React.Component {
@@ -80,8 +13,8 @@ class PracticeMenuRow extends React.Component {
                 <td>{product.patientAge}</td>
                 <td>{product.patientSex}</td>
                 <td>{product.site}</td>
-                <td>{product.disease}</td>
-                <td>{product.findings}</td>
+                <td>{product.disease[0]}</td>
+                <td>{product.findings[0]}</td>
             </tr>
         );
     }
@@ -89,30 +22,47 @@ class PracticeMenuRow extends React.Component {
 
 class PracticeMenuTable extends React.Component {
     render() {
+        const filterText = this.props.filterText;
+        const inStockOnly = this.props.inStockOnly;
         const rows = [];
-
         this.props.products.forEach((product) => {
-            rows.push(
-                <PracticeMenuRow
-                    product={product}
-                    key={product.name} />
-            );
+            if (product.site.indexOf(filterText) === -1) {
+                return console.log(product.site.indexOf(filterText))
+            } else if (product.site.indexOf(filterText) >= 0) {
+                console.log(product.patientInfo.indexOf(filterText))
+                rows.push(
+                    <PracticeMenuRow
+                        product={product}
+                        key={product.name} />
+                );
+            }
+            if (inStockOnly && !product.site) {
+                return;
+            }
+
         });
 
+
         return (
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>年代</th>
-                        <th>性別</th>
-                        <th>部位</th>
-                        <th>疾患</th>
-                        <th>所見</th>
-                    </tr>
-                </thead>
-                <tbody>{rows}</tbody>
-            </table>
+            <div>
+                <table className='PracticeMenu'>
+                    <thead>
+                        <tr>
+                            <th style={{ width: '10%' }}>ID</th>
+                            <th style={{ width: '5%' }}>年代</th>
+                            <th style={{ width: '5%' }}>性別</th>
+                            <th style={{ width: '5%' }}>部位</th>
+                            <th style={{ width: '30%' }}>疾患</th>
+                            <th style={{ width: '45%' }}>所見</th>
+                        </tr>
+                    </thead>
+                    <tbody>{rows}</tbody>
+                </table>
+                <div>
+                    {(rows.length === 0) ? <div>{Blank('No rows to show')}</div> :
+                        <div></div>}
+                </div>
+            </div>
         );
     }
 }
