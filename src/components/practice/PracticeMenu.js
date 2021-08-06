@@ -1,66 +1,120 @@
-//images
-import headimg from '../images/Head.jpg'
-import thoraximg from '../images/Thorax.jpg'
-import abdomenimg from '../images/Abdomen.jpg'
-import pelvisimg from '../images/Pelvis.jpg'
+import React from 'react';
+import { practice } from './PracticeData';
+import { PracticeMenuTable } from './PracticeMenuTable';
 
-export default function PracticeMenu() {
-    return (
-        <div>
-            <div className='explanation'>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>　　</th>
-                            <th>部位</th>
-                            <th>Level A</th>
-                            <th>Level B</th>
-                            <th>Level C</th>
-                            <th>Level D</th>
-                            <th>Level E</th>
-                        </tr>
-                        <tr>
-                            <th className="icon bird"><img className="exp_row_img" src={headimg} alt='頭'></img></th>
-                            <th>頭部</th>
-                            <td onClick={() => { window.open('/grid/705601001', '_blank') }}>705601001</td>
-                            <td onClick={() => { window.open('/grid/701401002', '_blank') }}>701401002</td>
-                            <td onClick={() => { window.open('/grid/707712001', '_blank') }}>707712001</td>
-                            <td onClick={() => { window.open('/grid/700800001', '_blank') }}>700800001</td>
-                            <td onClick={() => { window.open('/grid/707711002', '_blank') }}>707711002</td>
-                        </tr>
-                        <tr>
-                            <th className="icon whale"><img className="exp_row_img" src={thoraximg} alt='胸'></img></th>
-                            <th>胸部</th>
-                            <td>0400601001</td>
-                            <td>0403911001</td>
-                            <td>0403501001</td>
-                            <td>0400112001</td>
-                            <td>0407801001</td>
-                        </tr>
-                        <tr>
-                            <th className="icon crab"><img className="exp_row_img" src={abdomenimg} alt='腹'></img></th>
-                            <th>腹部</th>
-                            <td>　　</td>
-                            <td>　　</td>
-                            <td>　　</td>
-                            <td>　　</td>
-                            <td>　　</td>
-                        </tr>
-                        <tr>
-                            <th className="icon whale"><img className="exp_row_img" src={pelvisimg} alt='胸'></img></th>
-                            <th>骨盤部</th>
-                            <td>0901012003</td>
-                            <td>0901101001</td>
-                            <td>0901702001</td>
-                            <td>0808201002</td>
-                            <td>0807912001</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+
+export class FilterablePracticeMenuTable extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            filterText: '',
+            Head: false,
+            Thorax: false,
+            Abdomen: false,
+            Pelvis: false,
+            Male: false,
+            Female: false,
+            twenty: false,
+            thirty: false,
+            fourty: false,
+            fifty: false,
+            sixty: false,
+            seventy: false,
+            eighty: false,
+        };
+        this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+        this.handleFilterCheckBoxChange = this.handleFilterCheckBoxChange.bind(this);
+    }
+    handleFilterTextChange(event) {
+        this.setState({ filterText: event.target.value });
+    }
+
+    handleFilterCheckBoxChange(event) {
+        const target = event.target;
+        const name = target.name;
+        this.setState({ [name]: target.checked });
+    }
+    render() {
+        return (
+            <div>
+                <form>
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        value={this.state.filterText}
+                        onChange={this.handleFilterTextChange}
+                    />
+                    <div>
+                        <label>
+                            <input
+                                name='Head'
+                                type="checkbox"
+                                checked={this.state.Head}
+                                onChange={this.handleFilterCheckBoxChange}
+                            />
+                            頭部
+                        </label>
+                        <label>
+                            <input
+                                name='Thorax'
+                                type="checkbox"
+                                checked={this.state.Thorax}
+                                onChange={this.handleFilterCheckBoxChange}
+                            />
+                            胸部
+                        </label>
+                        <label>
+                            <input
+                                name='Abdomen'
+                                type="checkbox"
+                                checked={this.state.Abdomen}
+                                onChange={this.handleFilterCheckBoxChange}
+                            />
+                            腹部
+                        </label>
+                        <label>
+                            <input
+                                name='Pelvis'
+                                type="checkbox"
+                                checked={this.state.Pelvis}
+                                onChange={this.handleFilterCheckBoxChange}
+                            />
+                            骨盤部
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input
+                                name='Male'
+                                type="checkbox"
+                                checked={this.state.Male}
+                                onChange={this.handleFilterCheckBoxChange}
+                            />
+                            男性
+                        </label>
+                        <label>
+                            <input
+                                name='Female'
+                                type="checkbox"
+                                checked={this.state.Female}
+                                onChange={this.handleFilterCheckBoxChange}
+                            />
+                            女性
+                        </label>
+                    </div>
+                </form>
+                <PracticeMenuTable
+                    products={practice}
+                    filterText={this.state.filterText}
+                    Head={this.state.Head}
+                    Thorax={this.state.Thorax}
+                    Abdomen={this.state.Abdomen}
+                    Pelvis={this.state.Pelvis}
+                    Male={this.state.Male}
+                    Female={this.state.Female}
+                />
             </div>
-            <div className='practice_sample'>
-                <p><a href="/grid/viewer" target="_blank">サンプル</a></p>
-            </div>
-        </div>
-    );
+        );
+    }
 }
