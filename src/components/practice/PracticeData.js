@@ -356,7 +356,7 @@ export const practice = [{
     "series_list": [
         {
             'series_id': 2,
-            'series_name': '2_0214',
+            'series_name': '0214',
             'modality': 'CT',
             'protocol': null,
             'series_info': {
@@ -367,7 +367,7 @@ export const practice = [{
         },
         {
             'series_id': 2,
-            'series_name': '2_0618',
+            'series_name': '0618',
             'modality': 'CT',
             'protocol': null,
             'series_info': {

@@ -27,12 +27,12 @@ export function Get_Image(path, dcm_num, extension, length) {
 
 
 export function Get_Dicom_Image(path, dcm_series, start, length) {
-    //path: /Explanation/Head/...(データパス) dcm_num: 601_(dicomの頭番号) start:1(dicomの開始番号) length: 25(全データ数)
+    //path: /Explanation/Head/...(データパス) dcm_num: 601(dicomの頭番号) start:1(dicomの開始番号) length: 25(全データ数)
     const pathname = path;
     var img_list = []
     var array = []
     for (let i = start - 1; i < length; i++) {
-        let fileName = dcm_series + String(i + 1) + '.dcm';
+        let fileName = dcm_series + '_' + String(i + 1) + '.dcm';
         img_list.push(pathname + fileName);
     }
     img_list.forEach((element, index) => {

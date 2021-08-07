@@ -11,11 +11,13 @@ import { Home } from "./components/Home";
 import { FilterablePracticeMenuTable } from "./components/practice/PracticeMenu"
 import Lecture from "./components/lecture/Lecture";
 import { LectureMenu } from "./components/lecture/LectureMenu";
+import Practice from "./components/practice/Practice";
 
 // cornerstone tools
 import initCornerstone from './initCornerstone.js';
 import { AuthProvider } from './auth/AuthContext';
 import Login from "./auth/Login";
+import { SubAuth } from "./auth/userAuth";
 import PrivateRoute from "./auth/PrivateRoute";
 
 // storage
@@ -88,7 +90,9 @@ function AppRouter() {
     <div>
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
-          <Route path="/grid/" component={''} />
+          <Route path="/practice/" component={''} />
+          <Route path="/login/" component={''} />
+          <Route path="/newlogin/" component={''} />
           <Route component={Header} />
         </Switch>
 
@@ -96,9 +100,11 @@ function AppRouter() {
           <AuthProvider>
             <Route exact path="/" component={Home} />
             <Route exact path="/login/" component={Login} />
+            <Route exact path="/newlogin/" component={SubAuth} />
             <PrivateRoute exact path="/lecture" render={LectureMenu} />
             <PrivateRoute exact path="/lecture/:sitekind" render={Lecture} />
             <PrivateRoute exact path="/practice_menu/" component={FilterablePracticeMenuTable} />
+            <PrivateRoute exact path="/practice/:practiceId" render={Practice} />
             <PrivateRoute exact path="/grid/viewer" render={viewer} />
             <PrivateRoute exact path="/grid/705601001" render={head705601001} />
             <PrivateRoute exact path="/grid/701401002" render={head701401002} />
@@ -109,7 +115,9 @@ function AppRouter() {
         </Switch>
 
         <Switch>
-          <Route path="/grid/" component={''} />
+          <Route path="/practice/" component={''} />
+          <Route path="/login/" component={''} />
+          <Route path="/newlogin/" component={''} />
           <Route component={Footer} />
         </Switch>
       </Router>
