@@ -1,5 +1,5 @@
 import React from 'react';
-import Viewer from '../ExamplePageViewer';
+import Viewer from './PracticeViewer';
 import { practice } from './PracticeData';
 import { Get_Dicom_Image } from '../../UseStorage';
 import { Quiz, ViewerQuiz, ViewerQuizFreehand, ViewerQuizArrowAnnotate } from '../ExamplePageQuiz';
