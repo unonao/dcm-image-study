@@ -13,6 +13,7 @@ import Zoomimg from "../images/Icon/Zoom.png";
 import { mklist } from "../parts/mklist";
 import { reset_list } from "../parts/resetlist";
 import React from "react";
+import './PracticeTool.css'
 
 const toolimglist = [Angleimg, ArrowAnnotateimg, Bidirectionalimg, Circleimg, Dragimg,
     Eraserimg, Freehandimg, Lengthimg, Rectangleimg, Rotateimg, Wwwcimg, Zoomimg];
@@ -25,32 +26,31 @@ var toolstylelist = mklist('tool_box', 12)
 export class PracticeTool extends React.Component {
     constructor(props) {
         super(props);
-        this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
         this.state = {
             toolports: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
             toolstyle: toolstylelist,
-            activeTool: null,
             activeToolIndex: 10,
+            activeTool: this.props.activeTool
         }
     }
-    handleFilterTextChange(e) {
-        this.props.onFilterTextChange(e.target.value);
-    }
+
     render() {
         return (
             <div className='tool_contents'>
                 {this.state.toolports.map((index) => (
                     <div className={this.state.toolstyle[index]}
+                        key={index}
                         onClick={() => {
                             toolstylelist = reset_list(toolstylelist, 'tool_box')
                             toolstylelist[index] = 'tool_box_click';
+                            this.props.changeActiveTool(toolnamelist[index]);
                             this.setState({
-                                activeTool: toolnamelist[index],
                                 toolstyle: toolstylelist,
                                 activeToolIndex: index,
                             });
                         }}>
-                        <img className="tool_icon" src={toolimglist[index]} title={toollabel[index]} alt={toollabel[index]}></img>
+                        <img className="tool_icon" rel="noreferrer" src={toolimglist[index]} title={toollabel[index]} alt={toollabel[index]}></img>
+
                     </div>
                 ))}
             </div>

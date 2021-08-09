@@ -1,0 +1,34 @@
+.viewsize{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .viewers {
+    display: grid;
+    background-color: black;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 37.5vh 37.5vh;
+  }
+  
+  
+  .viewer {
+    background: black;
+    color: aliceblue;
+    border: solid 3px;
+    border-color: gray;
+    padding: 10px;
+  }
+  
+  .viewer:hover{
+    border-color: blue;
+  }
+  
+  .viewerlarge{
+    background: black;
+    width: 100%;
+    height: 75vh;
+    border: solid 3px;
+    border-color: gray;
+    padding: 10px;
+  }

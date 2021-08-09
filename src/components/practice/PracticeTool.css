@@ -1,0 +1,28 @@
+.tool_contents{
+    display: grid;
+    text-align: center;
+    gap: 5px;
+    height:50%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    padding: 5px;
+    margin: 5px;
+    border: solid 3px;
+    border-radius: 10px;
+    background-color: ghostwhite;
+    cursor: pointer;
+  }
+
+  .tool_box{
+    text-align: center;
+    background-color: rgb(240, 236, 236);
+  }
+  
+  .tool_box_click{
+    text-align: center;
+    background-color: orange;
+  }
+  
+  .tool_icon{
+    width: 100%;
+    height: 90%;
+  }

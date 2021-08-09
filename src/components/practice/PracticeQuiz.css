@@ -1,0 +1,27 @@
+.Numbers{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+  }
+  
+  .question_nums{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
+  
+  .question_num{
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    background-color: rgb(236, 228, 228);
+    cursor: pointer;
+  }
+  
+  .question_num_click{
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    background-color: rgb(160, 252, 255);
+    cursor: default;
+  }

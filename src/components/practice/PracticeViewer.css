@@ -9,9 +9,8 @@
 
   .practice_body{
     display: grid;
-    background: rgb(248, 242, 234);
     height:94vh;
-    grid-template-columns: 33% 67%;
+    grid-template-columns: 33% 50% 17%;
     grid-template-rows: 20% 20% 60%;
   }
 
@@ -39,6 +38,7 @@
     grid-row: 1/3;
   }
   .tool{
+    grid-column: 2/3;
     grid-row: 1/2;
   }
 
@@ -46,13 +46,25 @@
       grid-row: 3/4;
   }
 
-  .viewer{
+  .image{
+      display: grid;
+      grid-column: 3/4;
+      align-items: center;
+  }
+
+  .viewerposition{
+      grid-column: 2/4;
       grid-row: 2/4;
   }
 
 
 
 
+
+
+/*============================================
+           以下使用なし
+==============================================*/
 
   .viewer_propaties {
     width: 100%;
@@ -66,34 +78,6 @@
   .propaty_complain{
     grid-row: 1/3;
 
-  }
-  .tool_contents{
-    display: grid;
-    text-align: center;
-    gap: 5px;
-    height:50%;
-    grid-template-columns: 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7% 7%;
-    padding: 5px;
-    margin: 5px;
-    border: solid 3px;
-    border-radius: 10px;
-    background-color: ghostwhite;
-    cursor: pointer;
-  }
-  
-  .tool_box{
-    text-align: center;
-    background-color: rgb(240, 236, 236);
-  }
-  
-  .tool_box_click{
-    text-align: center;
-    background-color: orange;
-  }
-  
-  .tool_icon{
-    width: 100%;
-    height: 90%;
   }
   
   .propaty_quiz{
@@ -132,80 +116,8 @@
   .form_tool{
     width: 60px;
   }
-  
-  
-  
-  
-  .Numbers{
-    display: flex;
-    flex-direction: row;
-    gap:10px;
-  }
-  
-  .question_nums{
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-  }
-  
-  .question_num{
-    width: 25px;
-    height: 25px;
-    background-color: rgb(236, 228, 228);
-    cursor: pointer;
-  }
-  
-  .question_num_click{
-    width: 25px;
-    height: 25px;
-    background-color: rgb(160, 252, 255);
-    cursor: default;
-  }
-  
+
   /*=============================================
                    viewer
   ==============================================*/
-  .viewsize{
-    grid-row: 2/4;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  .viewers {
-    display: grid;
-    background-color: black;
-    grid-template-columns: 33% 33% 33%;
-    grid-template-rows: 256px 256px;
-    margin-bottom: 10px;
-  }
-  
-  .viewers_click {
-    display: grid;
-    grid-template-columns: 50% 25% 25%;
-    grid-template-rows: 256px 256px;
-    margin-bottom: 10px;
-  }
-  
-  .viewer_big_box{
-    grid-column: 1/2;
-    grid-row: 1/3;
-    background: black;
-    color: aliceblue;
-    border: solid 3px;
-    border-color: gray;
-    padding: 10px;
-  }
-  
-  .viewer {
-    background: black;
-    color: aliceblue;
-    border: solid 3px;
-    border-color: gray;
-    padding: 10px;
-  }
-  
-  .viewer:hover{
-    border-color: blue;
-  }
   

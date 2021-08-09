@@ -383,18 +383,31 @@ footer {
 }
 
 .Quiz_contents{
-  display: flex;
   text-align: left;
+  height:35vh;
   margin-left: 5%;
 }
 
 .quiz_text{
-  height:60px;
-  width: 500px;
   padding-left: 5px;
   margin-top: 5px;
+  margin-bottom: 5px;
+  height: 90%;
   overflow-y: scroll;
   border: solid 2px;
+}
+
+.check_box{
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 5vh;
+  align-items: center;
+  gap: 5%;
+}
+
+.answer_box{
+  width: 70%;
+  height:4vh;
 }
 
 .quiz_btn{
@@ -407,12 +420,6 @@ footer {
   margin-left: 5px;
 }
 
-.answer_box{
-  margin-left: 5%;
-  margin-top: 5px;
-  width: 120px;
-  height: 60px;
-}
 
 .explain_box{
   margin-left: 55%;
@@ -509,34 +516,6 @@ footer {
   background:rgb(255, 197, 131);
 }
 
-.tool_contents{
-  display: grid;
-  text-align: center;
-  gap: 5px;
-  grid-template-columns: 15% 15% 15% 15% 15% 15%;
-  grid-row: inherit;
-  padding: 5px;
-  margin: 5px;
-  border: solid 3px;
-  border-radius: 10px;
-  background-color: ghostwhite;
-  cursor: pointer;
-}
-
-.tool_box{
-  text-align: center;
-  background-color: rgb(240, 236, 236);
-}
-
-.tool_box_click{
-  text-align: center;
-  background-color: orange;
-}
-
-.tool_icon{
-  width: 100%;
-  height: 90%;
-}
 
 .propaty{
   text-align: center;

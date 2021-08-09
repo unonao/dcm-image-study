@@ -1,5 +1,5 @@
 import React from 'react';
-import Viewer from './PracticeViewer';
+import PracticeViewer from './PracticeViewer';
 import { practice } from './PracticeData';
 import { Get_Dicom_Image } from '../../UseStorage';
 import { Quiz, ViewerQuiz, ViewerQuizFreehand, ViewerQuizArrowAnnotate } from '../ExamplePageQuiz';
@@ -15,17 +15,20 @@ export default function Practice(props) {
     const age = product.patientAge
 
     const img_list = []
+    const protocol_list = []
     const img_dict = {}
     const images = product.series_list
     images.forEach((series, index) => {
         const series_name = series.series_name
         const series_id = series.series_id
+        const protocol = series.protocol
         const path_head = series.path
         const start_num = series.start_num
         const length = series.length
         const path = path_head + '/' + practiceId + '/' + series_name + '/'
         const image = Get_Dicom_Image(path, series_id, start_num, length)
         img_list[index] = image
+        protocol_list[index] = protocol
         img_dict[series_name] = index
     })
 
@@ -77,7 +80,7 @@ export default function Practice(props) {
         }
     })
 
-    const Practice = <Viewer img_list={img_list} text={patientInfo} quiz_list={quiz_list} patientInfo={[practiceId, String(age) + '代', sex]} />
+    const Practice = <PracticeViewer img_list={img_list} protocol_list={protocol_list} text={patientInfo} quiz_list={quiz_list} patientInfo={[practiceId, String(age) + '代', sex]} />
 
 
     return (
