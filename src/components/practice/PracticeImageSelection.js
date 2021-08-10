@@ -43,6 +43,7 @@ export class PracticeImageSelection extends React.Component {
                                                 name={protocol}
                                                 key={index}
                                                 type="checkbox"
+                                                checked={(this.state.protocol_list.indexOf(protocol) !== -1)}
                                                 onChange={(e) => {
                                                     var prolist = this.state.protocol_list
                                                     var imglist = this.state.img_list

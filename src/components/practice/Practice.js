@@ -22,10 +22,10 @@ export default function Practice(props) {
         const series_name = series.series_name
         const series_id = series.series_id
         const protocol = series.protocol
-        const path_head = series.path
-        const start_num = series.start_num
-        const length = series.length
-        const path = path_head + '/' + practiceId + '/' + series_name + '/'
+        const path_head = series.series_info.path
+        const start_num = series.series_info.start_num
+        const length = series.series_info.length
+        const path = path_head + practiceId + '/' + series_name + '/'
         const image = Get_Dicom_Image(path, series_id, start_num, length)
         img_list[index] = image
         protocol_list[index] = protocol

@@ -42,7 +42,7 @@ export class Viewer extends Component {
                 { name: 'StackScrollMultiTouch', mode: 'active' },
                 { name: 'Rotate', mode: 'active' },
             ],
-            imageIds: this.props.img_list,
+            imageIds: [],
             // FORM
             activeTool: this.props.activeTool,
             imageIdIndex: 0,
