@@ -1,0 +1,19 @@
+.image_btn {
+    padding: 10px 30px;
+    background-color: rgb(75, 61, 197);
+    font-size: large;
+    color: white;
+}
+
+.selection{
+    width: 50%;
+    height: 40vh;
+    background-color: white;
+}
+
+.selectionhead{
+    text-align: left;
+}
+.sentense{
+    padding-left: 5%;
+}

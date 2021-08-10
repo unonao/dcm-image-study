@@ -21,7 +21,7 @@ export class Header extends React.Component {
             if (user) {
                 return (<p><Link to="/login">{user.displayName}</Link></p>)
             } else {
-                return (<p><Link to="/login">ログイン</Link></p>)
+                return (<p><Link to="/newlogin/">ログイン</Link></p>)
             }
         }
         return (

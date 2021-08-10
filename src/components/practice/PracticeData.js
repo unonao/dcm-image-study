@@ -300,7 +300,7 @@ export const practice = [{
             'series_id': 2,
             'series_name': '2',
             'modality': 'CT',
-            'protocol': null,
+            'protocol': '胸部CT',
             'series_info': {
                 'path': "/Practice/Thorax/",
                 'start_num': 8,
@@ -329,7 +329,7 @@ export const practice = [{
             'series_id': 3,
             'series_name': '3',
             'modality': 'CT',
-            'protocol': null,
+            'protocol': '胸部CT',
             'series_info': {
                 'path': "/Practice/Thorax/",
                 'start_num': 3,
@@ -356,9 +356,9 @@ export const practice = [{
     "series_list": [
         {
             'series_id': 2,
-            'series_name': '2_0214',
+            'series_name': '0214',
             'modality': 'CT',
-            'protocol': null,
+            'protocol': '胸部CT(0214)',
             'series_info': {
                 'path': "/Practice/Thorax/",
                 'start_num': 4,
@@ -367,9 +367,9 @@ export const practice = [{
         },
         {
             'series_id': 2,
-            'series_name': '2_0618',
+            'series_name': '0618',
             'modality': 'CT',
-            'protocol': null,
+            'protocol': '胸部CT(0618)',
             'series_info': {
                 'path': "/Practice/Thorax/",
                 'start_num': 8,
@@ -398,7 +398,7 @@ export const practice = [{
             'series_id': 2,
             'series_name': '2',
             'modality': 'CT',
-            'protocol': null,
+            'protocol': '胸部CT',
             'series_info': {
                 'path': "/Practice/Thorax/",
                 'start_num': 4,
@@ -427,7 +427,7 @@ export const practice = [{
             'series_id': 3,
             'series_name': '3',
             'modality': 'CT',
-            'protocol': null,
+            'protocol': '胸部CT',
             'series_info': {
                 'path': "/Practice/Thorax/",
                 'start_num': 4,

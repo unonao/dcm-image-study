@@ -332,7 +332,7 @@ class Head extends Component {
                                             onDoubleClick={() => {
                                                 this.setState({
                                                     defaultIndex: index,
-                                                    bigviwer: true,
+                                                    bigviwer: !this.state.bigviwer,
                                                 })
                                             }}>
                                             <CornerstoneViewport

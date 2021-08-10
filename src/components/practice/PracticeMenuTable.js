@@ -6,8 +6,12 @@ import './PracticeMenu.css'
 class PracticeMenuRow extends React.Component {
     render() {
         const product = this.props.product;
+        const practiceId = product.practiceId;
         return (
-            <tr className='PracticeMenu_box'>
+            <tr className='PracticeMenu_box'
+                onClick={() => {
+                    window.open(`/practice/${practiceId}`, '_blank')
+                }}>
                 <td>{product.practiceId}</td>
                 <td>{product.patientAge}</td>
                 <td>{product.patientSex}</td>
@@ -29,7 +33,7 @@ export class PracticeMenuTable extends React.Component {
         const filterMale = this.props.Male;
         const filterFemale = this.props.Female;
 
-        const flitercite = []
+        const filtercite = []
         const filtersex = []
 
         const rows = [];
@@ -40,19 +44,19 @@ export class PracticeMenuTable extends React.Component {
 
         if (filterHead === true) {
             const part = translation('Head')
-            flitercite.push(part)
+            filtercite.push(part)
         }
         if (filterThorax === true) {
             const part = translation('Thorax')
-            flitercite.push(part)
+            filtercite.push(part)
         }
         if (filterAbdomen === true) {
             const part = translation('Abdomen')
-            flitercite.push(part)
+            filtercite.push(part)
         }
         if (filterPelvis === true) {
             const part = translation('Pelvis')
-            flitercite.push(part)
+            filtercite.push(part)
         }
         if (filterMale === true) {
             filtersex.push('男性')
@@ -64,7 +68,7 @@ export class PracticeMenuTable extends React.Component {
         this.props.products.forEach((product) => {
             const disease = product.disease.join(',');
             if (filterText === '') {
-                if (flitercite.length === 0) {
+                if (filtercite.length === 0) {
                     if (key[product.practiceId] === 0) {
                         if (filtersex.length === 0) {
                             return;
@@ -82,7 +86,7 @@ export class PracticeMenuTable extends React.Component {
                         }
                     }
                 } else {
-                    flitercite.forEach((part) => {
+                    filtercite.forEach((part) => {
                         if (product.site.indexOf(part) !== -1) {
                             if (key[product.practiceId] === 0) {
                                 if (filtersex.length === 0) {
@@ -114,7 +118,7 @@ export class PracticeMenuTable extends React.Component {
                 if (disease.indexOf(filterText) === -1) {
                     return;
                 } else {
-                    if (flitercite.length === 0) {
+                    if (filtercite.length === 0) {
                         if (key[product.practiceId] === 0) {
                             if (filtersex.length === 0) {
                                 rows.push(
@@ -139,7 +143,7 @@ export class PracticeMenuTable extends React.Component {
                             return;
                         }
                     } else {
-                        flitercite.forEach((part) => {
+                        filtercite.forEach((part) => {
                             if (product.site.indexOf(part) !== -1) {
                                 if (key[product.practiceId] === 0) {
                                     if (filtersex.length === 0) {
@@ -165,7 +169,6 @@ export class PracticeMenuTable extends React.Component {
                                     return;
                                 }
                             }
-
                         })
                     }
                 }
