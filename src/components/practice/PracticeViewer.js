@@ -27,10 +27,6 @@ class PracticeViewer extends Component {
         this.setState({ img_list: newlist })
     }
 
-    componentDidMount() {
-        this.setState({ img_list: this.props.img_list })
-    }
-
     render() {
         return (
             <div className='practice_contents'>
@@ -65,7 +61,6 @@ class PracticeViewer extends Component {
                         <Viewer img_list={this.state.img_list} activeTool={this.state.activeTool}></Viewer>
                     </div>
                 </div>
-                <div>{console.log(this.state.imges)}</div>
             </div>
         )
     }

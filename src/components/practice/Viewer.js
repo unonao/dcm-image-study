@@ -44,14 +44,14 @@ export class Viewer extends Component {
             ],
             imageIds: [],
             // FORM
-            activeTool: this.props.activeTool,
             imageIdIndex: 0,
             bigviwer: false,
         };
+        this.ref = React.createRef();
     };
 
     componentDidMount() {
-        this.setState({ imageIds: this.props.img_list })
+        this.setState({ imageIds: this.props.img_list, activeTool: this.props.activeTool })
     }
 
     render() {
@@ -62,6 +62,7 @@ export class Viewer extends Component {
                         {this.state.viewports.map((index) => (
                             index <= (this.state.imageIds.length - 1) ?
                                 <div className='viewer'
+                                    ref={this.ref}
                                     key={index}
                                     onDoubleClick={() => {
                                         this.setState({
@@ -73,7 +74,7 @@ export class Viewer extends Component {
                                         tools={this.state.tools}
                                         imageIds={this.state.imageIds[index]}
                                         imageIdIndex={this.state.imageIdIndex}
-                                        activeTool={this.state.activeTool}
+                                        activeTool={this.props.activeTool}
                                         setViewportActive={() => {
                                             this.setState({
                                                 activeViewportIndex: index,
@@ -97,10 +98,11 @@ export class Viewer extends Component {
                             tools={this.state.tools}
                             imageIds={this.state.imageIds[this.state.activeViewportIndex]}
                             imageIdIndex={this.state.imageIdIndex}
-                            activeTool={this.state.activeTool}
+                            activeTool={this.props.activeTool}
                         />
                     </div>
                 }
+                {console.log(this.state.imageIds)}
             </div>
         )
     }

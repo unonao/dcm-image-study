@@ -2,7 +2,10 @@
   {
     "origin": [
       "http://localhost:3000",
-      "https://mnes-mnist-imagestudy.web.app/"
+      "https://mnes-mnist-imagestudy.firebaseapp.com"
+    ],
+    "responseHeader": [
+      "*"
     ],
     "method": [
       "GET"

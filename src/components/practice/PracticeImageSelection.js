@@ -35,7 +35,7 @@ export class PracticeImageSelection extends React.Component {
                                 <h2 className='sentense'>表示させたい画像の種類を選択してください。</h2>
                                 <p className='sentense'>※1度に表示できるのは4種類までです。</p>
                             </div>
-                            <div>
+                            <div className='protocol'>
                                 {this.props.protocol_list.map((protocol, index) => (
                                     <div key={index}>
                                         <label>
@@ -46,7 +46,7 @@ export class PracticeImageSelection extends React.Component {
                                                 checked={(this.state.protocol_list.indexOf(protocol) !== -1)}
                                                 onChange={(e) => {
                                                     var prolist = this.state.protocol_list
-                                                    var imglist = this.state.img_list
+                                                    var imglist = this.props.img_list
                                                     if (prolist.indexOf(e.target.name) !== -1) {
                                                         const newArray = prolist.filter(n => n !== e.target.name);
                                                         imglist.splice(prolist.indexOf(e.target.name), 1)
@@ -58,7 +58,7 @@ export class PracticeImageSelection extends React.Component {
                                                             imglist.shift()
                                                         }
                                                         prolist.push(e.target.name)
-                                                        imglist.push(this.state.images[e.target.key])
+                                                        imglist.push(this.state.images[index])
                                                         this.setState({
                                                             protocol_list: prolist,
                                                         });
@@ -72,8 +72,6 @@ export class PracticeImageSelection extends React.Component {
                                 )
                                 )}
                             </div>
-                            {console.log(this.state.protocol_list)}
-                            {console.log(this.state.img_list)}
                         </div>
                     </div>
                     : null}
