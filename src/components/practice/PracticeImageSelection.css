@@ -17,3 +17,11 @@
 .sentense{
     padding-left: 5%;
 }
+
+.protocol{
+    float: right;
+    text-align: left;
+    width: 80%;
+    font-size: x-large;
+    font-family: 'Franklin Gothic Medium';
+}

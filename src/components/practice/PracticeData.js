@@ -50,8 +50,8 @@ export const practice = [{
             },
         },
         {
-            'series_id': 1101,
-            'series_name': '1101',
+            'series_id': 1103,
+            'series_name': '1103',
             'modality': 'MR',
             'protocol': 'HEAD MRA',
             'series_info': {

@@ -31,7 +31,7 @@ export function Get_Dicom_Image(path, dcm_series, start, length) {
     const pathname = path;
     var img_list = []
     var array = []
-    for (let i = start - 1; i < length; i++) {
+    for (let i = start - 1; i < start + length - 1; i++) {
         let fileName = dcm_series + '_' + String(i + 1) + '.dcm';
         img_list.push(pathname + fileName);
     }
@@ -39,8 +39,7 @@ export function Get_Dicom_Image(path, dcm_series, start, length) {
         const spaceRef = storageRef.child(element);
         spaceRef.getDownloadURL().then((url) => {
             var xhr = new XMLHttpRequest();
-            xhr.withCredentials = true;
-            xhr.responseType = 'arraybuffer';
+            xhr.responseType = 'blob';
             xhr.onload = function (event) {
             };
             xhr.open('GET', url, true);
