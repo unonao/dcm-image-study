@@ -282,6 +282,8 @@ class Pelvis extends Component {
                             <p>中心領域：射精管が貫く腺組織と平滑筋からなる部位で、T2強調像で低信号</p>
                             <p>移行領域：腺構造は少ないためT2強調像で低信号</p>
                         </div>
+                        <img className="row_head_img" src='https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2FImages%2F%E3%82%A2%E3%83%8E%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E7%94%BB%E5%83%8F%EF%BC%88%E7%94%B7%E6%80%A7%E9%AA%A8%E7%9B%A4%EF%BC%89.png?alt=media&token=bbafe80e-2efe-457a-b450-39839418ce99'
+                            alt='background'></img>
                     </div>
                     <div>
                         <div style={{ padding: '0px', width: '100%', display: 'flex', flexWrap: 'wrap' }}>
@@ -316,8 +318,9 @@ class Pelvis extends Component {
                         <div className="basic_sentense">
                             <p>水平断と矢状断で子宮と卵巣の位置を確認しましょう。
                                 生殖可能年齢の子宮と卵巣は性周期により画像での見え方に変動があります。</p>
-                            <p>T2強調水平断（臓器にアノテーションしたい）</p>
                         </div>
+                        <img className="row_head_img" src='https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2FImages%2F%E3%82%A2%E3%83%8E%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E7%94%BB%E5%83%8F%EF%BC%88%E5%A5%B3%E6%80%A7%E9%AA%A8%E7%9B%A4%E2%91%A0%EF%BC%89.png?alt=media&token=22610ad6-a20a-42a4-977f-a036d5936b1b'
+                            alt='background'></img>
                     </div>
                     <div style={{ padding: '0px', width: '100%', display: 'flex', flexWrap: 'wrap' }}>
                         <CornerstoneViewport
@@ -331,6 +334,8 @@ class Pelvis extends Component {
                         />
                     </div>
                     <div>
+                        <img className="row_head_img" src='https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2FImages%2F%E3%82%A2%E3%83%8E%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E7%94%BB%E5%83%8F%EF%BC%88%E5%A5%B3%E6%80%A7%E9%AA%A8%E7%9B%A4%E2%91%A1%EF%BC%89.png?alt=media&token=51db00e8-22c8-4535-9a96-4baebb24b27e'
+                            alt='background'></img>
                         <div className="basic_sentense">
                             <p>子宮：体部は特徴的な3層構造をもち、T2強調像で以下のようにみえる</p>
                             <p>漿膜側ー筋層（中等度信号）ーjunctional zone（低信号）ー内膜（高信号）ー子宮内部</p>

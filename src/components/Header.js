@@ -39,15 +39,7 @@ export class Header extends React.Component {
                         <Link to="/">home</Link>
                     </div>
                     <div className="content">
-                        <Link to="/lecture/">lecture <span>▼</span></Link>
-                        <div className='sub-menu'>
-                            <ul>
-                                <li><Link to="/lecture/head">頭部の正常構造と機能</Link></li>
-                                <li><Link to="/lecture/thorax">胸部の正常構造と機能</Link></li>
-                                <li><Link to="/lecture/abdomen">腹部の正常構造と機能</Link></li>
-                                <li><Link to="/lecture/pelvis">骨盤部の正常構造と機能</Link></li>
-                            </ul>
-                        </div>
+                        <Link to="/lecture/">lecture</Link>
                     </div>
                     <div className="content">
                         <Link to="/practice_menu" >practice</Link>
