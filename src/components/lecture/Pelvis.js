@@ -1,45 +1,8 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
+import { Get_Dicom_Image } from '../../UseStorage';
 
-const pelvis_ct = [
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_90.dcm?alt=media&token=5e7477b3-f216-bc5a-663a7503d9e1',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_91.dcm?alt=media&token=8675630c-8263-7999-1bd633e9a7fe',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_92.dcm?alt=media&token=863d3c7f-8595-462d-d3b346348122',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_93.dcm?alt=media&token=1c8feffb-21bb-c5ce-efa1633dd993',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_94.dcm?alt=media&token=76915e0a-0201-772a-9e4964f5e69a',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_95.dcm?alt=media&token=cc67e950-e89a-60ca-a360d3c28067',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_96.dcm?alt=media&token=f49bd1e4-fd55-1b27-402fe319e014',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_97.dcm?alt=media&token=15ac466b-3ebc-f7a9-a3aebbfe9f11',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_98.dcm?alt=media&token=7582ad81-913f-fa8a-9f1d407c3283',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_99.dcm?alt=media&token=c1b719ff-dd88-7d7b-32b244523228',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_100.dcm?alt=media&token=50777629-dfd3-a1c3-c82feea4b944',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_101.dcm?alt=media&token=fdbdf6aa-a7ba-0178-43c5cf8f5e25',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_102.dcm?alt=media&token=d9452d07-40ee-3863-4f0d2b8e8c64',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_103.dcm?alt=media&token=33bc965d-6df1-703f-f5059b835761',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_104.dcm?alt=media&token=2f4970c1-ba91-bb2d-30da4ba36b02',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_105.dcm?alt=media&token=1cfdc441-84ad-761c-504107b233dc',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_106.dcm?alt=media&token=d78c596a-1982-c217-50ad0d255c73',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_107.dcm?alt=media&token=b9350e9e-9953-f9ca-6a990459a92d',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_108.dcm?alt=media&token=7591a8b6-5b60-1241-18b6d525f47b',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_109.dcm?alt=media&token=cff3e180-f125-06cf-353bc934fe56',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_110.dcm?alt=media&token=d4002b4c-8b93-cef2-febddc45b741',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_111.dcm?alt=media&token=f3414e3b-622b-a959-a423a64fa53e',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_112.dcm?alt=media&token=7cb5fa98-b60d-cd8a-c1bc714485bd',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_113.dcm?alt=media&token=ad90824f-0b72-1a6a-382c436de454',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_114.dcm?alt=media&token=f9dd65a5-72d9-99ef-1ec4e9a2c6da',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_115.dcm?alt=media&token=c293e7b0-0d22-8ae1-0f5cb42b4e0f',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_116.dcm?alt=media&token=aaecb7d4-69d3-9ac5-3438bd3b49b4',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_117.dcm?alt=media&token=3744c5ac-d6b9-9e1b-0e2a91f96147',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_118.dcm?alt=media&token=826d3a68-458e-77d3-31ebf9f9e557',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_119.dcm?alt=media&token=53b4c4da-0fb4-8611-789499143122',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_120.dcm?alt=media&token=6409066d-4a9b-efec-ee14db485664',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_121.dcm?alt=media&token=c0551f76-0a9b-f213-e9eb38a0f115',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_122.dcm?alt=media&token=b182b25b-7a9e-bbf0-23266da271d7',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_123.dcm?alt=media&token=fc655246-572d-ecbd-1fff779ae28a',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_124.dcm?alt=media&token=2fdcc3ab-955e-bf07-21b6597a5d16',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_125.dcm?alt=media&token=02733576-55f2-9fea-dc0d5b7a7319',
-    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_126.dcm?alt=media&token=5cafaca6-4daa-8ec0-4ad1926dfc17'
-]
+
 const pelvis_mt2sag = ['dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_male%2F701%2F701_1.dcm?alt=media&token=77d471f2-70d5-144e-f77c3a5f42bf',
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_male%2F701%2F701_2.dcm?alt=media&token=b5ba42d8-4170-74f2-2619c71fb544',
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_male%2F701%2F701_3.dcm?alt=media&token=5838a4b0-d15a-33aa-d6407e9363e7',
@@ -70,8 +33,7 @@ const pelvis_mt2sag = ['dicomweb:https://firebasestorage.googleapis.com/v0/b/mne
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_male%2F701%2F701_28.dcm?alt=media&token=ce167ebd-aa46-fd49-0169942d0ed3',
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_male%2F701%2F701_29.dcm?alt=media&token=e6eb06c4-b16a-4179-32fb34130462',
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_male%2F701%2F701_30.dcm?alt=media&token=98073b96-880e-3dce-7e4e00113873']
-
-const pelvis_mt2tra = ['dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_male%2F501%2F501_1.dcm?alt=media&token=09eb344d-d520-5cc2-5fb391ba81e7',
+const pelvis_mt2hor = ['dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_male%2F501%2F501_1.dcm?alt=media&token=09eb344d-d520-5cc2-5fb391ba81e7',
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_male%2F501%2F501_2.dcm?alt=media&token=04cc90d2-9288-8adc-0b6b1616b832',
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_male%2F501%2F501_3.dcm?alt=media&token=bac35199-5ca3-1cd0-eececd675878',
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_male%2F501%2F501_4.dcm?alt=media&token=13efb77e-8879-a80b-663fb54f705e',
@@ -131,7 +93,57 @@ const pelvis_mt2tra = ['dicomweb:https://firebasestorage.googleapis.com/v0/b/mne
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_male%2F501%2F501_58.dcm?alt=media&token=53d39ee1-32ff-cead-47a5ca95118d',
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_male%2F501%2F501_59.dcm?alt=media&token=6738394a-d84f-c206-9fa99a08138e',
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_male%2F501%2F501_60.dcm?alt=media&token=27959188-1655-082b-11b7a0341ef5']
-
+const pelvis_ft2sag = ['dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_1.dcm?alt=media&token=9cde1a36-bcb1-7af0-243d19ab1031',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_2.dcm?alt=media&token=f1df72a7-548c-eea6-d5c8771b6346',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_3.dcm?alt=media&token=2aa191cc-1087-0fb6-458b8c2dd862',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_4.dcm?alt=media&token=a80a4a87-c7c5-f9a5-bca05bf03c4b',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_5.dcm?alt=media&token=3fe2e1a5-866c-853a-b65dc2f93feb',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_6.dcm?alt=media&token=1f3e3ca2-8eb6-1b05-6751b444fb3c',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_7.dcm?alt=media&token=736de67a-d398-6a34-9209da0d4242',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_8.dcm?alt=media&token=28ec9049-1dff-e1c9-4cd5065f63bc',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_9.dcm?alt=media&token=97998ed6-26c1-fe95-19134ffb0bca',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_10.dcm?alt=media&token=2fa78677-f2ff-9f47-9c68e412eaa6',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_11.dcm?alt=media&token=610c037f-0f79-0fa6-87a351f9b30d',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_12.dcm?alt=media&token=3c72fc60-58aa-f925-28927d73d560',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_13.dcm?alt=media&token=32633a7d-b87a-053c-8b06ef9de335',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_14.dcm?alt=media&token=844a1424-578b-fc94-de1a24288ba4',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_15.dcm?alt=media&token=e065aaef-66e9-efe3-be0c1e4613ba',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_16.dcm?alt=media&token=4cb08331-75b8-dbbc-18c1091f17ef',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_17.dcm?alt=media&token=059d6843-76f1-02fe-1f5d370dc0df',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_18.dcm?alt=media&token=1aca798a-eed6-8922-f60fe9572fd9',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_19.dcm?alt=media&token=8ec93d04-ae68-7764-ef71c2924873',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_20.dcm?alt=media&token=33b7eac1-27da-a753-b508769998d9',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_21.dcm?alt=media&token=1269f3af-6b7b-ed9a-e0279b620344',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_22.dcm?alt=media&token=d9cb9208-64d8-d5bd-121d4b6683ba',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_23.dcm?alt=media&token=d6641b90-5788-4b18-873049206fcb',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_24.dcm?alt=media&token=b2d11a1e-834b-3ebb-88966930e927',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_25.dcm?alt=media&token=3b1471db-e9f4-d068-d095e7a7479b',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F801%2F801_26.dcm?alt=media&token=0d0082d6-67dd-3302-12a058c9db15']
+const pelvis_ft2hor = ['dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_1.dcm?alt=media&token=23b50e67-4398-71c4-2e0ab91aecad',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_2.dcm?alt=media&token=52adbc48-9811-914a-bf39de87ca25',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_3.dcm?alt=media&token=3f634a63-981d-9bdc-a089c5c3c1b6',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_4.dcm?alt=media&token=648dc69c-13ed-c5ad-215c423d0263',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_5.dcm?alt=media&token=af09a8ea-da01-a050-0287edcc80d9',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_6.dcm?alt=media&token=ff76b8a4-bbaa-966c-a89b4a4e5d3c',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_7.dcm?alt=media&token=313586e4-76d8-0c6d-4249b7061315',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_8.dcm?alt=media&token=46ec3a7d-b70f-b0d2-beeb7090ba9d',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_9.dcm?alt=media&token=76140a7d-1b63-25cc-a6a8190d8268',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_10.dcm?alt=media&token=a9a80ce1-dbc7-11bf-7a026a35c237',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_11.dcm?alt=media&token=149813ff-d6f8-05ea-744222c5062f',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_12.dcm?alt=media&token=6a06f80b-bdb4-ba50-845473c31853',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_13.dcm?alt=media&token=0058ff34-680e-443e-39cc90968310',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_14.dcm?alt=media&token=2e1f30de-b473-c134-92e7b5d9a2ce',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_15.dcm?alt=media&token=94304757-7c0a-fe24-d1bf09adeb3e',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_16.dcm?alt=media&token=dabcdb44-00de-20bb-9f54f3c7fc90',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_17.dcm?alt=media&token=0ec737e0-d503-2a16-692f4dca03cf',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_18.dcm?alt=media&token=6879f0c7-4e02-efa5-6c2b4bbc5297',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_19.dcm?alt=media&token=f93206f1-a9fc-3cf0-c570a1a9e8ad',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_20.dcm?alt=media&token=06ce5f3e-33c4-3477-47507d5c2aff',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_21.dcm?alt=media&token=ae173d18-5def-07d2-220a2d556d9b',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_22.dcm?alt=media&token=87804ead-5174-b739-1bab70dd7226',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_23.dcm?alt=media&token=1b6ffa35-9000-fc43-eb082d6ff5d4',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_24.dcm?alt=media&token=fd42f9de-7ca2-be22-33609d51ec79',
+    'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FPelvis%2Fpelvis_MRI_female%2F901%2F901_25.dcm?alt=media&token=1f049491-a0b8-a77c-1182f508259c']
 
 
 const get_img = function (img_list, img_list_name) {
@@ -142,12 +154,15 @@ const get_img = function (img_list, img_list_name) {
     return option_list
 }
 
-const img_list = [pelvis_ct]
-const img_list_name = ['女性骨盤CT']
-const img_list1 = [pelvis_ct, pelvis_mt2sag]
-const img_list2 = [pelvis_ct, pelvis_mt2tra]
-const img_list_name1 = ['女性骨盤CT', 'MRI T2W sag']
-const img_list_name2 = ['女性骨盤CT', 'MRI T2W tra']
+
+const img_list1 = [pelvis_mt2sag, Get_Dicom_Image('Explanation/Pelvis/pelvis_MRI_male/801/', 801, 1, 25)]
+const img_list2 = [pelvis_mt2hor, Get_Dicom_Image('Explanation/Pelvis/pelvis_MRI_male/601/', 601, 1, 60)]
+const img_list3 = [pelvis_ft2sag, Get_Dicom_Image('Explanation/Pelvis/pelvis_MRI_female/1001/', 1001, 1, 18)]
+const img_list4 = [pelvis_ft2hor]
+const img_list_name1 = ['男性T2強調像矢状断', '男性T2強調像冠状断']
+const img_list_name2 = ['男性T2強調像水平断', '男性T2強調像水平断']
+const img_list_name3 = ['女性T2強調像水平断', '女性T2強調像冠状断']
+const img_list_name4 = ['女性T2強調像矢状断']
 class Pelvis extends Component {
     state = {
         activeViewportIndex: 0,
@@ -183,14 +198,14 @@ class Pelvis extends Component {
         secondIndex: 0,
         second_imageIndex: 0,
         //third
-        third_imageIds: img_list1,
-        third_imageNames: img_list_name1,
+        third_imageIds: img_list3,
+        third_imageNames: img_list_name3,
         thirdIndex: 0,
         third_imageIndex: 0,
 
         //fourth
-        fourth_imageIds: img_list,
-        fourth_imageNames: img_list_name,
+        fourth_imageIds: img_list4,
+        fourth_imageNames: img_list_name4,
         fourthIndex: 0,
         fourth_imageIndex: 0,
 

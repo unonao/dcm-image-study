@@ -15,9 +15,6 @@ export function Home() {
 
     return (
         <div className="container">
-            <div className="row" >
-                <h1 className="row_head">画像診断勉強ツール「dcm-image-study」へようこそ！</h1>
-            </div>
             <div>
                 <img className="row_head_img" src={image1} alt='background'></img>
             </div>
