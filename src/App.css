@@ -3,14 +3,9 @@
 **/
 header {
   background: #0c4da2;
-  height: 100px;
+  height: 24vh;
   color: White;
   text-align: center;
-}
-.img_mnist{
-position: relative;
-top: 10px;
-right: 580px;
 }
 
 
@@ -78,20 +73,23 @@ display: block;
 footer {
   color: whitesmoke;
   background-color: rgb(23, 30, 61);
-  height: 300px;
+  width: 100%;
+  height: 36vh;
 }
 
 .foots {
   margin: 1%;
   padding: 1%;
-  height: 250px;
+  margin-bottom: 0%;
+  padding-bottom: 0%;
+  height: 95%;
 }
 
 .foot {
   font-size: large;
   height: auto;
   width: auto;
-  margin-top: 3px;
+  margin-top: 1%;
   margin-left: 0px;
 }
 
@@ -104,9 +102,8 @@ footer {
   display: right;
   opacity: 0.8;
   border-radius: 4px;
-  position: relative;
-  top: 50px;
-  left: 1000px;
+  float: right;
+  margin-right: 5%;
 }
 
 .btn:hover {
@@ -123,31 +120,32 @@ footer {
 .bottom{
   font-size: small;
   text-align: center;
-  margin-top: 50px;
-  padding-left: 150px;
+  position: relative;
+  top:5vh;
 }
 
 .link_imgs{
-  display: flex;
-  grid-template-columns: auto;
-  grid-row: 250px;
-  gap:30px;
+  display: grid;
+  grid-template-columns: 20% 20% 20%;
+  gap: 5%;
 }
 
 .img:hover {
   opacity: 0.8;
 }
-
 .img_mnes{
-  position: relative;
-  bottom: 0px;
-  left: 30px;
+  width: 100%;
+  height: 100%;
 }
 
 .img_laime{
-  position: relative;
-  bottom: 0px;
-  left: 80px;
+  width: 100%;
+  height: 100%;
+}
+
+.img_mnist{
+  width: 100%;
+  height: 100%;
 }
 
 

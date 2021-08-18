@@ -3,6 +3,7 @@ import CornerstoneViewport from 'react-cornerstone-viewport';
 import { thorax_dicom, thorax_explain } from "./Thorax";
 import { abdomen_dicom, abdomen_explain } from "./Abdomen";
 import { CT_explain } from "./Diagnostic_imaging";
+import { Get_Dicom_Image } from '../../UseStorage';
 
 var explaindata = {
     'ct': CT_explain(),
@@ -13,13 +14,25 @@ var explaindata = {
 const img_list = {
     'ct': [thorax_dicom],
     'thorax': [thorax_dicom],
-    'abdomen': [abdomen_dicom],
+    'abdomen': [abdomen_dicom,
+        Get_Dicom_Image('Explanation/Abdomen/abdomen_MRI_female/1002/', 1002, 1, 32),
+        Get_Dicom_Image('Explanation/Abdomen/abdomen_MRI_female/1003/', 1003, 1, 32),
+        Get_Dicom_Image('Explanation/Abdomen/abdomen_MRI_female/1101/', 1101, 1, 32),
+        Get_Dicom_Image('Explanation/Abdomen/abdomen_MRI_female/201/', 201, 1, 13),
+        Get_Dicom_Image('Explanation/Abdomen/abdomen_MRI_female/401/', 401, 1, 38),
+        Get_Dicom_Image('Explanation/Abdomen/abdomen_MRI_female/5010/', 5010, 1, 100),
+        Get_Dicom_Image('Explanation/Abdomen/abdomen_MRI_female/5020/', 5020, 1, 3),
+        Get_Dicom_Image('Explanation/Abdomen/abdomen_MRI_female/601/', 601, 1, 20),
+        Get_Dicom_Image('Explanation/Abdomen/abdomen_MRI_female/701/', 701, 1, 34),
+    ],
 }
 
 const img_list_name = {
     'ct': ['胸部CT'],
     'thorax': ['胸部CT'],
-    'abdomen': ['腹部CT'],
+    'abdomen': ['腹部CT', 'sdual T1 Out TRA', 'sdual T1 In TRA', 'T1W TRA TSE BH SENSE',
+        'Survey', 'sur BFFE TRA SENSE', 'MRCP Navi ssTR SENSE', 'MIP MRCP Navi ssTR SENSE',
+        'SSh T2W COR Navi SENSE', 'Heavy SSh-T2W RT SENSE'],
 }
 
 const get_img = function (myprop) {

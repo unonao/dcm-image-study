@@ -34,6 +34,9 @@ export class Header extends React.Component {
                         {Log()}
                     </div>
                 </div>
+                <div>
+                    <h1>画像診断勉強ツール（仮）</h1>
+                </div>
                 <div className="contents">
                     <div className="content">
                         <Link to="/">home</Link>
