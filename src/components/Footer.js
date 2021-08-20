@@ -1,6 +1,11 @@
 import mnesimg from './images/logo_mnes.jpg'
 import laimeimg from './images/logo_white.png'
 import mnistimg from './images/MNiST.png'
+
+//css
+import "../styles/Footer.css"
+
+
 export function Footer() {
     return (
         <footer>

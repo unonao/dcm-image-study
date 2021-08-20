@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
 
+//css
+import "../../styles/Pelvis.css"
+
 const pelvis_ct = [
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_90.dcm?alt=media&token=5e7477b3-f216-bc5a-663a7503d9e1',
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FAll%2FFemale_CT%2F80%2F80_91.dcm?alt=media&token=8675630c-8263-7999-1bd633e9a7fe',

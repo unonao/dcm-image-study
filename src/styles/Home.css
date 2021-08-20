@@ -1,0 +1,98 @@
+/** Home **/
+
+.row {
+    text-align: center;
+    flex-direction: column;
+  }
+  
+  .row_head {
+    font-family: "Franklin Gothic Medium";
+  }
+  
+  .row_head_img {
+    height: 400px;
+    width: 100%;
+  }
+  
+  .under {
+    background: linear-gradient(transparent 75%, #62e293 50%);
+  }
+  
+  .row_body{
+    margin-top: 80px;
+    margin-bottom: 100px;
+  }
+  
+  .thema{
+    margin-bottom: 30px;
+  }
+  
+  .row_body_sentense {
+    text-align: left;
+    width: 47%;
+    height: auto;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding: auto;
+  }
+  
+  .row_body_sentense p{
+    width: 100%;
+    line-height: 40px;
+    font-size: medium;
+  }
+  
+  .btn_txt {
+    font-family: 'Gill Sans';
+    font-weight: bold;
+  }
+  
+  .body_btn {
+    padding: 10px 30px;
+    background-color: green;
+    font-size: large;
+    color: white;
+  }
+  
+  .body_btn:hover {
+    opacity: 0.8;
+  }
+  
+  /**
+    explanation
+  **/
+  .explanation {
+    height: auto;
+  }
+  
+  .exp {
+    display: flex;
+    padding: 2%;
+    margin: 3%;
+    border: solid 3px;
+    border-radius: 10px;
+    background-color: azure;
+  }
+  
+  .exp_row {
+    text-align: center;
+    font-size: small;
+    width: 30%;
+    letter-spacing: 0ch;
+    padding: 3%;
+    padding-bottom: 0%;
+    margin: 3%;
+    margin-bottom: 0%;
+  }
+  
+  .exp_row_img {
+    height: 150px;
+    width: 150px;
+  }
+  
+  .exp_row p{
+    text-align: left;
+    font-size: medium;
+    line-height: 25px;
+  }

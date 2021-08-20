@@ -3,6 +3,9 @@ import React  from 'react';
 import cornerstoneTools from 'cornerstone-tools';
 //import { act } from 'react-dom/cjs/react-dom-test-utils.development';
 
+//css
+import "../styles/ExamplePageQuiz.css"
+
 
 //MCQ用
 export class Quiz extends React.Component {

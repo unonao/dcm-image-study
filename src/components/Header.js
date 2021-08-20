@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import { auth } from '../firebase';
 import githubimg from './images/github.png'
 
+//css
+import "../styles/Header.css"
+
 
 export class Header extends React.Component {
     state = {

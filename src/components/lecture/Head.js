@@ -3,6 +3,9 @@ import CornerstoneViewport from 'react-cornerstone-viewport';
 
 //const Head_CT =Get_Dicom_Image('/Explanation/Head/Head_CT/','2_',1,41)
 
+//css 
+import "../../styles/Head.css"
+
 export const Head_CT = [
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2FHead_CT%2F2_1.dcm?alt=media&token=356efa99-ba50-4143-a7e4-424a7c84f230',
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2FHead_CT%2F2_2.dcm?alt=media&token=cbd338e4-e99b-45b5-98ec-562450c5e6e1',

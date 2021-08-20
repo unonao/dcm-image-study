@@ -1,0 +1,73 @@
+/**
+      header.js
+**/
+
+header {
+    background: #0c4da2;
+    height: 100px;
+    color: White;
+    text-align: center;
+  }
+  .img_mnist{
+  position: relative;
+  top: 10px;
+  right: 580px;
+  }
+  
+  
+  .img_github{
+   margin-right: 5px;
+   margin-left: 10px;
+  }
+  
+  .head_box{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+  
+  
+  .contents {
+  display: flex;
+  }
+  
+  .content {
+  margin: auto;
+  height: 30px;
+  width: 120px;
+  margin-top: 14px;
+  padding-bottom: auto;
+  z-index: 10;
+  }
+  
+  .content:hover {
+  background-color: #799ecf;
+  }
+  
+  a {
+  color:white;
+  text-decoration: none;
+  }
+  
+  .sub-menu > ul {
+  text-align: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  }
+  
+  .sub-menu > ul > li > a {
+  text-decoration: none;
+  color: #ffffff;
+  }
+  
+  .sub-menu {
+  background-color: #799ecf;
+  width: 200px;
+  display: none;
+  }
+  
+  .content:hover .sub-menu {
+  display: block;
+  }

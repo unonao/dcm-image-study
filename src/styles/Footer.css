@@ -1,0 +1,78 @@
+/**
+     footer
+**/
+
+footer {
+    color: whitesmoke;
+    background-color: rgb(23, 30, 61);
+    height: 300px;
+  }
+  
+  .foots {
+    margin: 1%;
+    padding: 1%;
+    height: 250px;
+  }
+  
+  .foot {
+    font-size: large;
+    height: auto;
+    width: auto;
+    margin-top: 3px;
+    margin-left: 0px;
+  }
+  
+  
+  .btn {
+    padding: 10px 30px;
+    background-color: pink;
+    font-size: large;
+    color: white;
+    display: right;
+    opacity: 0.8;
+    border-radius: 4px;
+    position: relative;
+    top: 50px;
+    left: 1000px;
+  }
+  
+  .btn:hover {
+    opacity: 1;
+  }
+  
+  .button {
+    margin-right: 5px;
+    position: relative;
+    top: 10px;
+    left: 30px;
+  }
+  
+  .bottom{
+    font-size: small;
+    text-align: center;
+    margin-top: 50px;
+    padding-left: 150px;
+  }
+  
+  .link_imgs{
+    display: flex;
+    grid-template-columns: auto;
+    grid-row: 250px;
+    gap:30px;
+  }
+  
+  .img:hover {
+    opacity: 0.8;
+  }
+  
+  .img_mnes{
+    position: relative;
+    bottom: 0px;
+    left: 30px;
+  }
+  
+  .img_laime{
+    position: relative;
+    bottom: 0px;
+    left: 80px;
+  }

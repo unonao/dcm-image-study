@@ -1,0 +1,21 @@
+/**
+============================================================
+                    Pelvis
+============================================================
+**/
+.Pelvis{
+    background-color: rgb(239, 253, 249);
+  }
+  
+  .Pelvis_contents{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10px;
+  }
+  
+  .Pelvis_viewer{
+    display: grid;
+    height: 512px;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+  }

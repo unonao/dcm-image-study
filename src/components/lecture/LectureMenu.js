@@ -5,6 +5,10 @@ import thoraximg from '../images/Thorax.jpg'
 import abdomenimg from '../images/Abdomen.jpg'
 import pelvisimg from '../images/Pelvis.jpg'
 
+//css
+import "../../styles/LectureMenu.css"
+
+
 export function LectureMenu() {
     return (
         <div>

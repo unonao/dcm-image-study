@@ -1,6 +1,9 @@
 import image1 from './images/28774EB8-7CDC-4656-9D36-406A7B4F1AEC.png'
 import { LinkButton } from './parts/LinkButton';
 
+//css
+import "../styles/Home.css"
+
 export function Home() {
     const examples1 = {
         title: '進む',

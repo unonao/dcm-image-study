@@ -4,6 +4,9 @@ import { thorax_dicom, thorax_explain } from "./Thorax";
 import { abdomen_dicom, abdomen_explain } from "./Abdomen";
 import { CT_explain } from "./Diagnostic_imaging";
 
+//css
+import "../../styles/ExamplePageBasic.css"
+
 var explaindata = {
     'ct': CT_explain(),
     'thorax': thorax_explain(),

@@ -14,6 +14,9 @@ import Rotateimg from "./images/Icon/Rotate.png";
 import Wwwcimg from "./images/Icon/Wwwc.png";
 import Zoomimg from "./images/Icon/Zoom.png";
 
+//css
+import "../styles/ExamplePageViewer.css"
+
 
 function mklist(name, num) {
     var new_list = []
