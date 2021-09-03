@@ -1,0 +1,31 @@
+.canvasarea{
+    background-color: black;
+    height:70vh;
+    padding: 2%;
+}
+
+.overlay{
+    position: relative;
+    text-align: center;
+}
+
+.overlay canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+
+.overlay img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.canvasforhead{
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap: 1%;
+    padding-left: 1%;
+}

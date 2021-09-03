@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import CornerstoneViewport from 'react-cornerstone-viewport';
+import { CanvasforHead } from '../parts/CanvasforHead';
+import { MRIT2imges, MRIT2annos, MRIT2segment, MRIT2partsegment } from './lectureData';
+import { Get_Image } from '../../UseStorage';
 
 //const Head_CT =Get_Dicom_Image('/Explanation/Head/Head_CT/','2_',1,41)
+
+const MRI_jpeg = Get_Image('Explanation/Head/Head_MRI_T2W_JPEG/女性頭部T2強調像/', 'jpg', 25)
 
 export const Head_CT = [
     'dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2FHead_CT%2F2_1.dcm?alt=media&token=356efa99-ba50-4143-a7e4-424a7c84f230',
@@ -254,11 +259,11 @@ const head_mra3 = ['dicomweb:https://firebasestorage.googleapis.com/v0/b/mnes-mn
 
 const img_list1 = [head_t1w, head_t2w, head_flair, head_dwi]
 export const img_list = [Head_CT, anno_head, head_mri];
-const img_list2 = [head_mra1, head_mra2, head_mra3]
+const img_list2 = [head_mra1, head_mra2, head_mra3, anno_head]
 
 const img_list_name1 = ['sT1W SE CLEAR', 'aT2 TSE SENSE', 'HEAD FLAIR TSE SENSE', 'DWI EPI SENSE']
 export const img_list_name = ['頭部CT', '頭部動脈アノテーション', '頭部MRI']
-const img_list_name2 = ['3D HEAD MRA 1', '3D HEAD MRA 2', '3D HEAD MRA 3']
+const img_list_name2 = ['3D HEAD MRA 1', '3D HEAD MRA 2', '3D HEAD MRA 3', 'セグメンテーション']
 
 
 const get_img = function (img_list, img_list_name) {
@@ -295,11 +300,12 @@ class Head extends Component {
                 // Scroll
                 { name: 'StackScrollMouseWheel', mode: 'active' },
             ],
+            //cornerstoneViewer
             upper_imageIds: img_list1,
             upper_imageNames: img_list_name1,
             imageIndex: 0,
             defaultIndex: 0,
-            middle_imageIds: anno_head,
+            middle_imageIds: MRIT2imges,
             lower_imageIds: img_list2,
             lower_imageNames: img_list_name2,
             lowerIndex: 0,
@@ -308,11 +314,16 @@ class Head extends Component {
             activeToolIndex: 10,
             upper_imageIdIndex: 0,
             imageIdIndex: 0,
-            quizIndex: 0,
+            middle_imageIdIndex: 0,
             isPlaying: false,
             frameRate: 5,
             bigviwer: false,
             style: 'viewers',
+            // canvas
+            annolist: MRIT2annos,
+            segment: MRIT2segment,
+            parts: MRIT2partsegment,
+            annomri: MRI_jpeg,
         };
     };
     //componentDidMount(){
@@ -452,7 +463,7 @@ class Head extends Component {
                         <div className="basic_sentense">
                             <p>MRI：撮影時に人体内の水素原子核から放出された電波の強弱（信号強度）によって、
                                 白黒のコントラストが表現される。黒く写るのは低信号、白く写るのは高信号</p>
-                            <p>（T1強調画像とT2強調画像）</p>
+                            <h4>（T1強調画像とT2強調画像）</h4>
                             <p>T1では水は低信号で黒く写る</p>
                             <p>T2では水は高信号で白く写る</p>
                             <h4>（拡散強調画像（DWI））</h4>
@@ -471,22 +482,14 @@ class Head extends Component {
                                 確認しやすくなる</p>
                         </div>
                     </div>
-                    <div style={{ padding: '0px', width: '100%', display: 'flex', flexWrap: 'wrap' }}>
-                        <CornerstoneViewport
-                            tools={this.state.tools}
-                            style={{ minWidth: '50%', height: '512px', flex: '1' }}
-                            imageIds={this.state.middle_imageIds}
-                            imageIdIndex={this.state.imageIdIndex}
-                            isPlaying={false}
-                            frameRate={this.state.frameRate}
-                            activeTool={this.state.activeTool}
-                        />
-                    </div>
-                    <div>
-                        <h2>STEP2. T2で脳MRIを見てみよう</h2>
-                        <div className="basic_sentense">
-                            <p>comimg soon</p>
-                        </div>
+                    <div className='celebrum'>
+                        <CanvasforHead
+                            src={this.state.middle_imageIds}
+                            anno={this.state.annolist}
+                            parts={this.state.parts}
+                            segment={this.state.segment}
+                            mri={this.state.annomri}>
+                        </CanvasforHead>
                     </div>
                     <div>
                         <div style={{ padding: '0px', width: '100%', display: 'flex', flexWrap: 'wrap' }}>
@@ -520,7 +523,14 @@ class Head extends Component {
                     <div>
                         <h2>STEP3. 脳動脈の走行と灌流領域</h2>
                         <div className="basic_sentense">
-                            <p>comimg soon</p>
+                            <p>ここでは、MRAの画像をみながら、脳動脈の走行を確認してみましょう。
+                                セグメンテーション画像は脳動脈の灌流領域ごとに色分けしています。
+                            </p>
+                            <img
+                                className="row_head_img"
+                                alt='arterysegmenttable'
+                                src='https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Explanation%2FHead%2FImages%2F%E8%84%B3%E5%8B%95%E8%84%88%E8%A1%80%E7%AE%A1%E9%A0%98%E5%9F%9F%E5%AF%BE%E5%BF%9C%E8%A1%A8.png?alt=media&token=52dbcd03-cc54-4743-bb11-7476df6e1da4'>
+                            </img>
                         </div>
                     </div>
                 </div>

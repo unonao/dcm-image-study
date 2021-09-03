@@ -262,7 +262,7 @@ footer {
 
 .Head_contents{
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 49% 49%;
   gap: 10px;
 }
 
@@ -273,7 +273,9 @@ footer {
   grid-template-rows: 50% 50%;
 }
 
-
+.celebrum{
+  grid-column: 1/3;
+}
 /**
 ============================================================
                     Pelvis

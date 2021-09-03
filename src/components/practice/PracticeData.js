@@ -83,7 +83,7 @@ export const practice = [{
             'series_id': 702,
             'series_name': '702',
             'modality': 'MR',
-            'protocol': 'HEAD MRA',
+            'protocol': 'HEAD MRA(1)',
             'series_info': {
                 'path': "/Practice/Head/",
                 'start_num': 1,
@@ -94,7 +94,7 @@ export const practice = [{
             'series_id': 703,
             'series_name': '703',
             'modality': 'MR',
-            'protocol': 'HEAD MRA',
+            'protocol': 'HEAD MRA(2)',
             'series_info': {
                 'path': "/Practice/Head/",
                 'start_num': 1,
@@ -105,7 +105,7 @@ export const practice = [{
             'series_id': 2104,
             'series_name': '2104',
             'modality': 'MR',
-            'protocol': 'HEAD MRA',
+            'protocol': 'HEAD MRA(3)',
             'series_info': {
                 'path': "/Practice/Head/",
                 'start_num': 1,
@@ -136,7 +136,7 @@ export const practice = [{
             'series_id': 1601,
             'series_name': '1601a',
             'modality': 'MR',
-            'protocol': 'HEAD MRA',
+            'protocol': 'HEAD MRA(1)',
             'series_info': {
                 'path': "/Practice/Head/",
                 'start_num': 1,
@@ -147,7 +147,7 @@ export const practice = [{
             'series_id': 1601,
             'series_name': '1601b',
             'modality': 'MR',
-            'protocol': 'HEAD MRA',
+            'protocol': 'HEAD MRA(2)',
             'series_info': {
                 'path': "/Practice/Head/",
                 'start_num': 100,
