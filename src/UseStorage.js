@@ -1,11 +1,11 @@
 import { storageRef } from './firebase';
 
 
-export function Get_Image(path, dcm_num, extension, length) {
+export function Get_Image(path, extension, length) {
     var img_list = []
     var array = []
     for (let i = 0; i < length; i++) {
-        let fileName = dcm_num + '_' + String(i + 1) + extension;
+        let fileName = String(i + 1) + '.' + extension;
         img_list.push(path + fileName);
         array.push(i);
     }
@@ -13,8 +13,7 @@ export function Get_Image(path, dcm_num, extension, length) {
         const spaceRef = storageRef.child(element);
         spaceRef.getDownloadURL().then((url) => {
             var xhr = new XMLHttpRequest();
-            xhr.withCredentials = true;
-            xhr.responseType = 'arraybuffer';
+            xhr.responseType = 'blob';
             xhr.onload = function (event) {
             };
             xhr.open('GET', url, true);
