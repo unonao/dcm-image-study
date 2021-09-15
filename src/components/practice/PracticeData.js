@@ -10,7 +10,7 @@ export const practice = [{
         {
             'quiz_kind': 'Quiz', // Quiz, ViewerQuiz, ViewerQuizFreehand,
             'question': '病変部はどこですか？',
-            'answer_list': ['橋', '中脳', '扁桃体', '海馬', '小脳'],
+            'answer_list': ['橋', '中脳', '中心前回', '海馬', '小脳'],
             'answer': 4,
             // 選択肢とか答えとか
         },
@@ -61,6 +61,7 @@ export const practice = [{
             },
         },
     ],
+    "expUrl": 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Practice%2FHead%2F705601001%2F705601001-1.jpg?alt=media&token=7f41c8e9-e887-407b-ad98-27a953dedcbb',
 }, {
     "practiceId": '701401002',
     "patientAge": 60,   // '80代'とか文字列にすると管理が大変だから数値型が良さそう
@@ -113,7 +114,7 @@ export const practice = [{
             },
         },
     ],
-
+    "expUrl": 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Practice%2FHead%2F701401002%2F701401002-1.jpg?alt=media&token=37363a7c-0390-4614-993f-f3e273d43218',
 }, {
     "practiceId": '707712001',
     "patientAge": 60,   // '80代'とか文字列にすると管理が大変だから数値型が良さそう
@@ -155,7 +156,7 @@ export const practice = [{
             },
         },
     ],
-
+    "expUrl": 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Practice%2FHead%2F707712001%2F707712001-1.jpg?alt=media&token=9e53935f-2825-4454-a3c4-bff2962da654',
 }, {
     "practiceId": '700800001',
     "patientAge": 50,   // '80代'とか文字列にすると管理が大変だから数値型が良さそう
@@ -212,6 +213,7 @@ export const practice = [{
             },
         },
     ],
+    "expUrl": 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Practice%2FHead%2F700800001%2F700800001-1.jpg?alt=media&token=607a2937-6fd4-4599-8c47-3493ce5af4df',
 }, {
     "practiceId": '707711002',
     "patientAge": 30,   // '80代'とか文字列にすると管理が大変だから数値型が良さそう
@@ -275,7 +277,7 @@ export const practice = [{
             },
         },
     ],
-
+    "expUrl": 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Practice%2FHead%2F707711002%2F707711002-1.jpg?alt=media&token=1577ee90-1e6e-4f88-b2d0-114260f10448',
 }, {
     "practiceId": '0400601001',
     "patientAge": 30,
@@ -308,6 +310,7 @@ export const practice = [{
             },
         },
     ],
+    "expUrl": 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Practice%2FThorax%2F0400601001%2F0400601001-1.jpg?alt=media&token=118dcf0b-e6d7-46b2-b770-3dd993a5282b',
 }, {
     "practiceId": '0403911001',
     "patientAge": 80,
@@ -337,6 +340,7 @@ export const practice = [{
             },
         },
     ],
+    "expUrl": 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Practice%2FThorax%2F0403911001%2F040391101-1.jpg?alt=media&token=b104568e-4437-4f88-a385-17648243774f',
 }, {
     "practiceId": '0403501001',
     "patientAge": 70,
@@ -377,6 +381,7 @@ export const practice = [{
             },
         },
     ],
+    "expUrl": 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Practice%2FThorax%2F0403501001%2F0403501001(1)-1.jpg?alt=media&token=344969ed-31df-47a7-a408-a81b3b13a510',
 }, {
     "practiceId": '0400112001',
     "patientAge": 80,
@@ -406,6 +411,7 @@ export const practice = [{
             },
         },
     ],
+    "expUrl": 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Practice%2FThorax%2F0400112001%2F0400112001-1.jpg?alt=media&token=a192e333-f521-466b-b3a2-934a397942b2',
 }, {
     "practiceId": '0407801001',
     "patientAge": 80,
@@ -435,4 +441,5 @@ export const practice = [{
             },
         },
     ],
+    "expUrl": 'https://firebasestorage.googleapis.com/v0/b/mnes-mnist-imagestudy.appspot.com/o/Practice%2FThorax%2F0407801001%2F0407801001-1.jpg?alt=media&token=40ab1c2e-68a1-4b6a-85eb-38ae6154183a',
 },]

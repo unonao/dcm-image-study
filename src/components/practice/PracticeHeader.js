@@ -1,4 +1,4 @@
-import './PracticeViewer.css'
+import './PracticeHeader.css'
 
 export function PracticeHeader(patientInfo) {
     return (
