@@ -61,6 +61,7 @@ class PracticeViewer extends Component {
                         <Viewer img_list={this.state.img_list} activeTool={this.state.activeTool}></Viewer>
                     </div>
                 </div>
+                <div>{console.log(this.state.img_list)}</div>
             </div>
         )
     }

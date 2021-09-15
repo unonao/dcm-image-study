@@ -32,6 +32,7 @@ width: 120px;
 margin-top: 14px;
 padding-bottom: auto;
 z-index: 10;
+background-color: #ffde59;
 }
 
 .content:hover {
@@ -39,7 +40,7 @@ background-color: #799ecf;
 }
 
 a {
-color:white;
+color:black;
 text-decoration: none;
 }
 
@@ -166,13 +167,10 @@ footer {
   width: 100%;
 }
 
-.under {
-  background: linear-gradient(transparent 75%, #62e293 50%);
-}
 
 .row_body{
   margin-top: 80px;
-  margin-bottom: 100px;
+  background-color: #c6e4f5;
 }
 
 .thema{
@@ -202,7 +200,7 @@ footer {
 
 .body_btn {
   padding: 10px 30px;
-  background-color: green;
+  background-color: #bb8ece;
   font-size: large;
   color: white;
 }
@@ -224,7 +222,7 @@ footer {
   margin: 3%;
   border: solid 3px;
   border-radius: 10px;
-  background-color: azure;
+  background-color: #c6e4f5;
 }
 
 .exp_row {
@@ -248,9 +246,15 @@ footer {
   font-size: medium;
   line-height: 25px;
 }
+/**
+============================================================
+                    home
+============================================================
+**/
 
-
-
+.container{
+  background-color: #c6e4f5;
+}
 /**
 ============================================================
                     Head
@@ -412,7 +416,7 @@ footer {
 
 .quiz_btn{
   color: white;
-  background-color: greenyellow;
+  background-color: #ff9f3c;
   font-size: large;
 }
 
@@ -473,7 +477,7 @@ footer {
   display: flex;
   column-gap: 80px;
   grid-column: 1/5;
-  background-color: green;
+  background-color: #46BBFF;
   height: 45px;
   margin: 0%;
   padding: 0%;
