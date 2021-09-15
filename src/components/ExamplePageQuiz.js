@@ -121,8 +121,12 @@ export class Quiz extends React.Component {
                                 </button>
                                 <div>
                                     {this.state.showExplain === true ?
-                                        <div>
-                                            <p>これが正解だよ。</p>
+                                        <div className='quiz_exp_box'>
+                                            <img
+                                                className="quiz_img"
+                                                alt='explain'
+                                                src={this.props.expUrl}>
+                                            </img>
                                         </div>
                                         : null}
                                 </div>
@@ -263,8 +267,12 @@ export class ViewerQuiz extends React.Component {
                                 </button>
                                 <div>
                                     {this.state.showExplain === true ?
-                                        <div>
-                                            <p>ここにあるよ💗</p>
+                                        <div className='quiz_exp_box'>
+                                            <img
+                                                className="quiz_img"
+                                                alt='explain'
+                                                src={this.props.expUrl}>
+                                            </img>
                                         </div>
                                         : null}
                                 </div>
@@ -401,8 +409,12 @@ export class ViewerQuizFreehand extends React.Component {
                                 </button>
                                 <div>
                                     {this.state.showExplain === true ?
-                                        <div>
-                                            <p>ここにあるよ💗</p>
+                                        <div className='quiz_exp_box'>
+                                            <img
+                                                className="quiz_img"
+                                                alt='explain'
+                                                src={this.props.expUrl}>
+                                            </img>
                                         </div>
                                         : null}
                                 </div>
@@ -538,8 +550,12 @@ export class ViewerQuizArrowAnnotate extends React.Component {
                                 </button>
                                 <div>
                                     {this.state.showExplain === true ?
-                                        <div>
-                                            <p>ここにあるよ💗</p>
+                                        <div className='quiz_exp_box'>
+                                            <img
+                                                className="quiz_img"
+                                                alt='explain'
+                                                src={this.props.expUrl}>
+                                            </img>
                                         </div>
                                         : null}
                                 </div>

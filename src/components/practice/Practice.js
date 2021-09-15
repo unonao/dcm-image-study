@@ -13,6 +13,7 @@ export default function Practice(props) {
     const patientInfo = product.patientInfo
     const sex = product.patientSex
     const age = product.patientAge
+    const expUrl = product.expUrl
 
     const img_list = []
     const protocol_list = []
@@ -41,7 +42,7 @@ export default function Practice(props) {
             const answer_list = quiz.answer_list
             const answer = quiz.answer
             quiz_list[index] =
-                <Quiz answer_num={answer} text={question} answer_list={answer_list}></Quiz>
+                <Quiz answer_num={answer} text={question} answer_list={answer_list} expUrl={expUrl}></Quiz>
         }
         if (kind === 'ViewerQuiz') {
             const question = quiz.question
@@ -53,7 +54,8 @@ export default function Practice(props) {
             const answer_z = quiz.answer_z
             quiz_list[index] =
                 <ViewerQuiz num={answer_z} text={question} data={img_list[answer_data]} tooltype={tooltype}
-                    ans_st_x={answer_x[0]} ans_st_y={answer_y[0]} ans_end_x={answer_x[1]} ans_end_y={answer_y[1]}></ViewerQuiz>
+                    ans_st_x={answer_x[0]} ans_st_y={answer_y[0]} ans_end_x={answer_x[1]} ans_end_y={answer_y[1]}
+                    expUrl={expUrl}></ViewerQuiz>
         }
         if (kind === 'ViewerQuizFreehand') {
             const question = quiz.question
@@ -64,7 +66,8 @@ export default function Practice(props) {
             const answer_z = quiz.answer_z
             quiz_list[index] =
                 <ViewerQuizFreehand num={answer_z} text={question} data={img_list[answer_data]}
-                    ans_st_x={answer_x[0]} ans_st_y={answer_y[0]} ans_end_x={answer_x[1]} ans_end_y={answer_y[1]}></ViewerQuizFreehand>
+                    ans_st_x={answer_x[0]} ans_st_y={answer_y[0]} ans_end_x={answer_x[1]} ans_end_y={answer_y[1]}
+                    expUrl={expUrl}></ViewerQuizFreehand>
         }
         if (kind === 'ViewerQuizArrowAnnotate') {
             const question = quiz.question
@@ -76,7 +79,8 @@ export default function Practice(props) {
             const answer_z = quiz.answer_z
             quiz_list[index] =
                 <ViewerQuizArrowAnnotate num={answer_z} text={question} data={img_list[answer_data]}
-                    ans_st_x={answer_x[0]} ans_st_y={answer_y[0]} ans_end_x={answer_x[1]} ans_end_y={answer_y[1]} ans_text={answer_text}></ViewerQuizArrowAnnotate>
+                    ans_st_x={answer_x[0]} ans_st_y={answer_y[0]} ans_end_x={answer_x[1]} ans_end_y={answer_y[1]} ans_text={answer_text}
+                    expUrl={expUrl}></ViewerQuizArrowAnnotate>
         }
     })
 

@@ -401,6 +401,15 @@ footer {
   border: solid 2px;
 }
 
+.quiz_img {
+  width: 100%;
+}
+
+.quiz_exp_box{
+  height:70vh;
+  overflow: scroll;
+}
+
 .check_box{
   display: grid;
   grid-template-columns: 70% 30%;
